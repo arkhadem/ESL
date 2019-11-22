@@ -10,7 +10,7 @@
 #/* new design                                              */
 #/***********************************************************/
 set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
-read_file -f ddc [list "mult_stage.ddc"]
+read_file -f ddc [list "processing_unit.ddc"]
 set_dont_touch mult_stage
 read_file -f sverilog [list "sys_defs.svh LFSR.sv ESL_adder.sv ESL_divider.sv ESL_multiplier.sv P2B.sv SNG.sv ESL_bipolar_divider.sv processing_element.sv processing_unit.sv"]
 set design_name processing_unit

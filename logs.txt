@@ -32,11 +32,11 @@ Initializing...
 #/***********************************************************/
 set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
 ./ /afs/umich.edu/class/eecs470/lib/synopsys/
-read_file -f ddc [list "mult_stage.ddc"]
+read_file -f ddc [list "processing_unit.ddc"]
 Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
 Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
   Loading link library 'gtech'
-Error: Cannot read file 'mult_stage.ddc'. (UID-58)
+Error: Cannot read file 'processing_unit.ddc'. (UID-58)
 set_dont_touch mult_stage
 Error: Current design is not defined. (UID-4)
 Error: Can't find object 'mult_stage'. (UID-109)
@@ -606,7 +606,7 @@ Current design is 'processing_unit'.
 Thank you...
 SW_VCS=2017.12-SP2-1 vcs +v2k -sverilog +vc -Mupdate -line -full64 PU_test.sv processing_unit.vg  /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v -o syn_simv
                          Chronologic VCS (TM)
-      Version N-2017.12-SP2-1_Full64 -- Fri Nov 22 10:18:50 2019
+      Version N-2017.12-SP2-1_Full64 -- Fri Nov 22 10:24:07 2019
                Copyright (c) 1991-2017 by Synopsys Inc.
                          ALL RIGHTS RESERVED
 
@@ -2871,4 +2871,4 @@ PU_test.sv, 25
 
 244 warnings
 1 error
-CPU time: .250 seconds to compile
+CPU time: .260 seconds to compile
