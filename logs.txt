@@ -1,0 +1,2874 @@
+dc_shell-t -f ./ESL.tcl | tee mult_synth.out
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version O-2018.06 for linux64 - May 21, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#/***********************************************************/
+#/*   FILE        : mult.tcl                                */
+#/*   Description : Default Synopsys Design Compiler Script */
+#/*   Usage       : dc_shell -tcl_mode -f mult.scr          */
+#/*   You'll need to minimally set design_name & read files */
+#/***********************************************************/
+#/***********************************************************/
+#/* The following lines must be updated for every           */
+#/* new design                                              */
+#/***********************************************************/
+set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
+./ /afs/umich.edu/class/eecs470/lib/synopsys/
+read_file -f ddc [list "mult_stage.ddc"]
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Error: Cannot read file 'mult_stage.ddc'. (UID-58)
+set_dont_touch mult_stage
+Error: Current design is not defined. (UID-4)
+Error: Can't find object 'mult_stage'. (UID-109)
+Error: Value for list 'object_list' must have 1 elements. (CMD-036)
+0
+read_file -f sverilog [list "sys_defs.svh LFSR.sv ESL_adder.sv ESL_divider.sv ESL_multiplier.sv P2B.sv SNG.sv ESL_bipolar_divider.sv processing_element.sv processing_unit.sv"]
+Loading sverilog files: '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sys_defs.svh' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_adder.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_divider.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_multiplier.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_element.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv' 
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv
+Opening include file sys_defs.svh
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:13: The construct 'declaration initial assignment' is not supported in synthesis; it is ignored. (VER-708)
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_adder.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_divider.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_multiplier.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_element.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv
+Opening include file sys_defs.svh
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:184: the undeclared symbol 'input_x' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:29: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:35: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:38: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:41: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:44: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:47: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:50: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:53: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:56: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:59: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:62: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:65: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:68: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:71: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:74: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:77: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:80: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:83: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:86: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:89: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:92: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:95: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:98: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:101: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:104: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:107: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:110: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:113: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:116: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+
+Inferred memory devices in process
+	in routine LFSR line 17 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    LFSR_reg_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv:37: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine P2B line 17 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    n_out_val_reg    | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine P2B line 25 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|    modulus_m_reg    | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine P2B line 39 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     out_val_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv:22: signed to unsigned assignment occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv:21: signed to unsigned assignment occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv:22: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine ESL_bioilar_divider line 38 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| estimation_tmp_reg  | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:83: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:92: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:92: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:221: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:232: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:250: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:269: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:270: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:65: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 63 in file
+	'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            65            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 103 in file
+	'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           119            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine processing_unit line 170 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine processing_unit line 205 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|  output_vals_x_reg  | Latch |  64   |  Y  | N  | N  | N  | -  | -  | -  |
+|  output_vals_y_reg  | Latch |  64   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine processing_unit line 245 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  height_index_reg   | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+|   width_index_reg   | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine processing_unit line 259 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'.
+=====================================================================================
+|       Register Name       |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=====================================================================================
+| stored_partial_sums_y_reg | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+| stored_partial_sums_x_reg | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+=====================================================================================
+
+Inferred memory devices in process
+	in routine processing_unit line 275 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    sc_count_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+=========================================================
+|  block name/line    | Inputs | Outputs | # sel inputs |
+=========================================================
+| processing_unit/217 |   16   |   10    |      4       |
+| processing_unit/225 |   4    |   32    |      2       |
+=========================================================
+Presto compilation completed successfully.
+Current design is now '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.db:LFSR'
+Loaded 9 designs.
+Current design is 'LFSR'.
+LFSR ESL_adder ESL_divider ESL_multiplier P2B SNG ESL_bioilar_divider processing_element processing_unit
+set design_name processing_unit
+processing_unit
+set clock_name clock
+clock
+set reset_name reset
+reset
+set CLK_PERIOD 5
+5
+#/***********************************************************/
+#/* The rest of this file may be left alone for most small  */
+#/* to moderate sized designs.  You may need to alter it    */
+#/* when synthesizing your final project.                   */
+#/***********************************************************/
+set SYN_DIR ./
+./
+set target_library "lec25dscc25_TT.db"
+lec25dscc25_TT.db
+set link_library [concat  "*" $target_library]
+* lec25dscc25_TT.db
+#/***********************************************************/
+#/* Set some flags for optimisation */
+set compile_top_all_paths "true"
+true
+set auto_wire_load_selection "false"
+false
+#/***********************************************************/
+#/*  Clk Periods/uncertainty/transition                     */
+set CLK_TRANSITION 0.1
+0.1
+set CLK_UNCERTAINTY 0.1
+0.1
+set CLK_LATENCY 0.1
+0.1
+#/* Input/output Delay values */
+set AVG_INPUT_DELAY 0.1
+0.1
+set AVG_OUTPUT_DELAY 0.1
+0.1
+#/* Critical Range (ns) */
+set CRIT_RANGE 1.0
+1.0
+#/***********************************************************/
+#/* Design Constrains: Not all used                         */
+set MAX_TRANSITION 1.0
+1.0
+set FAST_TRANSITION 0.1
+0.1
+set MAX_FANOUT 32
+32
+set MID_FANOUT 8
+8
+set LOW_FANOUT 1
+1
+set HIGH_DRIVE 0
+0
+set HIGH_LOAD 1.0
+1.0
+set AVG_LOAD 0.1
+0.1
+set AVG_FANOUT_LOAD 10
+10
+#/***********************************************************/
+#/*BASIC_INPUT = cb18os120_tsmc_max/nd02d1/A1
+#BASIC_OUTPUT = cb18os120_tsmc_max/nd02d1/ZN*/
+set DRIVING_CELL dffacs1
+dffacs1
+#/* DONT_USE_LIST = {   } */
+#/*************operation cons**************/
+#/*OP_WCASE = WCCOM;
+#OP_BCASE = BCCOM;*/
+set WIRE_LOAD "tsmcwire"
+tsmcwire
+set LOGICLIB lec25dscc25_TT
+lec25dscc25_TT
+#/*****************************/
+#/* Sourcing the file that sets the Search path and the libraries(target,link) */
+set sys_clk $clock_name
+clock
+set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
+./processing_unit.vg
+set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
+./processing_unit.ddc
+set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
+./processing_unit.rep
+set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
+./processing_unit.chk
+#/* if we didnt find errors at this point, run */
+if {  $dc_shell_status != [list] } {
+   current_design $design_name
+  link
+  set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
+  set_wire_load_mode top
+  set_fix_multiple_port_nets -outputs -buffer_constants
+  create_clock -period $CLK_PERIOD -name $sys_clk [find port $sys_clk]
+  set_clock_uncertainty $CLK_UNCERTAINTY $sys_clk
+  set_fix_hold $sys_clk
+  group_path -from [all_inputs] -name input_grp
+  group_path -to [all_outputs] -name output_grp
+  set_driving_cell  -lib_cell $DRIVING_CELL [all_inputs]
+  remove_driving_cell [find port $sys_clk]
+  set_fanout_load $AVG_FANOUT_LOAD [all_outputs]
+  set_load $AVG_LOAD [all_outputs]
+  set_input_delay $AVG_INPUT_DELAY -clock $sys_clk [all_inputs]
+  remove_input_delay -clock $sys_clk [find port $sys_clk]
+  set_output_delay $AVG_OUTPUT_DELAY -clock $sys_clk [all_outputs]
+  set_dont_touch $reset_name
+  set_resistance 0 $reset_name
+  set_drive 0 $reset_name
+  set_critical_range $CRIT_RANGE [current_design]
+  set_max_delay $CLK_PERIOD [all_outputs]
+  set MAX_FANOUT $MAX_FANOUT
+  set MAX_TRANSITION $MAX_TRANSITION
+  uniquify
+  ungroup -all -flatten
+  redirect $chk_file { check_design }
+  compile -map_effort high
+  write -hier -format verilog -output $netlist_file $design_name
+  write -hier -format ddc -output $ddc_file $design_name
+  redirect $rep_file { report_design -nosplit }
+  redirect -append $rep_file { report_area }
+  redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
+  redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
+  remove_design -all
+  read_file -format verilog $netlist_file
+  current_design $design_name
+  redirect -append $rep_file { report_reference -nosplit }
+  quit
+} else {
+   quit
+}
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Current design is 'processing_unit'.
+
+  Linking design 'processing_unit'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (9 designs)               /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.db, etc
+  lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Current design is 'processing_unit'.
+Information: Uniquified 6 instances of design 'SNG'. (OPT-1056)
+Information: Uniquified 6 instances of design 'LFSR'. (OPT-1056)
+Information: Uniquified 4 instances of design 'processing_element'. (OPT-1056)
+Information: Uniquified 4 instances of design 'ESL_adder'. (OPT-1056)
+Information: Uniquified 4 instances of design 'ESL_multiplier'. (OPT-1056)
+Information: Updating graph... (UID-83)
+Warning: Design 'processing_unit' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.0 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 11 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'processing_unit'
+Information: The register 'ESL_bioilar_divider_inst/P2B_inst/out_val_reg[2]' will be removed. (OPT-1207)
+Information: The register 'ESL_bioilar_divider_inst/P2B_inst/out_val_reg[1]' will be removed. (OPT-1207)
+Information: The register 'ESL_bioilar_divider_inst/P2B_inst/out_val_reg[0]' will be removed. (OPT-1207)
+Information: The register 'output_vals_y_reg[0][0][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'output_vals_y_reg[0][0][0]' is a constant and will be removed. (OPT-1206)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'processing_unit_DW01_dec_0'
+  Processing 'processing_unit_DW01_dec_1'
+  Processing 'DW01_add_width4'
+  Processing 'DW01_dec_width4'
+  Processing 'DW01_add_width4'
+  Processing 'DW01_dec_width4'
+
+  Beginning Mapping Optimizations  (High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:02  103223.0      0.00       0.0      11.8                                0.00  
+    0:00:02  103223.0      0.00       0.0      11.8                                0.00  
+    0:00:02  103223.0      0.00       0.0      11.8                                0.00  
+    0:00:02  103223.0      0.00       0.0      11.8                                0.00  
+    0:00:02  103223.0      0.00       0.0      11.8                                0.00  
+    0:00:03   76018.2      0.00       0.0       6.5                                0.00  
+    0:00:03   75860.6      0.00       0.0       6.5                                0.00  
+    0:00:03   75860.6      0.00       0.0       6.5                                0.00  
+    0:00:03   75860.6      0.00       0.0       6.5                                0.00  
+    0:00:03   75860.6      0.00       0.0       6.5                                0.00  
+    0:00:03   75860.6      0.00       0.0       6.5                                0.00  
+    0:00:03   75985.1      0.00       0.0       4.3                                0.00  
+    0:00:03   76034.8      0.00       0.0       2.2                                0.00  
+    0:00:03   76076.3      0.00       0.0       0.0                                0.00  
+    0:00:03   76076.3      0.00       0.0       0.0                                0.00  
+    0:00:03   76076.3      0.00       0.0       0.0                                0.00  
+    0:00:03   76076.3      0.00       0.0       0.0                                0.00  
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:03   76076.3      0.00       0.0       0.0                                0.00  
+    0:00:03   76076.3      0.00       0.0       0.0                                0.00  
+    0:00:03   76059.7      0.00       0.0       0.0                                0.00  
+
+
+  Beginning Design Rule Fixing  (min_path)  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:03   76059.7      0.00       0.0       0.0                               -0.01  
+    0:00:03   76076.3      0.00       0.0       0.0                               -0.01  
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:03   76076.3      0.00       0.0       0.0                               -0.01  
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:03   76076.3      0.00       0.0       0.0                               -0.01  
+    0:00:03   76076.3      0.00       0.0       0.0                               -0.01  
+    0:00:03   75504.0      0.00       0.0       0.0                               -0.01  
+    0:00:03   75072.7      0.00       0.0       0.0                               -0.01  
+    0:00:03   74823.8      0.00       0.0       0.0                               -0.01  
+    0:00:03   74649.7      0.00       0.0       0.0                               -0.01  
+    0:00:03   74649.7      0.00       0.0       0.0                               -0.01  
+    0:00:03   74649.7      0.00       0.0       0.0                               -0.01  
+    0:00:03   74649.7      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                               -0.01  
+    0:00:03   74492.1      0.00       0.0       0.0                                0.00  
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:03   74492.1      0.00       0.0       0.0                                0.00  
+    0:00:03   74492.1      0.00       0.0       0.0                                0.00  
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Writing verilog file '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.vg'.
+Writing ddc file './processing_unit.ddc'.
+Removing design 'ESL_divider'
+Removing design 'processing_unit'
+Removing library 'gtech'
+Removing library 'lec25dscc25_TT'
+Removing library 'standard.sldb'
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
+  Loading link library 'lec25dscc25_TT'
+  Loading link library 'gtech'
+Loading verilog file '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.vg'
+Detecting input file type automatically (-rtl or -netlist).
+Running DC verilog reader
+Performing 'read' command.
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.vg
+Reading with netlist reader (equivalent to -netlist option).
+Verilog netlist reader completed successfully.
+Current design is now '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.db:processing_unit'
+Loaded 1 design.
+Current design is 'processing_unit'.
+Current design is 'processing_unit'.
+
+Thank you...
+SW_VCS=2017.12-SP2-1 vcs +v2k -sverilog +vc -Mupdate -line -full64 PU_test.sv processing_unit.vg  /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v -o syn_simv
+                         Chronologic VCS (TM)
+      Version N-2017.12-SP2-1_Full64 -- Fri Nov 22 10:18:50 2019
+               Copyright (c) 1991-2017 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file 'PU_test.sv'
+Parsing included file 'sys_defs.svh'.
+Back to file 'PU_test.sv'.
+Parsing design file 'processing_unit.vg'
+Parsing design file '/afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v'
+Top Level Modules:
+       PU_test
+       and2s2
+       and2s3
+       and3s2
+       and4s1
+       and4s2
+       aoai1112s1
+       aoai1112s3
+       aoi123s1
+       aoi123s2
+       aoi123s3
+       aoi13s1
+       aoi13s3
+       aoi211s1
+       aoi211s2
+       aoi211s3
+       aoi21s3
+       aoi221s1
+       aoi221s2
+       aoi221s3
+       aoi2221s1
+       aoi2221s2
+       aoi2221s3
+       aoi222s1
+       aoi222s2
+       aoi222s3
+       aoi23s1
+       aoi23s3
+       aoi33s1
+       aoi33s2
+       aoi33s3
+       aoi4111s1
+       aoi4111s2
+       aoi4111s3
+       aoi42s2
+       aoi42s3
+       bshes1
+       bshes2
+       bshes3
+       bsles1
+       bsles2
+       bsles3
+       dchei24s1
+       dchei24s2
+       dchei24s3
+       dci24s1
+       dci24s2
+       dci24s3
+       dclei24s1
+       dclei24s2
+       dclei24s3
+       dffacs1
+       dffacs2
+       dffascs1
+       dffascs2
+       dffass1
+       dffass2
+       dffcs1
+       dffcs2
+       dffles2
+       dffscs1
+       dffscs2
+       dffss1
+       dffss2
+       di2s1
+       di2s2
+       di2s3
+       di2s4
+       di2s5
+       di2s6
+       dsmxc31s1
+       dsmxc31s2
+       fadd1s1
+       fadd1s2
+       fadd1s3
+       hib1s1
+       hnb1s1
+       i1s1
+       i1s2
+       i1s4
+       i1s5
+       i1s6
+       i1s7
+       ib1s2
+       ib1s3
+       ib1s4
+       ib1s5
+       lclks2
+       lcs1
+       lcs2
+       lnnds1
+       lnnds2
+       lnors1
+       lnors2
+       lscs1
+       lscs2
+       lss1
+       lss2
+       mx21s1
+       mx21s2
+       mx21s3
+       mx41s1
+       mx41s2
+       mx41s3
+       mxi21s1
+       mxi21s2
+       mxi21s3
+       mxi41s1
+       mxi41s2
+       mxi41s3
+       nb1s1
+       nb1s2
+       nb1s3
+       nb1s4
+       nb1s5
+       nb1s6
+       nnd2s3
+       nnd3s1
+       nnd3s3
+       nnd4s2
+       nnd4s3
+       nnd5s3
+       nnd6s3
+       nor2s3
+       nor3s1
+       nor3s2
+       nor3s3
+       nor4s2
+       nor4s3
+       nor5s2
+       nor5s3
+       nor6s1
+       nor6s2
+       nor6s3
+       npd1s1
+       npd1s2
+       npt1s1
+       npt1s2
+       npt1s3
+       npt1s4
+       npt1s5
+       npt1s6
+       oaaoi1123s1
+       oaaoi1123s2
+       oaaoi1123s3
+       oai1112s1
+       oai1112s2
+       oai1112s3
+       oai211s1
+       oai211s2
+       oai211s3
+       oai21s3
+       oai221s1
+       oai221s3
+       oai2222s1
+       oai2222s2
+       oai2222s3
+       oai222s2
+       oai222s3
+       oai24s2
+       oai24s3
+       oai322s1
+       oai322s2
+       oai322s3
+       oai32s2
+       oai32s3
+       oai33s2
+       oai33s3
+       or2s2
+       or2s3
+       or3s3
+       or4s2
+       or4s3
+       or5s2
+       or5s3
+       ppt1s1
+       ppt1s2
+       ppt1s3
+       ppt1s4
+       ppt1s5
+       ppt1s6
+       ppu1s1
+       ppu1s2
+       rpc1s1
+       rpc1s2
+       sdffacs1
+       sdffacs2
+       sdffascs1
+       sdffascs2
+       sdffass1
+       sdffass2
+       sdffcs1
+       sdffcs2
+       sdffles1
+       sdffles2
+       sdffs1
+       sdffs2
+       sdffscs1
+       sdffscs2
+       sdffss1
+       sdffss2
+       sub1s1
+       sub1s2
+       sub1s3
+       tibh1s1
+       tibh1s2
+       tibh1s3
+       tibh1s4
+       tibh1s5
+       tibl1s1
+       tibl1s2
+       tibl1s3
+       tibl1s4
+       tibl1s5
+       tnbh1s1
+       tnbh1s2
+       tnbh1s3
+       tnbh1s4
+       tnbh1s5
+       tnbl1s1
+       xnr2s2
+       xnr3s1
+       xnr3s2
+       xnr3s3
+       xor2s3
+       xor3s1
+       xor3s2
+       xor3s3
+       and4s3
+       aoai122s1
+       aoai122s2
+       aoai122s3
+       clc2s1
+       clc2s2
+       clc2s3
+       di2s10
+       di2s11
+       di2s12
+       di2s7
+       di2s8
+       di2s9
+       faddpgs1
+       faddpgs2
+       faddpgs3
+       hadd1s1
+       hadd1s2
+       hadd1s3
+       i1s10
+       i1s11
+       i1s12
+       i1s8
+       i1s9
+       ib1s10
+       ib1s11
+       ib1s12
+       ib1s6
+       ib1s7
+       ib1s8
+       ib1s9
+       nb1s10
+       nb1s11
+       nb1s12
+       nb1s7
+       nb1s8
+       nb1s9
+       nnd7s3
+       nnd8s3
+       nor7s3
+       oai13s1
+       oai13s3
+       oai22s3
+       oai321s1
+       oai321s2
+       oai321s3
+       oai33s1
+       tibh1s6
+       tibl1s6
+       tnbh1s6
+       tnbl1s2
+       tnbl1s3
+       tnbl1s4
+       tnbl1s5
+       tnbl1s6
+No TimeScale specified
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 344
+"lclks1 \output_vals_y_reg[0][1][11] ( .CLK (n793),  .DIN (n533),  .Q (\output_vals_y[0][1][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 346
+"lclks1 \output_vals_y_reg[1][0][11] ( .CLK (n793),  .DIN (n535),  .Q (\output_vals_y[1][0][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 348
+"lclks1 \output_vals_y_reg[1][1][11] ( .CLK (n793),  .DIN (n537),  .Q (\output_vals_y[1][1][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 350
+"lclks1 \output_vals_y_reg[0][1][9] ( .CLK (n783),  .DIN (n533),  .Q (\output_vals_y[0][1][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 352
+"lclks1 \output_vals_y_reg[1][0][9] ( .CLK (n783),  .DIN (n535),  .Q (\output_vals_y[1][0][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 354
+"lclks1 \output_vals_y_reg[1][1][9] ( .CLK (n783),  .DIN (n537),  .Q (\output_vals_y[1][1][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 356
+"lclks1 \output_vals_x_reg[0][0][11] ( .CLK (n793),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 359
+"lclks1 \output_vals_x_reg[0][1][9] ( .CLK (n783),  .DIN (n532),  .Q (\output_vals_x[0][1][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 361
+"lclks1 \output_vals_x_reg[0][1][11] ( .CLK (n793),  .DIN (n532),  .Q (\output_vals_x[0][1][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 363
+"lclks1 \output_vals_x_reg[1][0][5] ( .CLK (n779),  .DIN (n534),  .Q (\output_vals_x[1][0][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 365
+"lclks1 \output_vals_x_reg[1][0][9] ( .CLK (n783),  .DIN (n534),  .Q (\output_vals_x[1][0][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 367
+"lclks1 \output_vals_x_reg[1][0][11] ( .CLK (n793),  .DIN (n534),  .Q (\output_vals_x[1][0][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 369
+"lclks1 \output_vals_x_reg[1][1][11] ( .CLK (n793),  .DIN (n536),  .Q (\output_vals_x[1][1][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 371
+"lclks1 \output_vals_y_reg[0][1][13] ( .CLK (n787),  .DIN (n533),  .Q (\output_vals_y[0][1][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 373
+"lclks1 \output_vals_y_reg[1][0][13] ( .CLK (n787),  .DIN (n535),  .Q (\output_vals_y[1][0][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 375
+"lclks1 \output_vals_y_reg[1][1][13] ( .CLK (n787),  .DIN (n537),  .Q (\output_vals_y[1][1][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 377
+"lclks1 \output_vals_y_reg[0][1][5] ( .CLK (n779),  .DIN (n533),  .Q (\output_vals_y[0][1][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 379
+"lclks1 \output_vals_y_reg[1][0][5] ( .CLK (n779),  .DIN (n535),  .Q (\output_vals_y[1][0][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 381
+"lclks1 \output_vals_y_reg[1][1][5] ( .CLK (n779),  .DIN (n537),  .Q (\output_vals_y[1][1][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 383
+"lclks1 \output_vals_y_reg[0][1][3] ( .CLK (n801),  .DIN (n533),  .Q (\output_vals_y[0][1][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 385
+"lclks1 \output_vals_y_reg[1][0][3] ( .CLK (n801),  .DIN (n535),  .Q (\output_vals_y[1][0][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 387
+"lclks1 \output_vals_y_reg[1][1][3] ( .CLK (n801),  .DIN (n537),  .Q (\output_vals_y[1][1][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 389
+"lclks1 \output_vals_y_reg[0][1][1] ( .CLK (n775),  .DIN (n533),  .Q (\output_vals_y[0][1][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 391
+"lclks1 \output_vals_y_reg[1][0][1] ( .CLK (n775),  .DIN (n535),  .Q (\output_vals_y[1][0][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 393
+"lclks1 \output_vals_y_reg[1][1][1] ( .CLK (n775),  .DIN (n537),  .Q (\output_vals_y[1][1][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 395
+"lclks1 \output_vals_x_reg[0][0][1] ( .CLK (n775),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 398
+"lclks1 \output_vals_x_reg[0][0][3] ( .CLK (n801),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 401
+"lclks1 \output_vals_x_reg[0][0][5] ( .CLK (n779),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 404
+"lclks1 \output_vals_x_reg[0][0][9] ( .CLK (n783),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 407
+"lclks1 \output_vals_x_reg[0][0][13] ( .CLK (n787),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 410
+"lclks1 \output_vals_x_reg[0][1][1] ( .CLK (n775),  .DIN (n532),  .Q (\output_vals_x[0][1][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 412
+"lclks1 \output_vals_x_reg[0][1][3] ( .CLK (n801),  .DIN (n532),  .Q (\output_vals_x[0][1][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 414
+"lclks1 \output_vals_x_reg[0][1][5] ( .CLK (n779),  .DIN (n532),  .Q (\output_vals_x[0][1][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 416
+"lclks1 \output_vals_x_reg[0][1][13] ( .CLK (n787),  .DIN (n532),  .Q (\output_vals_x[0][1][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 418
+"lclks1 \output_vals_x_reg[1][0][1] ( .CLK (n775),  .DIN (n534),  .Q (\output_vals_x[1][0][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 420
+"lclks1 \output_vals_x_reg[1][0][3] ( .CLK (n801),  .DIN (n534),  .Q (\output_vals_x[1][0][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 422
+"lclks1 \output_vals_x_reg[1][0][13] ( .CLK (n787),  .DIN (n534),  .Q (\output_vals_x[1][0][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 424
+"lclks1 \output_vals_x_reg[1][1][1] ( .CLK (n775),  .DIN (n536),  .Q (\output_vals_x[1][1][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 426
+"lclks1 \output_vals_x_reg[1][1][3] ( .CLK (n801),  .DIN (n536),  .Q (\output_vals_x[1][1][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 428
+"lclks1 \output_vals_x_reg[1][1][5] ( .CLK (n779),  .DIN (n536),  .Q (\output_vals_x[1][1][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 430
+"lclks1 \output_vals_x_reg[1][1][9] ( .CLK (n783),  .DIN (n536),  .Q (\output_vals_x[1][1][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 432
+"lclks1 \output_vals_x_reg[1][1][13] ( .CLK (n787),  .DIN (n536),  .Q (\output_vals_x[1][1][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 434
+"lclks1 \output_vals_y_reg[0][1][7] ( .CLK (n797),  .DIN (n533),  .Q (\output_vals_y[0][1][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 436
+"lclks1 \output_vals_y_reg[1][0][7] ( .CLK (n797),  .DIN (n535),  .Q (\output_vals_y[1][0][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 438
+"lclks1 \output_vals_y_reg[1][1][7] ( .CLK (n797),  .DIN (n537),  .Q (\output_vals_y[1][1][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 440
+"lclks1 \output_vals_x_reg[0][0][7] ( .CLK (n797),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 443
+"lclks1 \output_vals_x_reg[0][1][7] ( .CLK (n797),  .DIN (n532),  .Q (\output_vals_x[0][1][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 445
+"lclks1 \output_vals_x_reg[1][0][7] ( .CLK (n797),  .DIN (n534),  .Q (\output_vals_x[1][0][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 447
+"lclks1 \output_vals_x_reg[1][1][7] ( .CLK (n797),  .DIN (n536),  .Q (\output_vals_x[1][1][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 449
+"lclks1 \output_vals_y_reg[0][1][15] ( .CLK (n805),  .DIN (n533),  .Q (\output_vals_y[0][1][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 451
+"lclks1 \output_vals_y_reg[1][0][15] ( .CLK (n805),  .DIN (n535),  .Q (\output_vals_y[1][0][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 453
+"lclks1 \output_vals_y_reg[1][1][15] ( .CLK (n805),  .DIN (n537),  .Q (\output_vals_y[1][1][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 455
+"lclks1 \output_vals_x_reg[0][0][15] ( .CLK (n805),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 458
+"lclks1 \output_vals_x_reg[0][1][15] ( .CLK (n805),  .DIN (n532),  .Q (\output_vals_x[0][1][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 460
+"lclks1 \output_vals_x_reg[1][0][15] ( .CLK (n805),  .DIN (n534),  .Q (\output_vals_x[1][0][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 462
+"lclks1 \output_vals_x_reg[1][1][15] ( .CLK (n805),  .DIN (n536),  .Q (\output_vals_x[1][1][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 464
+"lclks1 \output_vals_y_reg[0][1][10] ( .CLK (n834),  .DIN (n533),  .Q (\output_vals_y[0][1][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 466
+"lclks1 \output_vals_y_reg[1][0][10] ( .CLK (n834),  .DIN (n535),  .Q (\output_vals_y[1][0][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 468
+"lclks1 \output_vals_y_reg[1][1][10] ( .CLK (n834),  .DIN (n537),  .Q (\output_vals_y[1][1][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 470
+"lclks1 \output_vals_y_reg[0][1][8] ( .CLK (n818),  .DIN (n533),  .Q (\output_vals_y[0][1][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 472
+"lclks1 \output_vals_y_reg[1][0][8] ( .CLK (n818),  .DIN (n535),  .Q (\output_vals_y[1][0][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 474
+"lclks1 \output_vals_y_reg[1][1][8] ( .CLK (n818),  .DIN (n537),  .Q (\output_vals_y[1][1][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 476
+"lclks1 \output_vals_x_reg[0][0][8] ( .CLK (n818),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 479
+"lclks1 \output_vals_x_reg[0][0][10] ( .CLK (n834),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 482
+"lclks1 \output_vals_x_reg[0][1][8] ( .CLK (n818),  .DIN (n532),  .Q (\output_vals_x[0][1][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 484
+"lclks1 \output_vals_x_reg[0][1][10] ( .CLK (n834),  .DIN (n532),  .Q (\output_vals_x[0][1][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 486
+"lclks1 \output_vals_x_reg[1][0][8] ( .CLK (n818),  .DIN (n534),  .Q (\output_vals_x[1][0][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 488
+"lclks1 \output_vals_x_reg[1][0][10] ( .CLK (n834),  .DIN (n534),  .Q (\output_vals_x[1][0][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 490
+"lclks1 \output_vals_x_reg[1][1][8] ( .CLK (n818),  .DIN (n536),  .Q (\output_vals_x[1][1][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 492
+"lclks1 \output_vals_x_reg[1][1][10] ( .CLK (n834),  .DIN (n536),  .Q (\output_vals_x[1][1][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 494
+"lclks1 \output_vals_y_reg[0][1][14] ( .CLK (n838),  .DIN (n533),  .Q (\output_vals_y[0][1][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 496
+"lclks1 \output_vals_y_reg[1][0][14] ( .CLK (n838),  .DIN (n535),  .Q (\output_vals_y[1][0][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 498
+"lclks1 \output_vals_y_reg[1][1][14] ( .CLK (n838),  .DIN (n537),  .Q (\output_vals_y[1][1][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 500
+"lclks1 \output_vals_y_reg[0][1][12] ( .CLK (n822),  .DIN (n533),  .Q (\output_vals_y[0][1][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 502
+"lclks1 \output_vals_y_reg[1][0][12] ( .CLK (n822),  .DIN (n535),  .Q (\output_vals_y[1][0][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 504
+"lclks1 \output_vals_y_reg[1][1][12] ( .CLK (n822),  .DIN (n537),  .Q (\output_vals_y[1][1][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 506
+"lclks1 \output_vals_y_reg[0][1][6] ( .CLK (n830),  .DIN (n533),  .Q (\output_vals_y[0][1][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 508
+"lclks1 \output_vals_y_reg[1][0][6] ( .CLK (n830),  .DIN (n535),  .Q (\output_vals_y[1][0][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 510
+"lclks1 \output_vals_y_reg[1][1][6] ( .CLK (n830),  .DIN (n537),  .Q (\output_vals_y[1][1][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 512
+"lclks1 \output_vals_y_reg[0][1][4] ( .CLK (n814),  .DIN (n533),  .Q (\output_vals_y[0][1][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 514
+"lclks1 \output_vals_y_reg[1][0][4] ( .CLK (n814),  .DIN (n535),  .Q (\output_vals_y[1][0][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 516
+"lclks1 \output_vals_y_reg[1][1][4] ( .CLK (n814),  .DIN (n537),  .Q (\output_vals_y[1][1][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 518
+"lclks1 \output_vals_y_reg[0][1][2] ( .CLK (n826),  .DIN (n533),  .Q (\output_vals_y[0][1][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 520
+"lclks1 \output_vals_y_reg[1][0][2] ( .CLK (n826),  .DIN (n535),  .Q (\output_vals_y[1][0][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 522
+"lclks1 \output_vals_y_reg[1][1][2] ( .CLK (n826),  .DIN (n537),  .Q (\output_vals_y[1][1][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 524
+"lclks1 \output_vals_y_reg[0][1][0] ( .CLK (n810),  .DIN (n533),  .Q (\output_vals_y[0][1][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 526
+"lclks1 \output_vals_y_reg[1][0][0] ( .CLK (n810),  .DIN (n535),  .Q (\output_vals_y[1][0][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 528
+"lclks1 \output_vals_y_reg[1][1][0] ( .CLK (n810),  .DIN (n537),  .Q (\output_vals_y[1][1][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 530
+"lclks1 \output_vals_x_reg[0][0][0] ( .CLK (n810),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 533
+"lclks1 \output_vals_x_reg[0][0][2] ( .CLK (n826),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 536
+"lclks1 \output_vals_x_reg[0][0][4] ( .CLK (n814),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 539
+"lclks1 \output_vals_x_reg[0][0][6] ( .CLK (n830),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 542
+"lclks1 \output_vals_x_reg[0][0][12] ( .CLK (n822),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 545
+"lclks1 \output_vals_x_reg[0][0][14] ( .CLK (n838),  .DIN (\PE_row[0].PE_column[0].PEs/multiplier_inst/N0 ),  .Q (\output_vals_x[0][0][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 548
+"lclks1 \output_vals_x_reg[0][1][0] ( .CLK (n810),  .DIN (n532),  .Q (\output_vals_x[0][1][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 550
+"lclks1 \output_vals_x_reg[0][1][2] ( .CLK (n826),  .DIN (n532),  .Q (\output_vals_x[0][1][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 552
+"lclks1 \output_vals_x_reg[0][1][4] ( .CLK (n814),  .DIN (n532),  .Q (\output_vals_x[0][1][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 554
+"lclks1 \output_vals_x_reg[0][1][6] ( .CLK (n830),  .DIN (n532),  .Q (\output_vals_x[0][1][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 556
+"lclks1 \output_vals_x_reg[0][1][12] ( .CLK (n822),  .DIN (n532),  .Q (\output_vals_x[0][1][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 558
+"lclks1 \output_vals_x_reg[0][1][14] ( .CLK (n838),  .DIN (n532),  .Q (\output_vals_x[0][1][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 560
+"lclks1 \output_vals_x_reg[1][0][0] ( .CLK (n810),  .DIN (n534),  .Q (\output_vals_x[1][0][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 562
+"lclks1 \output_vals_x_reg[1][0][2] ( .CLK (n826),  .DIN (n534),  .Q (\output_vals_x[1][0][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 564
+"lclks1 \output_vals_x_reg[1][0][4] ( .CLK (n814),  .DIN (n534),  .Q (\output_vals_x[1][0][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 566
+"lclks1 \output_vals_x_reg[1][0][6] ( .CLK (n830),  .DIN (n534),  .Q (\output_vals_x[1][0][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 568
+"lclks1 \output_vals_x_reg[1][0][12] ( .CLK (n822),  .DIN (n534),  .Q (\output_vals_x[1][0][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 570
+"lclks1 \output_vals_x_reg[1][0][14] ( .CLK (n838),  .DIN (n534),  .Q (\output_vals_x[1][0][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 572
+"lclks1 \output_vals_x_reg[1][1][0] ( .CLK (n810),  .DIN (n536),  .Q (\output_vals_x[1][1][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 574
+"lclks1 \output_vals_x_reg[1][1][2] ( .CLK (n826),  .DIN (n536),  .Q (\output_vals_x[1][1][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 576
+"lclks1 \output_vals_x_reg[1][1][4] ( .CLK (n814),  .DIN (n536),  .Q (\output_vals_x[1][1][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 578
+"lclks1 \output_vals_x_reg[1][1][6] ( .CLK (n830),  .DIN (n536),  .Q (\output_vals_x[1][1][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 580
+"lclks1 \output_vals_x_reg[1][1][12] ( .CLK (n822),  .DIN (n536),  .Q (\output_vals_x[1][1][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 582
+"lclks1 \output_vals_x_reg[1][1][14] ( .CLK (n838),  .DIN (n536),  .Q (\output_vals_x[1][1][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 595
+"dffles1 \stored_partial_sums_y_reg[0][3][15] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 597
+"dffles1 \stored_partial_sums_y_reg[0][3][14] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 599
+"dffles1 \stored_partial_sums_y_reg[0][3][13] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 601
+"dffles1 \stored_partial_sums_y_reg[0][3][12] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 603
+"dffles1 \stored_partial_sums_y_reg[0][3][11] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 605
+"dffles1 \stored_partial_sums_y_reg[0][3][10] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 607
+"dffles1 \stored_partial_sums_y_reg[0][3][9] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 609
+"dffles1 \stored_partial_sums_y_reg[0][3][8] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 611
+"dffles1 \stored_partial_sums_y_reg[0][3][7] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 613
+"dffles1 \stored_partial_sums_y_reg[0][3][6] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 615
+"dffles1 \stored_partial_sums_y_reg[0][3][5] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 617
+"dffles1 \stored_partial_sums_y_reg[0][3][4] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 619
+"dffles1 \stored_partial_sums_y_reg[0][3][3] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 621
+"dffles1 \stored_partial_sums_y_reg[0][3][2] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 623
+"dffles1 \stored_partial_sums_y_reg[0][3][1] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 625
+"dffles1 \stored_partial_sums_y_reg[0][3][0] ( .DIN (1'b0),  .EB (n745),  .CLK (clock),  .Q (\stored_partial_sums_y[0][3][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 627
+"dffles1 \stored_partial_sums_x_reg[0][3][15] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 629
+"dffles1 \stored_partial_sums_x_reg[0][3][14] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 631
+"dffles1 \stored_partial_sums_x_reg[0][3][13] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 633
+"dffles1 \stored_partial_sums_x_reg[0][3][12] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 635
+"dffles1 \stored_partial_sums_x_reg[0][3][11] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 637
+"dffles1 \stored_partial_sums_x_reg[0][3][10] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 639
+"dffles1 \stored_partial_sums_x_reg[0][3][9] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 641
+"dffles1 \stored_partial_sums_x_reg[0][3][8] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 643
+"dffles1 \stored_partial_sums_x_reg[0][3][7] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 645
+"dffles1 \stored_partial_sums_x_reg[0][3][6] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 647
+"dffles1 \stored_partial_sums_x_reg[0][3][5] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 649
+"dffles1 \stored_partial_sums_x_reg[0][3][4] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 651
+"dffles1 \stored_partial_sums_x_reg[0][3][3] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 653
+"dffles1 \stored_partial_sums_x_reg[0][3][2] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 655
+"dffles1 \stored_partial_sums_x_reg[0][3][1] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 657
+"dffles1 \stored_partial_sums_x_reg[0][3][0] ( .DIN (1'b0),  .EB (n746),  .CLK (clock),  .Q (\stored_partial_sums_x[0][3][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 659
+"dffles1 \stored_partial_sums_y_reg[0][1][15] ( .DIN (n741),  .EB (n807),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 661
+"dffles1 \stored_partial_sums_x_reg[0][1][15] ( .DIN (n744),  .EB (n807),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 663
+"dffles1 \stored_partial_sums_y_reg[0][1][14] ( .DIN (n740),  .EB (n840),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 665
+"dffles1 \stored_partial_sums_x_reg[0][1][14] ( .DIN (n743),  .EB (n840),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 667
+"dffles1 \stored_partial_sums_y_reg[0][1][13] ( .DIN (n739),  .EB (n789),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 669
+"dffles1 \stored_partial_sums_x_reg[0][1][13] ( .DIN (n742),  .EB (n789),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 671
+"dffles1 \stored_partial_sums_y_reg[0][1][12] ( .DIN (n741),  .EB (n824),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 673
+"dffles1 \stored_partial_sums_x_reg[0][1][12] ( .DIN (n744),  .EB (n824),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 675
+"dffles1 \stored_partial_sums_y_reg[0][1][11] ( .DIN (n741),  .EB (n795),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 677
+"dffles1 \stored_partial_sums_x_reg[0][1][11] ( .DIN (n744),  .EB (n795),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 679
+"dffles1 \stored_partial_sums_y_reg[0][1][10] ( .DIN (n741),  .EB (n836),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 681
+"dffles1 \stored_partial_sums_x_reg[0][1][10] ( .DIN (n744),  .EB (n836),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 683
+"dffles1 \stored_partial_sums_y_reg[0][1][9] ( .DIN (n741),  .EB (n785),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 685
+"dffles1 \stored_partial_sums_x_reg[0][1][9] ( .DIN (n744),  .EB (n785),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 687
+"dffles1 \stored_partial_sums_y_reg[0][1][8] ( .DIN (n740),  .EB (n820),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 689
+"dffles1 \stored_partial_sums_x_reg[0][1][8] ( .DIN (n743),  .EB (n820),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 691
+"dffles1 \stored_partial_sums_y_reg[0][1][7] ( .DIN (n740),  .EB (n799),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 693
+"dffles1 \stored_partial_sums_x_reg[0][1][7] ( .DIN (n743),  .EB (n799),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 695
+"dffles1 \stored_partial_sums_y_reg[0][1][6] ( .DIN (n740),  .EB (n832),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 697
+"dffles1 \stored_partial_sums_x_reg[0][1][6] ( .DIN (n743),  .EB (n832),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 699
+"dffles1 \stored_partial_sums_y_reg[0][1][5] ( .DIN (n740),  .EB (n781),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 701
+"dffles1 \stored_partial_sums_x_reg[0][1][5] ( .DIN (n743),  .EB (n781),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 703
+"dffles1 \stored_partial_sums_y_reg[0][1][4] ( .DIN (n740),  .EB (n816),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 705
+"dffles1 \stored_partial_sums_x_reg[0][1][4] ( .DIN (n743),  .EB (n816),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 707
+"dffles1 \stored_partial_sums_y_reg[0][1][3] ( .DIN (n739),  .EB (n803),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 709
+"dffles1 \stored_partial_sums_x_reg[0][1][3] ( .DIN (n742),  .EB (n803),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 711
+"dffles1 \stored_partial_sums_y_reg[0][1][2] ( .DIN (n739),  .EB (n828),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 713
+"dffles1 \stored_partial_sums_x_reg[0][1][2] ( .DIN (n742),  .EB (n828),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 715
+"dffles1 \stored_partial_sums_y_reg[0][1][1] ( .DIN (n739),  .EB (n777),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 717
+"dffles1 \stored_partial_sums_x_reg[0][1][1] ( .DIN (n742),  .EB (n777),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 719
+"dffles1 \stored_partial_sums_y_reg[0][1][0] ( .DIN (n739),  .EB (n812),  .CLK (clock),  .Q (\stored_partial_sums_y[0][1][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 721
+"dffles1 \stored_partial_sums_x_reg[0][1][0] ( .DIN (n742),  .EB (n812),  .CLK (clock),  .Q (\stored_partial_sums_x[0][1][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 723
+"dffles1 \stored_partial_sums_y_reg[0][2][15] ( .DIN (n739),  .EB (n808),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 725
+"dffles1 \stored_partial_sums_x_reg[0][2][15] ( .DIN (n744),  .EB (n808),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 727
+"dffles1 \stored_partial_sums_y_reg[0][0][15] ( .DIN (n741),  .EB (n806),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 729
+"dffles1 \stored_partial_sums_x_reg[0][0][15] ( .DIN (n743),  .EB (n806),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][15] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 731
+"dffles1 \stored_partial_sums_y_reg[0][2][14] ( .DIN (n740),  .EB (n841),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 733
+"dffles1 \stored_partial_sums_x_reg[0][2][14] ( .DIN (n742),  .EB (n841),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 735
+"dffles1 \stored_partial_sums_y_reg[0][0][14] ( .DIN (n739),  .EB (n839),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 737
+"dffles1 \stored_partial_sums_x_reg[0][0][14] ( .DIN (n744),  .EB (n839),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][14] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 739
+"dffles1 \stored_partial_sums_y_reg[0][2][13] ( .DIN (n741),  .EB (n790),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 741
+"dffles1 \stored_partial_sums_x_reg[0][2][13] ( .DIN (n743),  .EB (n790),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 743
+"dffles1 \stored_partial_sums_y_reg[0][0][13] ( .DIN (n740),  .EB (n788),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 745
+"dffles1 \stored_partial_sums_x_reg[0][0][13] ( .DIN (n742),  .EB (n788),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][13] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 747
+"dffles1 \stored_partial_sums_y_reg[0][2][12] ( .DIN (n741),  .EB (n825),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 749
+"dffles1 \stored_partial_sums_x_reg[0][2][12] ( .DIN (n744),  .EB (n825),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 751
+"dffles1 \stored_partial_sums_y_reg[0][0][12] ( .DIN (n741),  .EB (n823),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 753
+"dffles1 \stored_partial_sums_x_reg[0][0][12] ( .DIN (n744),  .EB (n823),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][12] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 755
+"dffles1 \stored_partial_sums_y_reg[0][2][11] ( .DIN (n741),  .EB (n796),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 757
+"dffles1 \stored_partial_sums_x_reg[0][2][11] ( .DIN (n744),  .EB (n796),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 759
+"dffles1 \stored_partial_sums_y_reg[0][0][11] ( .DIN (n741),  .EB (n794),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 761
+"dffles1 \stored_partial_sums_x_reg[0][0][11] ( .DIN (n744),  .EB (n794),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][11] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 763
+"dffles1 \stored_partial_sums_y_reg[0][2][10] ( .DIN (n741),  .EB (n837),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 765
+"dffles1 \stored_partial_sums_x_reg[0][2][10] ( .DIN (n744),  .EB (n837),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 767
+"dffles1 \stored_partial_sums_y_reg[0][0][10] ( .DIN (n741),  .EB (n835),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 769
+"dffles1 \stored_partial_sums_x_reg[0][0][10] ( .DIN (n744),  .EB (n835),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][10] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 771
+"dffles1 \stored_partial_sums_y_reg[0][2][9] ( .DIN (n741),  .EB (n786),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 773
+"dffles1 \stored_partial_sums_x_reg[0][2][9] ( .DIN (n744),  .EB (n786),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 775
+"dffles1 \stored_partial_sums_y_reg[0][0][9] ( .DIN (n741),  .EB (n784),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 777
+"dffles1 \stored_partial_sums_x_reg[0][0][9] ( .DIN (n744),  .EB (n784),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][9] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 779
+"dffles1 \stored_partial_sums_y_reg[0][2][8] ( .DIN (n741),  .EB (n821),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 781
+"dffles1 \stored_partial_sums_x_reg[0][2][8] ( .DIN (n744),  .EB (n821),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 783
+"dffles1 \stored_partial_sums_y_reg[0][0][8] ( .DIN (n740),  .EB (n819),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 785
+"dffles1 \stored_partial_sums_x_reg[0][0][8] ( .DIN (n743),  .EB (n819),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][8] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 787
+"dffles1 \stored_partial_sums_y_reg[0][2][7] ( .DIN (n740),  .EB (n800),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 789
+"dffles1 \stored_partial_sums_x_reg[0][2][7] ( .DIN (n743),  .EB (n800),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 791
+"dffles1 \stored_partial_sums_y_reg[0][0][7] ( .DIN (n740),  .EB (n798),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 793
+"dffles1 \stored_partial_sums_x_reg[0][0][7] ( .DIN (n743),  .EB (n798),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][7] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 795
+"dffles1 \stored_partial_sums_y_reg[0][2][6] ( .DIN (n740),  .EB (n833),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 797
+"dffles1 \stored_partial_sums_x_reg[0][2][6] ( .DIN (n743),  .EB (n833),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 799
+"dffles1 \stored_partial_sums_y_reg[0][0][6] ( .DIN (n740),  .EB (n831),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 801
+"dffles1 \stored_partial_sums_x_reg[0][0][6] ( .DIN (n743),  .EB (n831),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][6] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 803
+"dffles1 \stored_partial_sums_y_reg[0][2][5] ( .DIN (n740),  .EB (n782),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 805
+"dffles1 \stored_partial_sums_x_reg[0][2][5] ( .DIN (n743),  .EB (n782),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 807
+"dffles1 \stored_partial_sums_y_reg[0][0][5] ( .DIN (n740),  .EB (n780),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 809
+"dffles1 \stored_partial_sums_x_reg[0][0][5] ( .DIN (n743),  .EB (n780),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][5] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 811
+"dffles1 \stored_partial_sums_y_reg[0][2][4] ( .DIN (n740),  .EB (n817),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 813
+"dffles1 \stored_partial_sums_x_reg[0][2][4] ( .DIN (n743),  .EB (n817),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 815
+"dffles1 \stored_partial_sums_y_reg[0][0][4] ( .DIN (n739),  .EB (n815),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 817
+"dffles1 \stored_partial_sums_x_reg[0][0][4] ( .DIN (n742),  .EB (n815),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][4] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 819
+"dffles1 \stored_partial_sums_y_reg[0][2][3] ( .DIN (n739),  .EB (n804),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 821
+"dffles1 \stored_partial_sums_x_reg[0][2][3] ( .DIN (n742),  .EB (n804),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 823
+"dffles1 \stored_partial_sums_y_reg[0][0][3] ( .DIN (n739),  .EB (n802),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 825
+"dffles1 \stored_partial_sums_x_reg[0][0][3] ( .DIN (n742),  .EB (n802),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 827
+"dffles1 \stored_partial_sums_y_reg[0][2][2] ( .DIN (n739),  .EB (n829),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 829
+"dffles1 \stored_partial_sums_x_reg[0][2][2] ( .DIN (n742),  .EB (n829),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 831
+"dffles1 \stored_partial_sums_y_reg[0][0][2] ( .DIN (n739),  .EB (n827),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 833
+"dffles1 \stored_partial_sums_x_reg[0][0][2] ( .DIN (n742),  .EB (n827),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][2] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 835
+"dffles1 \stored_partial_sums_y_reg[0][2][1] ( .DIN (n739),  .EB (n778),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 837
+"dffles1 \stored_partial_sums_x_reg[0][2][1] ( .DIN (n742),  .EB (n778),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 839
+"dffles1 \stored_partial_sums_y_reg[0][0][1] ( .DIN (n739),  .EB (n776),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 841
+"dffles1 \stored_partial_sums_x_reg[0][0][1] ( .DIN (n742),  .EB (n776),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][1] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 843
+"dffles1 \stored_partial_sums_y_reg[0][2][0] ( .DIN (n739),  .EB (n813),  .CLK (clock),  .Q (\stored_partial_sums_y[0][2][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 845
+"dffles1 \stored_partial_sums_x_reg[0][2][0] ( .DIN (n742),  .EB (n813),  .CLK (clock),  .Q (\stored_partial_sums_x[0][2][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 847
+"dffles1 \stored_partial_sums_y_reg[0][0][0] ( .DIN (n739),  .EB (n811),  .CLK (clock),  .Q (\stored_partial_sums_y[0][0][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 849
+"dffles1 \stored_partial_sums_x_reg[0][0][0] ( .DIN (n742),  .EB (n811),  .CLK (clock),  .Q (\stored_partial_sums_x[0][0][0] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 851
+"lclks1 \ESL_bioilar_divider_inst/P2B_inst/modulus_m_reg[0] ( .CLK (\ESL_bioilar_divider_inst/P2B_inst/N32 ),  .DIN (\ESL_bioilar_divider_inst/P2B_inst/N33 ),  .Q (\ESL_bioilar_divider_inst/P2B_inst/modulus_m [0]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 901
+"dffs1 \ESL_bioilar_divider_inst/estimation_tmp_reg[3] ( .DIN (n492),  .CLK (clock),  .QN (n285));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 920
+"dffs1 \ESL_bioilar_divider_inst/SNG_inst/UUT/LFSR_reg_reg[1] ( .DIN (n498),  .CLK (clock),  .QN (n293));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+processing_unit.vg, 932
+"dffs2 \ESL_bioilar_divider_inst/P2B_inst/out_val_reg[3] ( .DIN (n753),  .CLK (clock),  .Q (\ESL_bioilar_divider_inst/a_y_bin[3] ));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Error-[PCTM] Port connection type mismatch
+PU_test.sv, 25
+"processing_unit PU( .clock (clock),  .reset (reset),  .start (start),  .input_req (input_req),  .input_val (input_val),  .input_ready (input_ready),  .weight_vals (weight_vals),  .output_val (output_val),  .output_valid (output_valid),  .done (done));"
+  The following expression is illegally connected to port "weight_vals" of 
+  module "processing_unit", instance "PU". The type of the port does not match
+  that of the port connect.
+  	Expression:  reg[(4 - 1):0] weight_vals[(2 - 1):0][(2 - 1):0];
+  	Declared at: "PU_test.sv", 14
+  	Port:        {\weight_vals[1][1][3] , \weight_vals[1][1][2] , 
+  \weight_vals[1][1][1] , \weight_vals[1][1][0] , \weight_vals[1][0][3] , 
+  \weight_vals[1][0][2] , \ ...
+
+244 warnings
+1 error
+CPU time: .250 seconds to compile

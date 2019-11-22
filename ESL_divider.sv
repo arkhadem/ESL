@@ -1,6 +1,6 @@
 `include "sys_defs.svh"
 
-module ESL_multiplier(
+module ESL_divider(
     input clock,
     input reset,
     input enable,
