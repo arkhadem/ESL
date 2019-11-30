@@ -1,14 +1,14 @@
 `ifndef __FREE_LIST_V__
 `define __FREE_LIST_V__
 
-`define BIN_LEN 4
-`define LFSR_INIT_VAL 4'd10
-`define SC_LEN 16
+`define BIN_LEN 6
+`define LFSR_INIT_VAL 6'd10
+`define SC_LEN 64
 `define DELTA_LEN 2         //roof(log2(max(shifts)))
 `define DELTA_SIM_LEN 3     //roof(log2(max(weights equal to eachother)))
 `define DELTA_NUM 64        //number of unique weights
 `define INDEX_NUM 64        //It should be around `OUTPUT_CHANNEL * `KERNEL_HEIGHT * `KERNEL_WIDTH. With new index num compression
-`define OUT_BIN_LEN 4
+`define OUT_BIN_LEN 6
 `define INPUT_CHANNEL 3
 `define OUTPUT_CHANNEL 4
 `define KERNEL_WIDTH 2

@@ -21,7 +21,6 @@ module processing_unit(
     genvar i, j;
     reg init_vals_x [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
     reg init_vals_y [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
-    wire zero_select;
 
     reg enables [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
 
