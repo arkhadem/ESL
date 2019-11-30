@@ -14,16 +14,18 @@ LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
 
 all:    simv
 	./simv | tee program.out
-##### 
+#####
 # Modify starting here
 #####
 
 TESTBENCH = PU_test.sv
 SIMFILES = sys_defs.svh LFSR.sv ESL_adder.sv ESL_divider.sv ESL_multiplier.sv P2B.sv SNG.sv ESL_bipolar_divider.sv processing_element.sv processing_unit.sv
-SYNFILES = processing_unit.vg 
+SYNFILES = outputs/processing_unit.vg
+SCRIPT = scripts/script.tcl
+SYN_OUTPUT = outputs/synth.out
 
-processing_unit.vg:	processing_unit.vg ESL.tcl
-	dc_shell-t -f ./ESL.tcl | tee mult_synth.out
+$(SYNFILES):	$(SCRIPT)
+	dc_shell-t -f $(SCRIPT) | tee $(SYN_OUTPUT)
 
 #####
 # Should be no need to modify after here
@@ -51,9 +53,9 @@ syn:	syn_simv
 clean:
 	rm -rvf simv *.daidir csrc vcs.key program.out \
 	  syn_simv syn_simv.daidir syn_program.out \
-          dve *.vpd *.vcd *.dump ucli.key
+          dve *.vpd *.vcd *.dump ucli.key *.log *.svf
 
 nuke:	clean
-	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.svf DVEfiles/
-	
-.PHONY: dve clean nuke	
+	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.svf DVEfiles/ reports/* outputs/*
+
+.PHONY: dve clean nuke
