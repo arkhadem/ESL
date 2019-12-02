@@ -9,14 +9,17 @@ module processing_element(
     input init_val_x,
     input init_val_y,
     input [(`BIN_LEN - 1) : 0] weight_val,
-    output output_val_x,
-    output output_val_y
+    output reg output_val_x,
+    output reg output_val_y
 );
 
     wire weight_x;
     wire mult_x, mult_y;
     wire half_cnt;
     wire half_sc;
+
+    wire output_val_x_tmp;
+    wire output_val_y_tmp;
 
     SNG SNG_weight_inst(
         .clock(clock),
@@ -65,8 +68,18 @@ module processing_element(
         .b_x(init_val_x),
         .b_y(init_val_y),
 
-        .o_x(output_val_x),
-        .o_y(output_val_y)
+        .o_x(output_val_x_tmp),
+        .o_y(output_val_y_tmp)
     );
+
+    always@(posedge clock) begin
+        if(reset) begin
+            output_val_x = 0;
+            output_val_y = 0;
+        end else if(enable) begin
+            output_val_x = output_val_x_tmp;
+            output_val_y = output_val_y_tmp;
+        end
+    end
 
 endmodule
