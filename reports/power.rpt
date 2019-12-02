@@ -1,0 +1,85 @@
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : processing_unit
+Version: O-2018.06
+Date   : Mon Dec  2 01:24:53 2019
+****************************************
+
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+processing_unit        tsmcwire          lec25dscc25_TT
+
+
+Global Operating Voltage = 2.5  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+processing_unit                           2.933   33.375 1.12e+05   36.308 100.0
+  sc_counter_inst (sc_counter)         8.78e-02    0.399  936.234    0.486   1.3
+  partial_result_buffer_inst (partial_result_buffer)    1.647   26.464 8.98e+04   28.111  77.4
+  index_counter_inst (index_counter)   1.90e-02    0.205  629.114    0.224   0.6
+  ESL_bioilar_divider_inst (ESL_bioilar_divider)    0.286    1.652 4.72e+03    1.938   5.3
+    SNG_inst (SNG_0)                   8.85e-02    0.475 1.34e+03    0.564   1.6
+      UUT (LFSR_0)                     7.66e-02    0.444 1.10e+03    0.521   1.4
+    P2B_inst (P2B)                     9.42e-02    0.707 1.70e+03    0.801   2.2
+  PE_row[1].PE_column[1].PEs (processing_element_0)    0.130    0.835 3.40e+03    0.964   2.7
+    adder_inst (ESL_adder_0)           1.53e-03 8.68e-03  221.004 1.02e-02   0.0
+    one_counter_inst (one_counter_0)      0.000 4.53e-02  104.356 4.53e-02   0.1
+    SNG_half_inst (SNG_1)              5.05e-02    0.323 1.32e+03    0.373   1.0
+      UUT (LFSR_1)                     5.05e-02    0.323 1.11e+03    0.373   1.0
+    multiplier_inst (ESL_multiplier_0) 1.75e-03 7.45e-03   63.746 9.20e-03   0.0
+    SNG_weight_inst (SNG_2)            5.97e-02    0.348 1.37e+03    0.407   1.1
+      UUT (LFSR_2)                     5.05e-02    0.323 1.10e+03    0.373   1.0
+  PE_row[1].PE_column[0].PEs (processing_element_1)    0.128    0.832 3.49e+03    0.960   2.6
+    adder_inst (ESL_adder_1)           5.90e-03 1.28e-02  384.562 1.87e-02   0.1
+    one_counter_inst (one_counter_1)      0.000 4.53e-02  104.356 4.53e-02   0.1
+    SNG_half_inst (SNG_3)              5.05e-02    0.323 1.31e+03    0.373   1.0
+      UUT (LFSR_3)                     5.05e-02    0.323 1.11e+03    0.373   1.0
+    multiplier_inst (ESL_multiplier_1) 2.72e-03 1.26e-02   93.906 1.53e-02   0.0
+    SNG_weight_inst (SNG_4)            5.89e-02    0.339 1.33e+03    0.398   1.1
+      UUT (LFSR_4)                     5.05e-02    0.323 1.11e+03    0.373   1.0
+  PE_row[0].PE_column[1].PEs (processing_element_2)    0.135    0.860 3.41e+03    0.995   2.7
+    adder_inst (ESL_adder_2)           7.41e-03 3.32e-02  221.004 4.06e-02   0.1
+    one_counter_inst (one_counter_2)      0.000 4.53e-02  104.356 4.53e-02   0.1
+    SNG_half_inst (SNG_5)              5.05e-02    0.323 1.32e+03    0.373   1.0
+      UUT (LFSR_5)                     5.05e-02    0.323 1.11e+03    0.373   1.0
+    multiplier_inst (ESL_multiplier_2) 1.75e-03 7.45e-03   63.746 9.20e-03   0.0
+    SNG_weight_inst (SNG_6)            5.97e-02    0.348 1.38e+03    0.407   1.1
+      UUT (LFSR_6)                     5.05e-02    0.323 1.11e+03    0.373   1.0
+  PE_row[0].PE_column[0].PEs (processing_element_3)    0.317    1.307 3.31e+03    1.624   4.5
+    adder_inst (ESL_adder_3)           8.51e-03 3.07e-02  221.004 3.92e-02   0.1
+    one_counter_inst (one_counter_3)   1.92e-02 8.88e-02  104.356    0.108   0.3
+    SNG_half_inst (SNG_7)                 0.116    0.490 1.32e+03    0.606   1.7
+      UUT (LFSR_7)                        0.110    0.470 1.11e+03    0.580   1.6
+    multiplier_inst (ESL_multiplier_3) 2.89e-03 1.31e-02   63.746 1.60e-02   0.0
+    SNG_weight_inst (SNG_8)               0.135    0.532 1.29e+03    0.667   1.8
+      UUT (LFSR_8)                        0.109    0.464 1.06e+03    0.573   1.6
+  SNG_inst (SNG_9)                        0.106    0.536 1.37e+03    0.641   1.8
+    UUT (LFSR_9)                       7.61e-02    0.446 1.10e+03    0.522   1.4
+  controller_inst (controller)         4.41e-02    0.249  680.219    0.294   0.8
+1

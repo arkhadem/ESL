@@ -1,0 +1,1284 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -input_pins
+        -nets
+        -max_paths 10
+        -transition_time
+Design : processing_unit
+Version: O-2018.06
+Date   : Mon Dec  2 01:24:52 2019
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+  Startpoint: index_counter_inst/width_index_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: PE_row[1].PE_column[0].PEs/output_val_x_reg
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  index_counter_inst/width_index_reg[1]/CLK (dffs2)       0.00      0.00       0.00 r
+  index_counter_inst/width_index_reg[1]/Q (dffs2)         0.26      0.19       0.19 r
+  index_counter_inst/width_index[1] (net)       7                   0.00       0.19 r
+  index_counter_inst/width_index[1] (index_counter)                 0.00       0.19 r
+  width_index[1] (net)                                              0.00       0.19 r
+  partial_result_buffer_inst/width_index[1] (partial_result_buffer)     0.00     0.19 r
+  partial_result_buffer_inst/N14 (net)                              0.00       0.19 r
+  partial_result_buffer_inst/U211/DIN (ib1s1)             0.26      0.00       0.19 r
+  partial_result_buffer_inst/U211/Q (ib1s1)               0.14      0.06       0.26 f
+  partial_result_buffer_inst/C1772/net15353 (net)     1             0.00       0.26 f
+  partial_result_buffer_inst/U254/DIN1 (and2s2)           0.14      0.00       0.26 f
+  partial_result_buffer_inst/U254/Q (and2s2)              0.11      0.14       0.40 f
+  partial_result_buffer_inst/n156 (net)         2                   0.00       0.40 f
+  partial_result_buffer_inst/U162/DIN (ib1s1)             0.11      0.00       0.40 f
+  partial_result_buffer_inst/U162/Q (ib1s1)               0.13      0.06       0.46 r
+  partial_result_buffer_inst/C1772/net15797 (net)     2             0.00       0.46 r
+  partial_result_buffer_inst/U258/DIN (i1s8)              0.13      0.00       0.46 r
+  partial_result_buffer_inst/U258/Q (i1s8)                0.13      0.18       0.63 f
+  partial_result_buffer_inst/n157 (net)        27                   0.00       0.63 f
+  partial_result_buffer_inst/U433/DIN2 (aoi22s1)          0.13      0.00       0.63 f
+  partial_result_buffer_inst/U433/Q (aoi22s1)             0.34      0.12       0.75 r
+  partial_result_buffer_inst/n206 (net)         1                   0.00       0.75 r
+  partial_result_buffer_inst/U1016/DIN2 (nnd2s2)          0.34      0.00       0.76 r
+  partial_result_buffer_inst/U1016/Q (nnd2s2)             0.15      0.06       0.81 f
+  partial_result_buffer_inst/N1240 (net)        1                   0.00       0.81 f
+  partial_result_buffer_inst/U164/DIN3 (aoi22s2)          0.15      0.00       0.82 f
+  partial_result_buffer_inst/U164/Q (aoi22s2)             0.33      0.15       0.97 r
+  partial_result_buffer_inst/n709 (net)         1                   0.00       0.97 r
+  partial_result_buffer_inst/U184/DIN2 (aoi21s2)          0.33      0.00       0.97 r
+  partial_result_buffer_inst/U184/Q (aoi21s2)             0.29      0.15       1.12 f
+  partial_result_buffer_inst/n702 (net)         1                   0.00       1.12 f
+  partial_result_buffer_inst/U242/DIN2 (or4s3)            0.29      0.00       1.13 f
+  partial_result_buffer_inst/U242/Q (or4s3)               0.11      0.16       1.28 f
+  partial_result_buffer_inst/n150 (net)         1                   0.00       1.28 f
+  partial_result_buffer_inst/U241/DIN1 (nnd2s2)           0.11      0.00       1.29 f
+  partial_result_buffer_inst/U241/Q (nnd2s2)              0.17      0.06       1.35 r
+  partial_result_buffer_inst/n144 (net)         1                   0.00       1.35 r
+  partial_result_buffer_inst/U221/DIN3 (nnd4s2)           0.17      0.00       1.35 r
+  partial_result_buffer_inst/U221/Q (nnd4s2)              0.30      0.15       1.50 f
+  partial_result_buffer_inst/fetch_vals_y[1] (net)     2            0.00       1.50 f
+  partial_result_buffer_inst/fetch_vals_y[1] (partial_result_buffer)     0.00     1.50 f
+  init_vals_y[1][0] (net)                                           0.00       1.50 f
+  PE_row[1].PE_column[0].PEs/init_val_y (processing_element_1)      0.00       1.50 f
+  PE_row[1].PE_column[0].PEs/init_val_y (net)                       0.00       1.50 f
+  PE_row[1].PE_column[0].PEs/adder_inst/b_y (ESL_adder_1)           0.00       1.50 f
+  PE_row[1].PE_column[0].PEs/adder_inst/b_y (net)                   0.00       1.50 f
+  PE_row[1].PE_column[0].PEs/adder_inst/U3/DIN2 (xor2s2)     0.30     0.00     1.51 f
+  PE_row[1].PE_column[0].PEs/adder_inst/U3/Q (xor2s2)     0.19      0.25       1.75 r
+  PE_row[1].PE_column[0].PEs/adder_inst/n2 (net)     1              0.00       1.75 r
+  PE_row[1].PE_column[0].PEs/adder_inst/U2/DIN2 (mxi21s3)     0.19     0.01     1.76 r
+  PE_row[1].PE_column[0].PEs/adder_inst/U2/Q (mxi21s3)     0.17     0.14       1.90 f
+  PE_row[1].PE_column[0].PEs/adder_inst/o_x (net)     1             0.00       1.90 f
+  PE_row[1].PE_column[0].PEs/adder_inst/o_x (ESL_adder_1)           0.00       1.90 f
+  PE_row[1].PE_column[0].PEs/output_val_x_tmp (net)                 0.00       1.90 f
+  PE_row[1].PE_column[0].PEs/U5/DIN2 (mxi21s3)            0.17      0.01       1.91 f
+  PE_row[1].PE_column[0].PEs/U5/Q (mxi21s3)               0.14      0.10       2.01 r
+  PE_row[1].PE_column[0].PEs/n1 (net)           1                   0.00       2.01 r
+  PE_row[1].PE_column[0].PEs/U4/DIN2 (nor2s2)             0.14      0.00       2.01 r
+  PE_row[1].PE_column[0].PEs/U4/Q (nor2s2)                0.24      0.08       2.09 f
+  PE_row[1].PE_column[0].PEs/net10755 (net)     1                   0.00       2.09 f
+  PE_row[1].PE_column[0].PEs/output_val_x_reg/DIN (dffs1)     0.24     0.01     2.10 f
+  data arrival time                                                            2.10
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  PE_row[1].PE_column[0].PEs/output_val_x_reg/CLK (dffs1)           0.00       2.25 r
+  library setup time                                               -0.15       2.10
+  data required time                                                           2.10
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.10
+  data arrival time                                                           -2.10
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.00
+
+
+  Startpoint: PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: PE_row[0].PE_column[1].PEs/output_val_x_reg
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]/CLK (dffles1)     0.00     0.00     0.00 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]/Q (dffles1)     0.27     0.19     0.19 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT/out_val[1] (net)     3     0.00     0.19 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT/out_val[1] (LFSR_6)     0.00     0.19 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/random_number[1] (net)     0.00     0.19 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U12/DIN (ib1s1)     0.27     0.00     0.19 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U12/Q (ib1s1)     0.13     0.06     0.25 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n15 (net)     1        0.00       0.25 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U19/DIN2 (aoi21s1)     0.13     0.00     0.26 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U19/Q (aoi21s1)     0.27     0.12     0.37 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n3 (net)     1         0.00       0.37 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U20/DIN3 (aoi222s1)     0.27     0.00     0.37 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U20/Q (aoi222s1)     0.50     0.21     0.58 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n4 (net)     1         0.00       0.58 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U3/DIN (ib1s1)     0.50     0.00     0.59 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U3/Q (ib1s1)     0.19     0.09     0.68 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n16 (net)     1        0.00       0.68 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U8/DIN3 (nnd3s1)     0.19     0.00     0.68 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U8/Q (nnd3s1)     0.16     0.08     0.76 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n5 (net)     1         0.00       0.76 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U9/DIN5 (oai221s2)     0.16     0.00     0.76 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U9/Q (oai221s2)     0.50     0.16     0.92 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n6 (net)     1         0.00       0.92 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U17/DIN (ib1s1)     0.50     0.00     0.92 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U17/Q (ib1s1)     0.19     0.08     1.00 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n17 (net)     1        0.00       1.00 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U5/DIN3 (aoi21s2)     0.19     0.00     1.00 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U5/Q (aoi21s2)     0.24     0.06     1.07 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/n7 (net)     1         0.00       1.07 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U4/DIN4 (oai22s2)     0.24     0.00     1.07 r
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/U4/Q (oai22s2)     0.42     0.21     1.28 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/out_val (net)     1     0.00      1.28 f
+  PE_row[0].PE_column[1].PEs/SNG_weight_inst/out_val (SNG_6)        0.00       1.28 f
+  PE_row[0].PE_column[1].PEs/weight_x (net)                         0.00       1.28 f
+  PE_row[0].PE_column[1].PEs/multiplier_inst/a_x (ESL_multiplier_2)     0.00     1.28 f
+  PE_row[0].PE_column[1].PEs/multiplier_inst/a_x (net)              0.00       1.28 f
+  PE_row[0].PE_column[1].PEs/multiplier_inst/U2/DIN2 (xnr2s1)     0.42     0.01     1.29 f
+  PE_row[0].PE_column[1].PEs/multiplier_inst/U2/Q (xnr2s1)     0.24     0.29     1.57 f
+  PE_row[0].PE_column[1].PEs/multiplier_inst/o_x (net)     1        0.00       1.57 f
+  PE_row[0].PE_column[1].PEs/multiplier_inst/o_x (ESL_multiplier_2)     0.00     1.57 f
+  PE_row[0].PE_column[1].PEs/mult_x (net)                           0.00       1.57 f
+  PE_row[0].PE_column[1].PEs/adder_inst/a_x (ESL_adder_2)           0.00       1.57 f
+  PE_row[0].PE_column[1].PEs/adder_inst/a_x (net)                   0.00       1.57 f
+  PE_row[0].PE_column[1].PEs/adder_inst/U5/DIN2 (xor2s1)     0.24     0.00     1.58 f
+  PE_row[0].PE_column[1].PEs/adder_inst/U5/Q (xor2s1)     0.16      0.23       1.81 r
+  PE_row[0].PE_column[1].PEs/adder_inst/n6 (net)     1              0.00       1.81 r
+  PE_row[0].PE_column[1].PEs/adder_inst/U3/DIN2 (oai22s2)     0.16     0.00     1.81 r
+  PE_row[0].PE_column[1].PEs/adder_inst/U3/Q (oai22s2)     0.31     0.08       1.89 f
+  PE_row[0].PE_column[1].PEs/adder_inst/o_x (net)     1             0.00       1.89 f
+  PE_row[0].PE_column[1].PEs/adder_inst/o_x (ESL_adder_2)           0.00       1.89 f
+  PE_row[0].PE_column[1].PEs/output_val_x_tmp (net)                 0.00       1.89 f
+  PE_row[0].PE_column[1].PEs/U8/DIN1 (aoi22s2)            0.31      0.00       1.89 f
+  PE_row[0].PE_column[1].PEs/U8/Q (aoi22s2)               0.39      0.15       2.03 r
+  PE_row[0].PE_column[1].PEs/n3 (net)           1                   0.00       2.03 r
+  PE_row[0].PE_column[1].PEs/U4/DIN (i1s3)                0.39      0.00       2.04 r
+  PE_row[0].PE_column[1].PEs/U4/Q (i1s3)                  0.15      0.06       2.10 f
+  PE_row[0].PE_column[1].PEs/n2 (net)           1                   0.00       2.10 f
+  PE_row[0].PE_column[1].PEs/output_val_x_reg/DIN (dffs1)     0.15     0.01     2.10 f
+  data arrival time                                                            2.10
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  PE_row[0].PE_column[1].PEs/output_val_x_reg/CLK (dffs1)           0.00       2.25 r
+  library setup time                                               -0.14       2.11
+  data required time                                                           2.11
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.11
+  data arrival time                                                           -2.10
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.00
+
+
+  Startpoint: PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: PE_row[0].PE_column[0].PEs/output_val_x_reg
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]/CLK (dffles1)     0.00     0.00     0.00 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]/Q (dffles1)     0.21     0.20     0.20 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT/out_val[1] (net)     3     0.00     0.20 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT/out_val[1] (LFSR_8)     0.00     0.20 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/random_number[1] (net)     0.00     0.20 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U7/DIN (ib1s1)     0.21     0.00     0.21 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U7/Q (ib1s1)     0.13     0.06     0.27 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n13 (net)     1        0.00       0.27 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U15/DIN2 (aoi21s1)     0.13     0.00     0.27 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U15/Q (aoi21s1)     0.27     0.13     0.40 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n1 (net)     1         0.00       0.40 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U16/DIN3 (aoi222s1)     0.27     0.00     0.40 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U16/Q (aoi222s1)     0.39     0.16     0.57 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n2 (net)     1         0.00       0.57 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U4/DIN (i1s1)     0.39     0.00     0.57 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U4/Q (i1s1)     0.16     0.07     0.64 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n14 (net)     1        0.00       0.64 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U3/DIN5 (oai221s2)     0.16     0.00     0.64 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U3/Q (oai221s2)     0.47     0.14     0.78 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n3 (net)     1         0.00       0.78 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U13/DIN5 (oai221s2)     0.47     0.00     0.78 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U13/Q (oai221s2)     0.38     0.16     0.94 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n4 (net)     1         0.00       0.94 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U12/DIN (ib1s1)     0.38     0.00     0.94 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U12/Q (ib1s1)     0.17     0.08     1.02 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n15 (net)     1        0.00       1.02 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U17/DIN3 (aoi21s1)     0.17     0.00     1.03 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U17/Q (aoi21s1)     0.24     0.09     1.12 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/n5 (net)     1         0.00       1.12 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U18/DIN4 (oai22s1)     0.24     0.00     1.12 f
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/U18/Q (oai22s1)     0.77     0.30     1.42 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/out_val (net)     1     0.00      1.42 r
+  PE_row[0].PE_column[0].PEs/SNG_weight_inst/out_val (SNG_8)        0.00       1.42 r
+  PE_row[0].PE_column[0].PEs/weight_x (net)                         0.00       1.42 r
+  PE_row[0].PE_column[0].PEs/multiplier_inst/a_x (ESL_multiplier_3)     0.00     1.42 r
+  PE_row[0].PE_column[0].PEs/multiplier_inst/a_x (net)              0.00       1.42 r
+  PE_row[0].PE_column[0].PEs/multiplier_inst/U2/DIN2 (xnr2s1)     0.77     0.01     1.43 r
+  PE_row[0].PE_column[0].PEs/multiplier_inst/U2/Q (xnr2s1)     0.22     0.27     1.70 r
+  PE_row[0].PE_column[0].PEs/multiplier_inst/o_x (net)     1        0.00       1.70 r
+  PE_row[0].PE_column[0].PEs/multiplier_inst/o_x (ESL_multiplier_3)     0.00     1.70 r
+  PE_row[0].PE_column[0].PEs/mult_x (net)                           0.00       1.70 r
+  PE_row[0].PE_column[0].PEs/adder_inst/a_x (ESL_adder_3)           0.00       1.70 r
+  PE_row[0].PE_column[0].PEs/adder_inst/a_x (net)                   0.00       1.70 r
+  PE_row[0].PE_column[0].PEs/adder_inst/U5/DIN1 (xor2s1)     0.22     0.00     1.70 r
+  PE_row[0].PE_column[0].PEs/adder_inst/U5/Q (xor2s1)     0.13      0.09       1.79 f
+  PE_row[0].PE_column[0].PEs/adder_inst/n3 (net)     1              0.00       1.79 f
+  PE_row[0].PE_column[0].PEs/adder_inst/U3/DIN2 (oai22s2)     0.13     0.00     1.79 f
+  PE_row[0].PE_column[0].PEs/adder_inst/U3/Q (oai22s2)     0.25     0.10       1.90 r
+  PE_row[0].PE_column[0].PEs/adder_inst/o_x (net)     1             0.00       1.90 r
+  PE_row[0].PE_column[0].PEs/adder_inst/o_x (ESL_adder_3)           0.00       1.90 r
+  PE_row[0].PE_column[0].PEs/output_val_x_tmp (net)                 0.00       1.90 r
+  PE_row[0].PE_column[0].PEs/U9/DIN1 (aoi22s2)            0.25      0.00       1.90 r
+  PE_row[0].PE_column[0].PEs/U9/Q (aoi22s2)               0.33      0.09       1.99 f
+  PE_row[0].PE_column[0].PEs/n3 (net)           1                   0.00       1.99 f
+  PE_row[0].PE_column[0].PEs/U8/DIN (ib1s1)               0.33      0.00       1.99 f
+  PE_row[0].PE_column[0].PEs/U8/Q (ib1s1)                 0.23      0.11       2.11 r
+  PE_row[0].PE_column[0].PEs/n2 (net)           1                   0.00       2.11 r
+  PE_row[0].PE_column[0].PEs/output_val_x_reg/DIN (dffs1)     0.23     0.01     2.11 r
+  data arrival time                                                            2.11
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  PE_row[0].PE_column[0].PEs/output_val_x_reg/CLK (dffs1)           0.00       2.25 r
+  library setup time                                               -0.13       2.12
+  data required time                                                           2.12
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.12
+  data arrival time                                                           -2.11
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.01
+
+
+  Startpoint: PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: PE_row[1].PE_column[1].PEs/output_val_x_reg
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]/CLK (dffles1)     0.00     0.00     0.00 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT/LFSR_reg_reg[2]/Q (dffles1)     0.27     0.19     0.19 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT/out_val[1] (net)     3     0.00     0.19 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT/out_val[1] (LFSR_2)     0.00     0.19 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/random_number[1] (net)     0.00     0.19 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U10/DIN (ib1s1)     0.27     0.00     0.19 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U10/Q (ib1s1)     0.13     0.06     0.25 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n15 (net)     1        0.00       0.25 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U18/DIN2 (aoi21s1)     0.13     0.00     0.26 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U18/Q (aoi21s1)     0.27     0.12     0.37 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n3 (net)     1         0.00       0.37 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U19/DIN3 (aoi222s1)     0.27     0.00     0.37 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U19/Q (aoi222s1)     0.48     0.20     0.58 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n4 (net)     1         0.00       0.58 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U3/DIN (i1s1)     0.48     0.00     0.58 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U3/Q (i1s1)     0.21     0.10     0.68 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n16 (net)     1        0.00       0.68 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U6/DIN3 (nnd3s1)     0.21     0.00     0.68 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U6/Q (nnd3s1)     0.17     0.08     0.76 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n5 (net)     1         0.00       0.76 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U16/DIN5 (oai221s2)     0.17     0.00     0.76 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U16/Q (oai221s2)     0.50     0.16     0.92 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n6 (net)     1         0.00       0.92 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U8/DIN (ib1s1)     0.50     0.00     0.92 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U8/Q (ib1s1)     0.18     0.07     0.99 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n17 (net)     1        0.00       0.99 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U20/DIN3 (aoi21s1)     0.18     0.00     1.00 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U20/Q (aoi21s1)     0.26     0.07     1.06 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/n7 (net)     1         0.00       1.06 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U11/DIN4 (oai22s2)     0.26     0.00     1.06 r
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/U11/Q (oai22s2)     0.42     0.21     1.28 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/out_val (net)     1     0.00      1.28 f
+  PE_row[1].PE_column[1].PEs/SNG_weight_inst/out_val (SNG_2)        0.00       1.28 f
+  PE_row[1].PE_column[1].PEs/weight_x (net)                         0.00       1.28 f
+  PE_row[1].PE_column[1].PEs/multiplier_inst/a_x (ESL_multiplier_0)     0.00     1.28 f
+  PE_row[1].PE_column[1].PEs/multiplier_inst/a_x (net)              0.00       1.28 f
+  PE_row[1].PE_column[1].PEs/multiplier_inst/U2/DIN2 (xnr2s1)     0.42     0.01     1.28 f
+  PE_row[1].PE_column[1].PEs/multiplier_inst/U2/Q (xnr2s1)     0.24     0.29     1.57 f
+  PE_row[1].PE_column[1].PEs/multiplier_inst/o_x (net)     1        0.00       1.57 f
+  PE_row[1].PE_column[1].PEs/multiplier_inst/o_x (ESL_multiplier_0)     0.00     1.57 f
+  PE_row[1].PE_column[1].PEs/mult_x (net)                           0.00       1.57 f
+  PE_row[1].PE_column[1].PEs/adder_inst/a_x (ESL_adder_0)           0.00       1.57 f
+  PE_row[1].PE_column[1].PEs/adder_inst/a_x (net)                   0.00       1.57 f
+  PE_row[1].PE_column[1].PEs/adder_inst/U1/DIN2 (xor2s1)     0.24     0.00     1.57 f
+  PE_row[1].PE_column[1].PEs/adder_inst/U1/Q (xor2s1)     0.16      0.23       1.80 r
+  PE_row[1].PE_column[1].PEs/adder_inst/n6 (net)     1              0.00       1.80 r
+  PE_row[1].PE_column[1].PEs/adder_inst/U4/DIN2 (oai22s2)     0.16     0.00     1.81 r
+  PE_row[1].PE_column[1].PEs/adder_inst/U4/Q (oai22s2)     0.31     0.08       1.88 f
+  PE_row[1].PE_column[1].PEs/adder_inst/o_x (net)     1             0.00       1.88 f
+  PE_row[1].PE_column[1].PEs/adder_inst/o_x (ESL_adder_0)           0.00       1.88 f
+  PE_row[1].PE_column[1].PEs/output_val_x_tmp (net)                 0.00       1.88 f
+  PE_row[1].PE_column[1].PEs/U9/DIN1 (aoi22s2)            0.31      0.00       1.89 f
+  PE_row[1].PE_column[1].PEs/U9/Q (aoi22s2)               0.39      0.15       2.03 r
+  PE_row[1].PE_column[1].PEs/n11 (net)          1                   0.00       2.03 r
+  PE_row[1].PE_column[1].PEs/U3/DIN (i1s3)                0.39      0.00       2.04 r
+  PE_row[1].PE_column[1].PEs/U3/Q (i1s3)                  0.15      0.06       2.10 f
+  PE_row[1].PE_column[1].PEs/n2 (net)           1                   0.00       2.10 f
+  PE_row[1].PE_column[1].PEs/output_val_x_reg/DIN (dffs1)     0.15     0.01     2.10 f
+  data arrival time                                                            2.10
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  PE_row[1].PE_column[1].PEs/output_val_x_reg/CLK (dffs1)           0.00       2.25 r
+  library setup time                                               -0.14       2.11
+  data required time                                                           2.11
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.11
+  data arrival time                                                           -2.10
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.01
+
+
+  Startpoint: ESL_bioilar_divider_inst/SNG_inst/UUT/LFSR_reg_reg[2]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: ESL_bioilar_divider_inst/estimation_tmp_reg[2]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  ESL_bioilar_divider_inst/SNG_inst/UUT/LFSR_reg_reg[2]/CLK (dffles1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/SNG_inst/UUT/LFSR_reg_reg[2]/Q (dffles1)     0.21     0.20     0.20 f
+  ESL_bioilar_divider_inst/SNG_inst/UUT/out_val[1] (net)     3      0.00       0.20 f
+  ESL_bioilar_divider_inst/SNG_inst/UUT/out_val[1] (LFSR_0)         0.00       0.20 f
+  ESL_bioilar_divider_inst/SNG_inst/random_number[1] (net)          0.00       0.20 f
+  ESL_bioilar_divider_inst/SNG_inst/U9/DIN (ib1s1)        0.21      0.00       0.21 f
+  ESL_bioilar_divider_inst/SNG_inst/U9/Q (ib1s1)          0.14      0.07       0.27 r
+  ESL_bioilar_divider_inst/SNG_inst/n13 (net)     1                 0.00       0.27 r
+  ESL_bioilar_divider_inst/SNG_inst/U12/DIN2 (aoi21s2)     0.14     0.00       0.27 r
+  ESL_bioilar_divider_inst/SNG_inst/U12/Q (aoi21s2)       0.25      0.12       0.40 f
+  ESL_bioilar_divider_inst/SNG_inst/n1 (net)     1                  0.00       0.40 f
+  ESL_bioilar_divider_inst/SNG_inst/U18/DIN3 (aoi222s1)     0.25     0.00      0.40 f
+  ESL_bioilar_divider_inst/SNG_inst/U18/Q (aoi222s1)      0.41      0.17       0.57 r
+  ESL_bioilar_divider_inst/SNG_inst/n2 (net)     1                  0.00       0.57 r
+  ESL_bioilar_divider_inst/SNG_inst/U14/DIN (ib1s1)       0.41      0.00       0.57 r
+  ESL_bioilar_divider_inst/SNG_inst/U14/Q (ib1s1)         0.15      0.06       0.63 f
+  ESL_bioilar_divider_inst/SNG_inst/n14 (net)     1                 0.00       0.63 f
+  ESL_bioilar_divider_inst/SNG_inst/U15/DIN5 (oai221s2)     0.15     0.00      0.63 f
+  ESL_bioilar_divider_inst/SNG_inst/U15/Q (oai221s2)      0.47      0.14       0.77 r
+  ESL_bioilar_divider_inst/SNG_inst/n3 (net)     1                  0.00       0.77 r
+  ESL_bioilar_divider_inst/SNG_inst/U16/DIN5 (oai221s2)     0.47     0.00      0.77 r
+  ESL_bioilar_divider_inst/SNG_inst/U16/Q (oai221s2)      0.38      0.16       0.93 f
+  ESL_bioilar_divider_inst/SNG_inst/n4 (net)     1                  0.00       0.93 f
+  ESL_bioilar_divider_inst/SNG_inst/U6/DIN (ib1s1)        0.38      0.00       0.93 f
+  ESL_bioilar_divider_inst/SNG_inst/U6/Q (ib1s1)          0.18      0.09       1.02 r
+  ESL_bioilar_divider_inst/SNG_inst/n15 (net)     1                 0.00       1.02 r
+  ESL_bioilar_divider_inst/SNG_inst/U4/DIN3 (aoi21s2)     0.18      0.00       1.02 r
+  ESL_bioilar_divider_inst/SNG_inst/U4/Q (aoi21s2)        0.29      0.11       1.13 f
+  ESL_bioilar_divider_inst/SNG_inst/n5 (net)     1                  0.00       1.13 f
+  ESL_bioilar_divider_inst/SNG_inst/U5/DIN4 (oai22s3)     0.29      0.00       1.14 f
+  ESL_bioilar_divider_inst/SNG_inst/U5/Q (oai22s3)        0.26      0.13       1.26 r
+  ESL_bioilar_divider_inst/SNG_inst/out_val (net)     2             0.00       1.26 r
+  ESL_bioilar_divider_inst/SNG_inst/out_val (SNG_0)                 0.00       1.26 r
+  ESL_bioilar_divider_inst/SC_estimation (net)                      0.00       1.26 r
+  ESL_bioilar_divider_inst/U3/DIN (ib1s1)                 0.26      0.00       1.27 r
+  ESL_bioilar_divider_inst/U3/Q (ib1s1)                   0.14      0.07       1.33 f
+  ESL_bioilar_divider_inst/n12 (net)            1                   0.00       1.33 f
+  ESL_bioilar_divider_inst/U8/DIN2 (nnd2s2)               0.14      0.00       1.34 f
+  ESL_bioilar_divider_inst/U8/Q (nnd2s2)                  0.16      0.08       1.42 r
+  ESL_bioilar_divider_inst/n30 (net)            1                   0.00       1.42 r
+  ESL_bioilar_divider_inst/U10/DIN1 (nnd2s2)              0.16      0.00       1.42 r
+  ESL_bioilar_divider_inst/U10/Q (nnd2s2)                 0.18      0.08       1.50 f
+  ESL_bioilar_divider_inst/n22 (net)            3                   0.00       1.50 f
+  ESL_bioilar_divider_inst/U4/DIN2 (nnd2s2)               0.18      0.00       1.50 f
+  ESL_bioilar_divider_inst/U4/Q (nnd2s2)                  0.18      0.09       1.59 r
+  ESL_bioilar_divider_inst/n19 (net)            2                   0.00       1.59 r
+  ESL_bioilar_divider_inst/U31/DIN1 (nor2s1)              0.18      0.00       1.59 r
+  ESL_bioilar_divider_inst/U31/Q (nor2s1)                 0.29      0.17       1.76 f
+  ESL_bioilar_divider_inst/n11 (net)            3                   0.00       1.76 f
+  ESL_bioilar_divider_inst/U19/DIN2 (nnd2s1)              0.29      0.00       1.76 f
+  ESL_bioilar_divider_inst/U19/Q (nnd2s1)                 0.18      0.10       1.85 r
+  ESL_bioilar_divider_inst/n36 (net)            1                   0.00       1.85 r
+  ESL_bioilar_divider_inst/U14/DIN1 (and2s1)              0.18      0.00       1.86 r
+  ESL_bioilar_divider_inst/U14/Q (and2s1)                 0.18      0.15       2.01 r
+  ESL_bioilar_divider_inst/n13 (net)            1                   0.00       2.01 r
+  ESL_bioilar_divider_inst/U15/DIN2 (nnd2s2)              0.18      0.00       2.01 r
+  ESL_bioilar_divider_inst/U15/Q (nnd2s2)                 0.17      0.08       2.09 f
+  ESL_bioilar_divider_inst/n25 (net)            1                   0.00       2.09 f
+  ESL_bioilar_divider_inst/estimation_tmp_reg[2]/DIN (dffs1)     0.17     0.01     2.09 f
+  data arrival time                                                            2.09
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  ESL_bioilar_divider_inst/estimation_tmp_reg[2]/CLK (dffs1)        0.00       2.25 r
+  library setup time                                               -0.14       2.11
+  data required time                                                           2.11
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.11
+  data arrival time                                                           -2.09
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.02
+
+
+  Startpoint: controller_inst/state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][4]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  controller_inst/state_reg[1]/CLK (dffs2)                0.00      0.00       0.00 r
+  controller_inst/state_reg[1]/Q (dffs2)                  0.17      0.17       0.17 f
+  controller_inst/state[1] (net)                4                   0.00       0.17 f
+  controller_inst/state_reg[1]/QN (dffs2)                 0.15      0.07       0.25 r
+  controller_inst/n2 (net)                      3                   0.00       0.25 r
+  controller_inst/U6/DIN2 (nnd2s3)                        0.15      0.00       0.25 r
+  controller_inst/U6/Q (nnd2s3)                           0.13      0.06       0.31 f
+  controller_inst/n5 (net)                      3                   0.00       0.31 f
+  controller_inst/U17/DIN1 (nor2s1)                       0.13      0.00       0.31 f
+  controller_inst/U17/Q (nor2s1)                          0.24      0.11       0.42 r
+  controller_inst/partial_sum_reset (net)       2                   0.00       0.42 r
+  controller_inst/partial_sum_reset (controller)                    0.00       0.42 r
+  partial_sum_reset (net)                                           0.00       0.42 r
+  U21/DIN1 (or2s1)                                        0.24      0.00       0.42 r    d 
+  U21/Q (or2s1)                                           0.21      0.19       0.61 r    d 
+  _38_net_ (net)                                2                   0.00       0.61 r
+  partial_result_buffer_inst/reset (partial_result_buffer)          0.00       0.61 r
+  partial_result_buffer_inst/reset (net)                            0.00       0.61 r
+  partial_result_buffer_inst/U987/DIN (ib1s1)             0.21      0.00       0.61 r
+  partial_result_buffer_inst/U987/Q (ib1s1)               0.29      0.15       0.76 f
+  partial_result_buffer_inst/n782 (net)        13                   0.00       0.76 f
+  partial_result_buffer_inst/U405/DIN2 (and2s2)           0.29      0.00       0.76 f
+  partial_result_buffer_inst/U405/Q (and2s2)              0.10      0.18       0.94 f
+  partial_result_buffer_inst/n525 (net)         5                   0.00       0.94 f
+  partial_result_buffer_inst/U201/DIN2 (and2s1)           0.10      0.00       0.94 f
+  partial_result_buffer_inst/U201/Q (and2s1)              0.24      0.25       1.19 f
+  partial_result_buffer_inst/n332 (net)         3                   0.00       1.19 f
+  partial_result_buffer_inst/U542/DIN (ib1s1)             0.24      0.00       1.20 f
+  partial_result_buffer_inst/U542/Q (ib1s1)               0.47      0.21       1.40 r
+  partial_result_buffer_inst/n851 (net)         4                   0.00       1.40 r
+  partial_result_buffer_inst/U941/DIN (i1s3)              0.47      0.00       1.41 r
+  partial_result_buffer_inst/U941/Q (i1s3)                0.95      0.47       1.88 f
+  partial_result_buffer_inst/n835 (net)        15                   0.00       1.88 f
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][4]/DIN (dffles1)     0.95     0.01     1.89 f
+  data arrival time                                                            1.89
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][4]/CLK (dffles1)     0.00     2.25 r
+  library setup time                                               -0.35       1.90
+  data required time                                                           1.90
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.90
+  data arrival time                                                           -1.89
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.02
+
+
+  Startpoint: controller_inst/state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][3]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  controller_inst/state_reg[1]/CLK (dffs2)                0.00      0.00       0.00 r
+  controller_inst/state_reg[1]/Q (dffs2)                  0.17      0.17       0.17 f
+  controller_inst/state[1] (net)                4                   0.00       0.17 f
+  controller_inst/state_reg[1]/QN (dffs2)                 0.15      0.07       0.25 r
+  controller_inst/n2 (net)                      3                   0.00       0.25 r
+  controller_inst/U6/DIN2 (nnd2s3)                        0.15      0.00       0.25 r
+  controller_inst/U6/Q (nnd2s3)                           0.13      0.06       0.31 f
+  controller_inst/n5 (net)                      3                   0.00       0.31 f
+  controller_inst/U17/DIN1 (nor2s1)                       0.13      0.00       0.31 f
+  controller_inst/U17/Q (nor2s1)                          0.24      0.11       0.42 r
+  controller_inst/partial_sum_reset (net)       2                   0.00       0.42 r
+  controller_inst/partial_sum_reset (controller)                    0.00       0.42 r
+  partial_sum_reset (net)                                           0.00       0.42 r
+  U21/DIN1 (or2s1)                                        0.24      0.00       0.42 r    d 
+  U21/Q (or2s1)                                           0.21      0.19       0.61 r    d 
+  _38_net_ (net)                                2                   0.00       0.61 r
+  partial_result_buffer_inst/reset (partial_result_buffer)          0.00       0.61 r
+  partial_result_buffer_inst/reset (net)                            0.00       0.61 r
+  partial_result_buffer_inst/U987/DIN (ib1s1)             0.21      0.00       0.61 r
+  partial_result_buffer_inst/U987/Q (ib1s1)               0.29      0.15       0.76 f
+  partial_result_buffer_inst/n782 (net)        13                   0.00       0.76 f
+  partial_result_buffer_inst/U405/DIN2 (and2s2)           0.29      0.00       0.76 f
+  partial_result_buffer_inst/U405/Q (and2s2)              0.10      0.18       0.94 f
+  partial_result_buffer_inst/n525 (net)         5                   0.00       0.94 f
+  partial_result_buffer_inst/U201/DIN2 (and2s1)           0.10      0.00       0.94 f
+  partial_result_buffer_inst/U201/Q (and2s1)              0.24      0.25       1.19 f
+  partial_result_buffer_inst/n332 (net)         3                   0.00       1.19 f
+  partial_result_buffer_inst/U542/DIN (ib1s1)             0.24      0.00       1.20 f
+  partial_result_buffer_inst/U542/Q (ib1s1)               0.47      0.21       1.40 r
+  partial_result_buffer_inst/n851 (net)         4                   0.00       1.40 r
+  partial_result_buffer_inst/U941/DIN (i1s3)              0.47      0.00       1.41 r
+  partial_result_buffer_inst/U941/Q (i1s3)                0.95      0.47       1.88 f
+  partial_result_buffer_inst/n835 (net)        15                   0.00       1.88 f
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][3]/DIN (dffles1)     0.95     0.01     1.89 f
+  data arrival time                                                            1.89
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][3]/CLK (dffles1)     0.00     2.25 r
+  library setup time                                               -0.35       1.90
+  data required time                                                           1.90
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.90
+  data arrival time                                                           -1.89
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.02
+
+
+  Startpoint: controller_inst/state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][2]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  controller_inst/state_reg[1]/CLK (dffs2)                0.00      0.00       0.00 r
+  controller_inst/state_reg[1]/Q (dffs2)                  0.17      0.17       0.17 f
+  controller_inst/state[1] (net)                4                   0.00       0.17 f
+  controller_inst/state_reg[1]/QN (dffs2)                 0.15      0.07       0.25 r
+  controller_inst/n2 (net)                      3                   0.00       0.25 r
+  controller_inst/U6/DIN2 (nnd2s3)                        0.15      0.00       0.25 r
+  controller_inst/U6/Q (nnd2s3)                           0.13      0.06       0.31 f
+  controller_inst/n5 (net)                      3                   0.00       0.31 f
+  controller_inst/U17/DIN1 (nor2s1)                       0.13      0.00       0.31 f
+  controller_inst/U17/Q (nor2s1)                          0.24      0.11       0.42 r
+  controller_inst/partial_sum_reset (net)       2                   0.00       0.42 r
+  controller_inst/partial_sum_reset (controller)                    0.00       0.42 r
+  partial_sum_reset (net)                                           0.00       0.42 r
+  U21/DIN1 (or2s1)                                        0.24      0.00       0.42 r    d 
+  U21/Q (or2s1)                                           0.21      0.19       0.61 r    d 
+  _38_net_ (net)                                2                   0.00       0.61 r
+  partial_result_buffer_inst/reset (partial_result_buffer)          0.00       0.61 r
+  partial_result_buffer_inst/reset (net)                            0.00       0.61 r
+  partial_result_buffer_inst/U987/DIN (ib1s1)             0.21      0.00       0.61 r
+  partial_result_buffer_inst/U987/Q (ib1s1)               0.29      0.15       0.76 f
+  partial_result_buffer_inst/n782 (net)        13                   0.00       0.76 f
+  partial_result_buffer_inst/U405/DIN2 (and2s2)           0.29      0.00       0.76 f
+  partial_result_buffer_inst/U405/Q (and2s2)              0.10      0.18       0.94 f
+  partial_result_buffer_inst/n525 (net)         5                   0.00       0.94 f
+  partial_result_buffer_inst/U201/DIN2 (and2s1)           0.10      0.00       0.94 f
+  partial_result_buffer_inst/U201/Q (and2s1)              0.24      0.25       1.19 f
+  partial_result_buffer_inst/n332 (net)         3                   0.00       1.19 f
+  partial_result_buffer_inst/U542/DIN (ib1s1)             0.24      0.00       1.20 f
+  partial_result_buffer_inst/U542/Q (ib1s1)               0.47      0.21       1.40 r
+  partial_result_buffer_inst/n851 (net)         4                   0.00       1.40 r
+  partial_result_buffer_inst/U941/DIN (i1s3)              0.47      0.00       1.41 r
+  partial_result_buffer_inst/U941/Q (i1s3)                0.95      0.47       1.88 f
+  partial_result_buffer_inst/n835 (net)        15                   0.00       1.88 f
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][2]/DIN (dffles1)     0.95     0.01     1.89 f
+  data arrival time                                                            1.89
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][2]/CLK (dffles1)     0.00     2.25 r
+  library setup time                                               -0.35       1.90
+  data required time                                                           1.90
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.90
+  data arrival time                                                           -1.89
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.02
+
+
+  Startpoint: controller_inst/state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][1]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  controller_inst/state_reg[1]/CLK (dffs2)                0.00      0.00       0.00 r
+  controller_inst/state_reg[1]/Q (dffs2)                  0.17      0.17       0.17 f
+  controller_inst/state[1] (net)                4                   0.00       0.17 f
+  controller_inst/state_reg[1]/QN (dffs2)                 0.15      0.07       0.25 r
+  controller_inst/n2 (net)                      3                   0.00       0.25 r
+  controller_inst/U6/DIN2 (nnd2s3)                        0.15      0.00       0.25 r
+  controller_inst/U6/Q (nnd2s3)                           0.13      0.06       0.31 f
+  controller_inst/n5 (net)                      3                   0.00       0.31 f
+  controller_inst/U17/DIN1 (nor2s1)                       0.13      0.00       0.31 f
+  controller_inst/U17/Q (nor2s1)                          0.24      0.11       0.42 r
+  controller_inst/partial_sum_reset (net)       2                   0.00       0.42 r
+  controller_inst/partial_sum_reset (controller)                    0.00       0.42 r
+  partial_sum_reset (net)                                           0.00       0.42 r
+  U21/DIN1 (or2s1)                                        0.24      0.00       0.42 r    d 
+  U21/Q (or2s1)                                           0.21      0.19       0.61 r    d 
+  _38_net_ (net)                                2                   0.00       0.61 r
+  partial_result_buffer_inst/reset (partial_result_buffer)          0.00       0.61 r
+  partial_result_buffer_inst/reset (net)                            0.00       0.61 r
+  partial_result_buffer_inst/U987/DIN (ib1s1)             0.21      0.00       0.61 r
+  partial_result_buffer_inst/U987/Q (ib1s1)               0.29      0.15       0.76 f
+  partial_result_buffer_inst/n782 (net)        13                   0.00       0.76 f
+  partial_result_buffer_inst/U405/DIN2 (and2s2)           0.29      0.00       0.76 f
+  partial_result_buffer_inst/U405/Q (and2s2)              0.10      0.18       0.94 f
+  partial_result_buffer_inst/n525 (net)         5                   0.00       0.94 f
+  partial_result_buffer_inst/U201/DIN2 (and2s1)           0.10      0.00       0.94 f
+  partial_result_buffer_inst/U201/Q (and2s1)              0.24      0.25       1.19 f
+  partial_result_buffer_inst/n332 (net)         3                   0.00       1.19 f
+  partial_result_buffer_inst/U542/DIN (ib1s1)             0.24      0.00       1.20 f
+  partial_result_buffer_inst/U542/Q (ib1s1)               0.47      0.21       1.40 r
+  partial_result_buffer_inst/n851 (net)         4                   0.00       1.40 r
+  partial_result_buffer_inst/U941/DIN (i1s3)              0.47      0.00       1.41 r
+  partial_result_buffer_inst/U941/Q (i1s3)                0.95      0.47       1.88 f
+  partial_result_buffer_inst/n835 (net)        15                   0.00       1.88 f
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][1]/DIN (dffles1)     0.95     0.01     1.89 f
+  data arrival time                                                            1.89
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][1]/CLK (dffles1)     0.00     2.25 r
+  library setup time                                               -0.35       1.90
+  data required time                                                           1.90
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.90
+  data arrival time                                                           -1.89
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.02
+
+
+  Startpoint: controller_inst/state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][0]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  clock clock (rise edge)                                           0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  controller_inst/state_reg[1]/CLK (dffs2)                0.00      0.00       0.00 r
+  controller_inst/state_reg[1]/Q (dffs2)                  0.17      0.17       0.17 f
+  controller_inst/state[1] (net)                4                   0.00       0.17 f
+  controller_inst/state_reg[1]/QN (dffs2)                 0.15      0.07       0.25 r
+  controller_inst/n2 (net)                      3                   0.00       0.25 r
+  controller_inst/U6/DIN2 (nnd2s3)                        0.15      0.00       0.25 r
+  controller_inst/U6/Q (nnd2s3)                           0.13      0.06       0.31 f
+  controller_inst/n5 (net)                      3                   0.00       0.31 f
+  controller_inst/U17/DIN1 (nor2s1)                       0.13      0.00       0.31 f
+  controller_inst/U17/Q (nor2s1)                          0.24      0.11       0.42 r
+  controller_inst/partial_sum_reset (net)       2                   0.00       0.42 r
+  controller_inst/partial_sum_reset (controller)                    0.00       0.42 r
+  partial_sum_reset (net)                                           0.00       0.42 r
+  U21/DIN1 (or2s1)                                        0.24      0.00       0.42 r    d 
+  U21/Q (or2s1)                                           0.21      0.19       0.61 r    d 
+  _38_net_ (net)                                2                   0.00       0.61 r
+  partial_result_buffer_inst/reset (partial_result_buffer)          0.00       0.61 r
+  partial_result_buffer_inst/reset (net)                            0.00       0.61 r
+  partial_result_buffer_inst/U987/DIN (ib1s1)             0.21      0.00       0.61 r
+  partial_result_buffer_inst/U987/Q (ib1s1)               0.29      0.15       0.76 f
+  partial_result_buffer_inst/n782 (net)        13                   0.00       0.76 f
+  partial_result_buffer_inst/U405/DIN2 (and2s2)           0.29      0.00       0.76 f
+  partial_result_buffer_inst/U405/Q (and2s2)              0.10      0.18       0.94 f
+  partial_result_buffer_inst/n525 (net)         5                   0.00       0.94 f
+  partial_result_buffer_inst/U201/DIN2 (and2s1)           0.10      0.00       0.94 f
+  partial_result_buffer_inst/U201/Q (and2s1)              0.24      0.25       1.19 f
+  partial_result_buffer_inst/n332 (net)         3                   0.00       1.19 f
+  partial_result_buffer_inst/U542/DIN (ib1s1)             0.24      0.00       1.20 f
+  partial_result_buffer_inst/U542/Q (ib1s1)               0.47      0.21       1.40 r
+  partial_result_buffer_inst/n851 (net)         4                   0.00       1.40 r
+  partial_result_buffer_inst/U941/DIN (i1s3)              0.47      0.00       1.41 r
+  partial_result_buffer_inst/U941/Q (i1s3)                0.95      0.47       1.88 f
+  partial_result_buffer_inst/n835 (net)        15                   0.00       1.88 f
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][0]/DIN (dffles1)     0.95     0.01     1.89 f
+  data arrival time                                                            1.89
+
+  clock clock (rise edge)                                           2.25       2.25
+  clock network delay (ideal)                                       0.00       2.25
+  partial_result_buffer_inst/stored_partial_sums_x_reg[0][0][0]/CLK (dffles1)     0.00     2.25 r
+  library setup time                                               -0.35       1.90
+  data required time                                                           1.90
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           1.90
+  data arrival time                                                           -1.89
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  0.02
+
+
+  Startpoint: ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_val[5]
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/CLK (dffs1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/Q (dffs1)     0.00     0.17     0.17 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/QN (dffs1)     0.14     0.07     0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/n15 (net)     2                 0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/DIN (i1s1)         0.14      0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/Q (i1s1)           1.08      0.49       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (net)     6          0.00       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (P2B)                0.00       0.73 f
+  ESL_bioilar_divider_inst/a_y_bin[5] (net)                         0.00       0.73 f
+  ESL_bioilar_divider_inst/U49/DIN2 (xnr2s1)              1.08      0.01       0.73 f
+  ESL_bioilar_divider_inst/U49/Q (xnr2s1)                 0.32      0.35       1.08 f
+  ESL_bioilar_divider_inst/out_bin[5] (net)     1                   0.00       1.08 f
+  ESL_bioilar_divider_inst/out_bin[5] (ESL_bioilar_divider)         0.00       1.08 f
+  output_val[5] (net)                                               0.00       1.08 f
+  output_val[5] (out)                                     0.32      0.00       1.08 f
+  data arrival time                                                            1.08
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -1.08
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.17
+
+
+  Startpoint: ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_val[4]
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/CLK (dffs1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/Q (dffs1)     0.00     0.17     0.17 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/QN (dffs1)     0.14     0.07     0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/n15 (net)     2                 0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/DIN (i1s1)         0.14      0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/Q (i1s1)           1.08      0.49       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (net)     6          0.00       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (P2B)                0.00       0.73 f
+  ESL_bioilar_divider_inst/a_y_bin[5] (net)                         0.00       0.73 f
+  ESL_bioilar_divider_inst/U48/DIN2 (xnr2s1)              1.08      0.01       0.73 f
+  ESL_bioilar_divider_inst/U48/Q (xnr2s1)                 0.32      0.35       1.08 f
+  ESL_bioilar_divider_inst/out_bin[4] (net)     1                   0.00       1.08 f
+  ESL_bioilar_divider_inst/out_bin[4] (ESL_bioilar_divider)         0.00       1.08 f
+  output_val[4] (net)                                               0.00       1.08 f
+  output_val[4] (out)                                     0.32      0.00       1.08 f
+  data arrival time                                                            1.08
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -1.08
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.17
+
+
+  Startpoint: ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_val[3]
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/CLK (dffs1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/Q (dffs1)     0.00     0.17     0.17 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/QN (dffs1)     0.14     0.07     0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/n15 (net)     2                 0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/DIN (i1s1)         0.14      0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/Q (i1s1)           1.08      0.49       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (net)     6          0.00       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (P2B)                0.00       0.73 f
+  ESL_bioilar_divider_inst/a_y_bin[5] (net)                         0.00       0.73 f
+  ESL_bioilar_divider_inst/U47/DIN2 (xnr2s1)              1.08      0.01       0.73 f
+  ESL_bioilar_divider_inst/U47/Q (xnr2s1)                 0.32      0.35       1.08 f
+  ESL_bioilar_divider_inst/out_bin[3] (net)     1                   0.00       1.08 f
+  ESL_bioilar_divider_inst/out_bin[3] (ESL_bioilar_divider)         0.00       1.08 f
+  output_val[3] (net)                                               0.00       1.08 f
+  output_val[3] (out)                                     0.32      0.00       1.08 f
+  data arrival time                                                            1.08
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -1.08
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.17
+
+
+  Startpoint: ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_val[2]
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/CLK (dffs1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/Q (dffs1)     0.00     0.17     0.17 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/QN (dffs1)     0.14     0.07     0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/n15 (net)     2                 0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/DIN (i1s1)         0.14      0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/Q (i1s1)           1.08      0.49       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (net)     6          0.00       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (P2B)                0.00       0.73 f
+  ESL_bioilar_divider_inst/a_y_bin[5] (net)                         0.00       0.73 f
+  ESL_bioilar_divider_inst/U46/DIN2 (xnr2s1)              1.08      0.01       0.73 f
+  ESL_bioilar_divider_inst/U46/Q (xnr2s1)                 0.32      0.35       1.08 f
+  ESL_bioilar_divider_inst/out_bin[2] (net)     1                   0.00       1.08 f
+  ESL_bioilar_divider_inst/out_bin[2] (ESL_bioilar_divider)         0.00       1.08 f
+  output_val[2] (net)                                               0.00       1.08 f
+  output_val[2] (out)                                     0.32      0.00       1.08 f
+  data arrival time                                                            1.08
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -1.08
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.17
+
+
+  Startpoint: ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_val[1]
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/CLK (dffs1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/Q (dffs1)     0.00     0.17     0.17 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/QN (dffs1)     0.14     0.07     0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/n15 (net)     2                 0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/DIN (i1s1)         0.14      0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/Q (i1s1)           1.08      0.49       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (net)     6          0.00       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (P2B)                0.00       0.73 f
+  ESL_bioilar_divider_inst/a_y_bin[5] (net)                         0.00       0.73 f
+  ESL_bioilar_divider_inst/U51/DIN2 (xnr2s1)              1.08      0.01       0.73 f
+  ESL_bioilar_divider_inst/U51/Q (xnr2s1)                 0.32      0.35       1.08 f
+  ESL_bioilar_divider_inst/out_bin[1] (net)     1                   0.00       1.08 f
+  ESL_bioilar_divider_inst/out_bin[1] (ESL_bioilar_divider)         0.00       1.08 f
+  output_val[1] (net)                                               0.00       1.08 f
+  output_val[1] (out)                                     0.32      0.00       1.08 f
+  data arrival time                                                            1.08
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -1.08
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.17
+
+
+  Startpoint: ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_val[0]
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/CLK (dffs1)     0.00     0.00     0.00 r
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/Q (dffs1)     0.00     0.17     0.17 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val_reg[5]/QN (dffs1)     0.14     0.07     0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/n15 (net)     2                 0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/DIN (i1s1)         0.14      0.00       0.24 r
+  ESL_bioilar_divider_inst/P2B_inst/U4/Q (i1s1)           1.08      0.49       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (net)     6          0.00       0.73 f
+  ESL_bioilar_divider_inst/P2B_inst/out_val[5] (P2B)                0.00       0.73 f
+  ESL_bioilar_divider_inst/a_y_bin[5] (net)                         0.00       0.73 f
+  ESL_bioilar_divider_inst/U45/DIN2 (xnr2s1)              1.08      0.01       0.73 f
+  ESL_bioilar_divider_inst/U45/Q (xnr2s1)                 0.32      0.35       1.08 f
+  ESL_bioilar_divider_inst/out_bin[0] (net)     1                   0.00       1.08 f
+  ESL_bioilar_divider_inst/out_bin[0] (ESL_bioilar_divider)         0.00       1.08 f
+  output_val[0] (net)                                               0.00       1.08 f
+  output_val[0] (out)                                     0.32      0.00       1.08 f
+  data arrival time                                                            1.08
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -1.08
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.17
+
+
+  Startpoint: index_counter_inst/width_index_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: output_valid
+            (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  index_counter_inst/width_index_reg[1]/CLK (dffs2)       0.00      0.00       0.00 r
+  index_counter_inst/width_index_reg[1]/Q (dffs2)         0.22      0.21       0.21 f
+  index_counter_inst/width_index[1] (net)       7                   0.00       0.21 f
+  index_counter_inst/width_index[1] (index_counter)                 0.00       0.21 f
+  width_index[1] (net)                                              0.00       0.21 f
+  U25/DIN (hi1s1)                                         0.22      0.00       0.21 f
+  U25/Q (hi1s1)                                           0.27      0.13       0.34 r
+  n8 (net)                                      1                   0.00       0.34 r
+  U26/DIN (ib1s1)                                         0.27      0.00       0.34 r
+  U26/Q (ib1s1)                                           0.20      0.10       0.44 f
+  n9 (net)                                      3                   0.00       0.44 f
+  U22/DIN (nb1s1)                                         0.20      0.00       0.45 f
+  U22/Q (nb1s1)                                           0.12      0.14       0.58 f
+  n13 (net)                                     2                   0.00       0.58 f
+  U49/DIN2 (nor2s1)                                       0.12      0.00       0.59 f
+  U49/Q (nor2s1)                                          0.34      0.13       0.71 r
+  n4 (net)                                      2                   0.00       0.71 r
+  U45/DIN2 (nor3s1)                                       0.34      0.00       0.71 r
+  U45/Q (nor3s1)                                          0.29      0.16       0.87 f
+  output_valid (net)                            1                   0.00       0.87 f
+  output_valid (out)                                      0.29      0.00       0.87 f
+  data arrival time                                                            0.87
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -0.87
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.38
+
+
+  Startpoint: controller_inst/state_reg[0]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: input_req (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  controller_inst/state_reg[0]/CLK (dffscs2)              0.00      0.00       0.00 r
+  controller_inst/state_reg[0]/QN (dffscs2)               0.17      0.17       0.17 f
+  controller_inst/n3 (net)                      3                   0.00       0.17 f
+  controller_inst/U26/DIN2 (nnd2s1)                       0.17      0.00       0.17 f
+  controller_inst/U26/Q (nnd2s1)                          0.30      0.14       0.31 r
+  controller_inst/n10 (net)                     3                   0.00       0.31 r
+  controller_inst/U14/DIN1 (nor2s1)                       0.30      0.00       0.32 r
+  controller_inst/U14/Q (nor2s1)                          0.23      0.14       0.46 f
+  controller_inst/input_req (net)               2                   0.00       0.46 f
+  controller_inst/input_req (controller)                            0.00       0.46 f
+  input_req (net)                                                   0.00       0.46 f
+  input_req (out)                                         0.23      0.00       0.46 f
+  data arrival time                                                            0.46
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -0.46
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.79
+
+
+  Startpoint: controller_inst/state_reg[2]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: done (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  processing_unit    tsmcwire              lec25dscc25_TT
+
+Attributes:
+    d - dont_touch
+    u - dont_use
+   mo - map_only
+   so - size_only
+    i - ideal_net or ideal_network
+  inf - infeasible path
+
+  Point                                       Fanout     Trans      Incr       Path      Attributes
+  ---------------------------------------------------------------------------------------------------------
+  controller_inst/state_reg[2]/CLK (dffscs2)              0.00      0.00       0.00 r
+  controller_inst/state_reg[2]/QN (dffscs2)               0.21      0.17       0.17 r
+  controller_inst/n1 (net)                      4                   0.00       0.17 r
+  controller_inst/state_reg[2]/Q (dffscs2)                0.12      0.06       0.23 f
+  controller_inst/state[2] (net)                5                   0.00       0.23 f
+  controller_inst/U23/DIN3 (and3s1)                       0.12      0.00       0.23 f
+  controller_inst/U23/Q (and3s1)                          0.11      0.20       0.43 f
+  controller_inst/done (net)                    1                   0.00       0.43 f
+  controller_inst/done (controller)                                 0.00       0.43 f
+  done (net)                                                        0.00       0.43 f
+  done (out)                                              0.11      0.00       0.43 f
+  data arrival time                                                            0.43
+
+  max_delay                                                         2.25       2.25
+  output external delay                                             0.00       2.25
+  data required time                                                           2.25
+  ---------------------------------------------------------------------------------------------------------
+  data required time                                                           2.25
+  data arrival time                                                           -0.43
+  ---------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                  1.82
+
+
+1

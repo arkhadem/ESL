@@ -1,0 +1,85 @@
+ 
+****************************************
+Report : area
+Design : processing_unit
+Version: O-2018.06
+Date   : Mon Dec  2 01:24:52 2019
+****************************************
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Number of ports:                          505
+Number of nets:                          3036
+Number of cells:                         2535
+Number of combinational cells:           1711
+Number of sequential cells:               782
+Number of macros/black boxes:               0
+Number of buf/inv:                        543
+Number of references:                      25
+
+Combinational area:              87505.359509
+Buf/Inv area:                    22262.168045
+Noncombinational area:          121488.309052
+Macro/Black Box area:                0.000000
+Net Interconnect area:            1249.806419
+
+Total cell area:                208993.668560
+Total area:                     210243.474979
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area              Local cell area
+                                  --------------------  ------------------------------- 
+Hierarchical cell                 Absolute     Percent  Combi-      Noncombi-    Black-
+                                  Total        Total    national    national     boxes   Design
+--------------------------------  -----------  -------  ----------  -----------  ------  ---------------------
+processing_unit                   208993.6686    100.0   1766.7068       0.0000  0.0000  processing_unit
+ESL_bioilar_divider_inst           11683.6865      5.6   3267.8854     978.7400  0.0000  ESL_bioilar_divider
+ESL_bioilar_divider_inst/P2B_inst   4769.0687      2.3   2330.5104    2438.5583  0.0000  P2B
+ESL_bioilar_divider_inst/SNG_inst   2667.9924      1.3    776.8668       0.0000  0.0000  SNG_0
+ESL_bioilar_divider_inst/SNG_inst/UUT   1891.1256     0.9   696.7296   1194.3960 0.0000  LFSR_0
+PE_row[0].PE_column[0].PEs          6818.0027      3.3    306.8928     315.1880  0.0000  processing_element_3
+PE_row[0].PE_column[0].PEs/SNG_half_inst   2662.5048     1.3   738.2016      0.0000 0.0000 SNG_7
+PE_row[0].PE_column[0].PEs/SNG_half_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_7
+PE_row[0].PE_column[0].PEs/SNG_weight_inst   2662.5048     1.3   738.2016      0.0000 0.0000 SNG_8
+PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_8
+PE_row[0].PE_column[0].PEs/adder_inst    423.0144     0.2   423.0144      0.0000 0.0000  ESL_adder_3
+PE_row[0].PE_column[0].PEs/multiplier_inst    165.8880     0.1   165.8880      0.0000 0.0000 ESL_multiplier_3
+PE_row[0].PE_column[0].PEs/one_counter_inst    282.0100     0.1   124.4160    157.5940 0.0000 one_counter_3
+PE_row[0].PE_column[1].PEs          6900.9467      3.3    315.1872     315.1880  0.0000  processing_element_2
+PE_row[0].PE_column[1].PEs/SNG_half_inst   2662.5048     1.3   738.2016      0.0000 0.0000 SNG_5
+PE_row[0].PE_column[1].PEs/SNG_half_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_5
+PE_row[0].PE_column[1].PEs/SNG_weight_inst   2737.1544     1.3   812.8512      0.0000 0.0000 SNG_6
+PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_6
+PE_row[0].PE_column[1].PEs/adder_inst    423.0144     0.2   423.0144      0.0000 0.0000  ESL_adder_2
+PE_row[0].PE_column[1].PEs/multiplier_inst    165.8880     0.1   165.8880      0.0000 0.0000 ESL_multiplier_2
+PE_row[0].PE_column[1].PEs/one_counter_inst    282.0100     0.1   124.4160    157.5940 0.0000 one_counter_2
+PE_row[1].PE_column[0].PEs          6964.4955      3.3    331.7760     315.1880  0.0000  processing_element_1
+PE_row[1].PE_column[0].PEs/SNG_half_inst   2662.5048     1.3   738.2016      0.0000 0.0000 SNG_3
+PE_row[1].PE_column[0].PEs/SNG_half_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_3
+PE_row[1].PE_column[0].PEs/SNG_weight_inst   2701.1700     1.3   776.8668      0.0000 0.0000 SNG_4
+PE_row[1].PE_column[0].PEs/SNG_weight_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_4
+PE_row[1].PE_column[0].PEs/adder_inst    489.3700     0.2   489.3700      0.0000 0.0000  ESL_adder_1
+PE_row[1].PE_column[0].PEs/multiplier_inst    182.4768     0.1   182.4768      0.0000 0.0000 ESL_multiplier_1
+PE_row[1].PE_column[0].PEs/one_counter_inst    282.0100     0.1   124.4160    157.5940 0.0000 one_counter_1
+PE_row[1].PE_column[1].PEs          6900.9467      3.3    315.1872     315.1880  0.0000  processing_element_0
+PE_row[1].PE_column[1].PEs/SNG_half_inst   2662.5048     1.3   738.2016      0.0000 0.0000 SNG_1
+PE_row[1].PE_column[1].PEs/SNG_half_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_1
+PE_row[1].PE_column[1].PEs/SNG_weight_inst   2737.1544     1.3   812.8512      0.0000 0.0000 SNG_2
+PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT   1924.3032     0.9   729.9072   1194.3960 0.0000 LFSR_2
+PE_row[1].PE_column[1].PEs/adder_inst    423.0144     0.2   423.0144      0.0000 0.0000  ESL_adder_0
+PE_row[1].PE_column[1].PEs/multiplier_inst    165.8880     0.1   165.8880      0.0000 0.0000 ESL_multiplier_0
+PE_row[1].PE_column[1].PEs/one_counter_inst    282.0100     0.1   124.4160    157.5940 0.0000 one_counter_0
+SNG_inst                            2800.7028      1.3    909.5772       0.0000  0.0000  SNG_9
+SNG_inst/UUT                        1891.1256      0.9    696.7296    1194.3960  0.0000  LFSR_9
+controller_inst                     1833.0612      0.9   1227.5712     605.4900  0.0000  controller
+index_counter_inst                  1459.8144      0.7    796.2624     663.5520  0.0000  index_counter
+partial_result_buffer_inst        159783.5214     76.5  57861.7323  101921.7891  0.0000  partial_result_buffer
+sc_counter_inst                     2081.7838      1.0   1036.6918    1045.0920  0.0000  sc_counter
+--------------------------------  -----------  -------  ----------  -----------  ------  ---------------------
+Total                                                   87505.3595  121488.3091  0.0000
+
+1
