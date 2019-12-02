@@ -1,0 +1,2762 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : O-2018.06
+// Date      : Mon Dec  2 03:37:36 2019
+/////////////////////////////////////////////////////////////
+
+
+module controller ( clock, reset, start, input_ready, sc_count_done, 
+        width_index, height_index, PE_reset, PE_enable, PE_init, index_reset, 
+        index_enable, partial_sum_reset, partial_sum_enable, output_valid, 
+        input_req, sc_count_enable, sc_count_reset, SNG_enable, done );
+  input [1:0] width_index;
+  input [1:0] height_index;
+  input clock, reset, start, input_ready, sc_count_done;
+  output PE_reset, PE_enable, PE_init, index_reset, index_enable,
+         partial_sum_reset, partial_sum_enable, output_valid, input_req,
+         sc_count_enable, sc_count_reset, SNG_enable, done;
+  wire   N67, N68, N69, n1, n2, n3, n5, n6, n7, n8, n9, n10, n11, n12, n13,
+         n15, n18, n21;
+  wire   [2:0] state;
+
+  nnd2s2 U8 ( .DIN1(state[2]), .DIN2(n8), .Q(n7) );
+  dffs1 \state_reg[0]  ( .DIN(N67), .CLK(clock), .Q(state[0]), .QN(n3) );
+  dffs1 \state_reg[2]  ( .DIN(N69), .CLK(clock), .Q(state[2]), .QN(n1) );
+  dffs1 \state_reg[1]  ( .DIN(N68), .CLK(clock), .Q(state[1]), .QN(n2) );
+  nnd2s2 U3 ( .DIN1(state[0]), .DIN2(n2), .Q(n5) );
+  ib1s1 U4 ( .DIN(n6), .Q(PE_init) );
+  ib1s1 U5 ( .DIN(PE_enable), .Q(n15) );
+  hi1s1 U6 ( .DIN(PE_reset), .Q(n18) );
+  aoi22s1 U7 ( .DIN1(input_ready), .DIN2(input_req), .DIN3(sc_count_done), 
+        .DIN4(PE_enable), .Q(n11) );
+  nb1s1 U9 ( .DIN(PE_init), .Q(sc_count_reset) );
+  ib1s1 U10 ( .DIN(n15), .Q(sc_count_enable) );
+  ib1s1 U11 ( .DIN(partial_sum_enable), .Q(n13) );
+  nor2s1 U12 ( .DIN1(n10), .DIN2(n1), .Q(index_enable) );
+  nor2s1 U13 ( .DIN1(n5), .DIN2(state[2]), .Q(PE_reset) );
+  ib1s1 U14 ( .DIN(n18), .Q(partial_sum_reset) );
+  aoi21s2 U15 ( .DIN1(n11), .DIN2(n12), .DIN3(reset), .Q(N67) );
+  ib1s1 U16 ( .DIN(n9), .Q(n21) );
+  aoi21s2 U17 ( .DIN1(n6), .DIN2(n7), .DIN3(reset), .Q(N69) );
+  nor2s1 U18 ( .DIN1(n10), .DIN2(state[2]), .Q(input_req) );
+  hi1s1 U19 ( .DIN(n18), .Q(index_reset) );
+  i1s1 U20 ( .DIN(n15), .Q(SNG_enable) );
+  ib1s1 U21 ( .DIN(n13), .Q(output_valid) );
+  nnd4s1 U22 ( .DIN1(width_index[1]), .DIN2(width_index[0]), .DIN3(
+        height_index[1]), .DIN4(height_index[0]), .Q(n9) );
+  aoi42s1 U23 ( .DIN1(start), .DIN2(n3), .DIN3(n2), .DIN4(n1), .DIN5(
+        index_enable), .DIN6(n21), .Q(n12) );
+  and3s1 U24 ( .DIN1(n3), .DIN2(n2), .DIN3(state[2]), .Q(PE_enable) );
+  nnd3s1 U25 ( .DIN1(state[0]), .DIN2(n1), .DIN3(state[1]), .Q(n6) );
+  oai21s1 U26 ( .DIN1(state[0]), .DIN2(n9), .DIN3(state[1]), .Q(n8) );
+  and3s1 U27 ( .DIN1(state[1]), .DIN2(state[0]), .DIN3(state[2]), .Q(done) );
+  nnd2s1 U28 ( .DIN1(state[1]), .DIN2(n3), .Q(n10) );
+  aoi21s1 U29 ( .DIN1(n10), .DIN2(n5), .DIN3(reset), .Q(N68) );
+  nor2s1 U30 ( .DIN1(n5), .DIN2(n1), .Q(partial_sum_enable) );
+endmodule
+
+
+module LFSR_16 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n2, n8, n1, n3, n4, n5, n6, n7;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(init), .Q(n8) );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n3), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n4), .EB(n3), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n6), .EB(n3), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n5), .EB(n3), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n3), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n7), .EB(n3), .CLK(clock), .Q(out_val[4]), 
+        .QN(n2) );
+  ib1s1 U2 ( .DIN(enable), .Q(n3) );
+  oai21s2 U3 ( .DIN1(init), .DIN2(n2), .DIN3(n8), .Q(N9) );
+  dsmxc31s1 U5 ( .DIN1(out_val[2]), .DIN2(init_val[3]), .CLK(init), .Q(n6) );
+  dsmxc31s1 U6 ( .DIN1(out_val[3]), .DIN2(init_val[4]), .CLK(init), .Q(n7) );
+  dsmxc31s1 U7 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(init), .Q(n5) );
+  dsmxc31s1 U8 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(init), .Q(n4) );
+  dsmxc31s2 U9 ( .DIN1(n1), .DIN2(init_val[0]), .CLK(init), .Q(N4) );
+  xnr2s1 U10 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n1) );
+endmodule
+
+
+module SNG_16 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17;
+  wire   [5:0] random_number;
+
+  LFSR_16 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  and2s2 U3 ( .DIN1(n12), .DIN2(n10), .Q(n6) );
+  nnd3s1 U4 ( .DIN1(n12), .DIN2(n11), .DIN3(n10), .Q(n15) );
+  ib1s1 U5 ( .DIN(in_val[5]), .Q(n17) );
+  aoi13s2 U6 ( .DIN2(n8), .DIN3(n7), .DIN4(n6), .DIN1(n5), .Q(n16) );
+  nor2s1 U7 ( .DIN1(random_number[4]), .DIN2(n4), .Q(n5) );
+  aoi22s2 U8 ( .DIN1(random_number[2]), .DIN2(n1), .DIN3(random_number[1]), 
+        .DIN4(n3), .Q(n8) );
+  oai22s1 U9 ( .DIN1(random_number[2]), .DIN2(n1), .DIN3(random_number[3]), 
+        .DIN4(n9), .Q(n11) );
+  ib1s1 U10 ( .DIN(in_val[3]), .Q(n9) );
+  ib1s1 U11 ( .DIN(in_val[4]), .Q(n4) );
+  ib1s1 U12 ( .DIN(random_number[5]), .Q(n13) );
+  ib1s1 U13 ( .DIN(in_val[1]), .Q(n3) );
+  ib1s1 U14 ( .DIN(in_val[2]), .Q(n1) );
+  ib1s1 U15 ( .DIN(in_val[0]), .Q(n2) );
+  oai211s2 U16 ( .DIN1(random_number[1]), .DIN2(n3), .DIN3(n2), .DIN4(
+        random_number[0]), .Q(n7) );
+  nnd2s2 U17 ( .DIN1(random_number[4]), .DIN2(n4), .Q(n12) );
+  nnd2s2 U18 ( .DIN1(random_number[3]), .DIN2(n9), .Q(n10) );
+  nnd2s2 U19 ( .DIN1(in_val[5]), .DIN2(n13), .Q(n14) );
+  aoai122s3 U20 ( .DIN2(random_number[5]), .DIN3(n17), .DIN4(n16), .DIN5(n15), 
+        .DIN1(n14), .Q(out_val) );
+endmodule
+
+
+module LFSR_15 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n10, n11, n12, n13, n14, n15, n16;
+
+  dffles2 \LFSR_reg_reg[4]  ( .DIN(n12), .EB(n7), .CLK(clock), .Q(out_val[3]), 
+        .QN(n1) );
+  dffles2 \LFSR_reg_reg[5]  ( .DIN(n13), .EB(n7), .CLK(clock), .Q(out_val[4]), 
+        .QN(n16) );
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n5), .Q(n15) );
+  dffles2 \LFSR_reg_reg[3]  ( .DIN(n11), .EB(n7), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n7), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n7), .CLK(clock), .Q(out_val[0])
+         );
+  dffles2 \LFSR_reg_reg[2]  ( .DIN(n10), .EB(n7), .CLK(clock), .Q(out_val[1])
+         );
+  ib1s1 U2 ( .DIN(n1), .Q(n3) );
+  ib1s1 U3 ( .DIN(enable), .Q(n7) );
+  ib1s1 U5 ( .DIN(n6), .Q(n5) );
+  ib1s1 U6 ( .DIN(init), .Q(n6) );
+  oai21s2 U7 ( .DIN1(n5), .DIN2(n16), .DIN3(n15), .Q(N9) );
+  dsmxc31s1 U8 ( .DIN1(out_val[2]), .DIN2(init_val[3]), .CLK(n5), .Q(n12) );
+  dsmxc31s1 U9 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n5), .Q(n11) );
+  dsmxc31s1 U10 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n5), .Q(n10) );
+  dsmxc31s2 U11 ( .DIN1(n4), .DIN2(init_val[0]), .CLK(n5), .Q(N4) );
+  xnr2s1 U12 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n4) );
+  ib1s1 U13 ( .DIN(n14), .Q(n13) );
+  aoi22s1 U14 ( .DIN1(n3), .DIN2(n6), .DIN3(init_val[4]), .DIN4(n5), .Q(n14)
+         );
+endmodule
+
+
+module SNG_15 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18, n19, n20, n21, n22, n23, n24;
+  wire   [5:0] random_number;
+
+  LFSR_15 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  aoi21s3 U3 ( .DIN1(n12), .DIN2(n11), .DIN3(n10), .Q(n14) );
+  ib1s1 U4 ( .DIN(random_number[2]), .Q(n7) );
+  nnd2s2 U5 ( .DIN1(random_number[4]), .DIN2(n6), .Q(n9) );
+  nnd2s2 U6 ( .DIN1(random_number[3]), .DIN2(n5), .Q(n13) );
+  i1s2 U7 ( .DIN(random_number[3]), .Q(n8) );
+  i1s1 U8 ( .DIN(n9), .Q(n10) );
+  nnd2s1 U9 ( .DIN1(random_number[3]), .DIN2(n5), .Q(n1) );
+  aoi42s2 U10 ( .DIN1(n18), .DIN2(n15), .DIN3(n16), .DIN4(n17), .DIN5(n14), 
+        .DIN6(n1), .Q(n23) );
+  nnd2s1 U11 ( .DIN1(random_number[2]), .DIN2(n3), .Q(n17) );
+  and2s2 U12 ( .DIN1(n13), .DIN2(n9), .Q(n15) );
+  nnd2s1 U13 ( .DIN1(in_val[4]), .DIN2(n19), .Q(n22) );
+  ib1s1 U14 ( .DIN(in_val[5]), .Q(n24) );
+  ib1s1 U15 ( .DIN(in_val[4]), .Q(n6) );
+  ib1s1 U16 ( .DIN(in_val[3]), .Q(n5) );
+  ib1s1 U17 ( .DIN(random_number[5]), .Q(n20) );
+  hi1s1 U18 ( .DIN(random_number[4]), .Q(n19) );
+  ib1s1 U19 ( .DIN(in_val[1]), .Q(n4) );
+  ib1s1 U20 ( .DIN(in_val[2]), .Q(n3) );
+  ib1s1 U21 ( .DIN(in_val[0]), .Q(n2) );
+  oai211s2 U22 ( .DIN1(random_number[1]), .DIN2(n4), .DIN3(random_number[0]), 
+        .DIN4(n2), .Q(n18) );
+  nnd2s2 U23 ( .DIN1(random_number[1]), .DIN2(n4), .Q(n16) );
+  nnd2s2 U24 ( .DIN1(in_val[2]), .DIN2(n7), .Q(n12) );
+  nnd2s2 U25 ( .DIN1(in_val[3]), .DIN2(n8), .Q(n11) );
+  nnd2s2 U26 ( .DIN1(in_val[5]), .DIN2(n20), .Q(n21) );
+  aoai122s3 U27 ( .DIN2(random_number[5]), .DIN3(n24), .DIN4(n22), .DIN5(n23), 
+        .DIN1(n21), .Q(out_val) );
+endmodule
+
+
+module ESL_multiplier_3 ( a_x, a_y, b_x, b_y, o_x, o_y );
+  input a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+
+
+  xnr2s1 U1 ( .DIN1(b_y), .DIN2(a_y), .Q(o_y) );
+  xnr2s2 U2 ( .DIN1(b_x), .DIN2(a_x), .Q(o_x) );
+endmodule
+
+
+module LFSR_14 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n13, n14, n15, n16;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n3), .Q(n15) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n12), .EB(n5), .CLK(clock), .Q(out_val[4]), 
+        .QN(n16) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n5), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n11), .EB(n5), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n6), .EB(n5), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n5), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n7), .EB(n5), .CLK(clock), .Q(out_val[2])
+         );
+  aoi22s1 U2 ( .DIN1(out_val[2]), .DIN2(n4), .DIN3(init_val[3]), .DIN4(n3), 
+        .Q(n13) );
+  ib1s1 U3 ( .DIN(enable), .Q(n5) );
+  ib1s1 U5 ( .DIN(n4), .Q(n3) );
+  ib1s1 U6 ( .DIN(init), .Q(n4) );
+  oai21s2 U7 ( .DIN1(n3), .DIN2(n16), .DIN3(n15), .Q(N9) );
+  ib1s1 U8 ( .DIN(n14), .Q(n12) );
+  aoi22s2 U9 ( .DIN1(out_val[3]), .DIN2(n4), .DIN3(init_val[4]), .DIN4(n3), 
+        .Q(n14) );
+  dsmxc31s1 U10 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n3), .Q(n7) );
+  dsmxc31s1 U11 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n3), .Q(n6) );
+  ib1s1 U12 ( .DIN(n13), .Q(n11) );
+  dsmxc31s2 U13 ( .DIN1(n1), .DIN2(init_val[0]), .CLK(n3), .Q(N4) );
+  xnr2s1 U14 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n1) );
+endmodule
+
+
+module SNG_14 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16
+;
+  wire   [5:0] random_number;
+
+  LFSR_14 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  aoai1112s2 U3 ( .DIN4(n10), .DIN5(n9), .DIN3(n8), .DIN1(n7), .DIN2(n6), .Q(
+        n15) );
+  oai22s1 U4 ( .DIN1(random_number[2]), .DIN2(n2), .DIN3(random_number[3]), 
+        .DIN4(n4), .Q(n8) );
+  ib1s1 U5 ( .DIN(in_val[0]), .Q(n3) );
+  aoi22s2 U6 ( .DIN1(random_number[2]), .DIN2(n2), .DIN3(random_number[1]), 
+        .DIN4(n1), .Q(n10) );
+  ib1s1 U7 ( .DIN(in_val[1]), .Q(n1) );
+  ib1s1 U8 ( .DIN(in_val[2]), .Q(n2) );
+  ib1s1 U9 ( .DIN(in_val[5]), .Q(n16) );
+  ib1s1 U10 ( .DIN(random_number[5]), .Q(n12) );
+  ib1s1 U11 ( .DIN(random_number[4]), .Q(n11) );
+  ib1s1 U12 ( .DIN(in_val[3]), .Q(n4) );
+  ib1s1 U13 ( .DIN(in_val[4]), .Q(n5) );
+  oai211s2 U14 ( .DIN1(random_number[1]), .DIN2(n1), .DIN3(n3), .DIN4(
+        random_number[0]), .Q(n9) );
+  nnd2s2 U15 ( .DIN1(random_number[3]), .DIN2(n4), .Q(n7) );
+  nnd2s2 U16 ( .DIN1(random_number[4]), .DIN2(n5), .Q(n6) );
+  nnd2s2 U17 ( .DIN1(in_val[4]), .DIN2(n11), .Q(n14) );
+  nnd2s2 U18 ( .DIN1(in_val[5]), .DIN2(n12), .Q(n13) );
+  aoai122s3 U19 ( .DIN2(random_number[5]), .DIN3(n16), .DIN4(n15), .DIN5(n14), 
+        .DIN1(n13), .Q(out_val) );
+endmodule
+
+
+module one_counter_3 ( clock, reset, enable, count );
+  input clock, reset, enable;
+  output count;
+  wire   n1, n2;
+
+  dffs1 count_reg ( .DIN(n2), .CLK(clock), .Q(count) );
+  nor2s1 U3 ( .DIN1(reset), .DIN2(n1), .Q(n2) );
+  xnr2s1 U4 ( .DIN1(enable), .DIN2(count), .Q(n1) );
+endmodule
+
+
+module LFSR_13 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n15, n16, n17, n18, n19, n20, n21,
+         n22, n23;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n22) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n16) );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n5), .EB(n15), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n15), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n15), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n6), .EB(n15), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n4), .EB(n15), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n7), .EB(n15), .CLK(clock), .Q(out_val[4]), 
+        .QN(n23) );
+  aoi22s1 U2 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n21) );
+  ib1s1 U3 ( .DIN(enable), .Q(n15) );
+  ib1s1 U5 ( .DIN(n3), .Q(n1) );
+  ib1s1 U6 ( .DIN(init), .Q(n3) );
+  oai21s2 U7 ( .DIN1(n1), .DIN2(n17), .DIN3(n16), .Q(N4) );
+  xor2s1 U8 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n17) );
+  oai21s2 U9 ( .DIN1(n1), .DIN2(n23), .DIN3(n22), .Q(N9) );
+  ib1s1 U11 ( .DIN(n20), .Q(n6) );
+  aoi22s1 U12 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n20) );
+  aoi22s1 U13 ( .DIN1(out_val[0]), .DIN2(n3), .DIN3(init_val[1]), .DIN4(n1), 
+        .Q(n18) );
+  ib1s1 U14 ( .DIN(n19), .Q(n5) );
+  ib1s1 U15 ( .DIN(n21), .Q(n7) );
+  ib1s1 U16 ( .DIN(n18), .Q(n4) );
+  aoi22s1 U17 ( .DIN1(out_val[1]), .DIN2(n3), .DIN3(init_val[2]), .DIN4(n1), 
+        .Q(n19) );
+endmodule
+
+
+module SNG_13 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18, n19, n20, n21;
+  wire   [5:0] random_number;
+
+  LFSR_13 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  or2s1 U3 ( .DIN1(n15), .DIN2(random_number[3]), .Q(n4) );
+  oai22s2 U4 ( .DIN1(random_number[5]), .DIN2(n14), .DIN3(n13), .DIN4(n12), 
+        .Q(out_val) );
+  nnd2s2 U5 ( .DIN1(random_number[1]), .DIN2(n17), .Q(n8) );
+  aoi21s2 U6 ( .DIN1(in_val[4]), .DIN2(n18), .DIN3(n21), .Q(n12) );
+  ib1s1 U7 ( .DIN(n11), .Q(n21) );
+  or2s1 U8 ( .DIN1(n19), .DIN2(in_val[3]), .Q(n3) );
+  nnd3s2 U9 ( .DIN1(n6), .DIN2(n7), .DIN3(n8), .Q(n1) );
+  ib1s1 U10 ( .DIN(in_val[2]), .Q(n16) );
+  or2s1 U11 ( .DIN1(n18), .DIN2(in_val[4]), .Q(n2) );
+  nnd3s2 U12 ( .DIN1(n2), .DIN2(n3), .DIN3(n10), .Q(n11) );
+  or2s1 U13 ( .DIN1(n16), .DIN2(random_number[2]), .Q(n5) );
+  nnd3s2 U14 ( .DIN1(n4), .DIN2(n5), .DIN3(n1), .Q(n10) );
+  ib1s1 U15 ( .DIN(random_number[3]), .Q(n19) );
+  nnd2s1 U16 ( .DIN1(random_number[2]), .DIN2(n16), .Q(n6) );
+  nnd2s2 U17 ( .DIN1(n9), .DIN2(random_number[0]), .Q(n7) );
+  ib1s1 U18 ( .DIN(in_val[5]), .Q(n14) );
+  ib1s1 U19 ( .DIN(in_val[1]), .Q(n17) );
+  ib1s1 U20 ( .DIN(random_number[4]), .Q(n18) );
+  hi1s1 U21 ( .DIN(random_number[1]), .Q(n20) );
+  ib1s1 U22 ( .DIN(in_val[3]), .Q(n15) );
+  and2s1 U23 ( .DIN1(n14), .DIN2(random_number[5]), .Q(n13) );
+  aoi21s1 U24 ( .DIN1(in_val[1]), .DIN2(n20), .DIN3(in_val[0]), .Q(n9) );
+endmodule
+
+
+module ESL_adder_3 ( half_sc, half_cnt, a_x, a_y, b_x, b_y, o_x, o_y );
+  input half_sc, half_cnt, a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+  wire   n1, n2;
+
+  xor2s2 U1 ( .DIN1(b_x), .DIN2(a_y), .Q(n2) );
+  xor3s2 U2 ( .DIN1(b_y), .DIN2(a_y), .DIN3(half_sc), .Q(o_y) );
+  xor2s2 U3 ( .DIN1(a_x), .DIN2(b_y), .Q(n1) );
+  mxi21s3 U4 ( .DIN1(n2), .DIN2(n1), .SIN(half_cnt), .Q(o_x) );
+endmodule
+
+
+module P2B_3 ( clock, reset, enable, in_val, out_val );
+  output [5:0] out_val;
+  input clock, reset, enable, in_val;
+  wire   N10, N11, N12, N13, N29, N30, N31, N32, N33, N40, N41, N42, N43, N44,
+         N45, N46, n1, n8, n9, n10, n11, n12, n14, n15, n16, n17, n18, n19,
+         n20, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34,
+         n35, n36, n37, n38, n39, n40, n41, \add_32/carry[5] ,
+         \add_32/carry[4] , \add_32/carry[3] , \add_32/carry[2] ,
+         \add_21/carry[5] , \add_21/carry[4] , \add_21/carry[3] ,
+         \add_21/carry[2] , n2, n3, n4, n5, n6, n7, n13, n21, n42;
+  wire   [5:0] n_out_val;
+  wire   [5:0] modulus_m;
+
+  dffs2 \out_val_reg[5]  ( .DIN(n35), .CLK(clock), .Q(out_val[5]), .QN(n15) );
+  nnd3s2 U27 ( .DIN1(modulus_m[0]), .DIN2(n14), .DIN3(modulus_m[3]), .Q(n29)
+         );
+  nnd2s2 U28 ( .DIN1(n4), .DIN2(n24), .Q(N40) );
+  dffs1 \n_out_val_reg[5]  ( .DIN(n36), .CLK(clock), .Q(n_out_val[5]), .QN(n1)
+         );
+  lclks1 \modulus_m_reg[1]  ( .CLK(N40), .DIN(N42), .Q(modulus_m[1]), .QN(n14)
+         );
+  lclks1 \modulus_m_reg[5]  ( .CLK(N40), .DIN(N46), .Q(modulus_m[5]) );
+  lclks1 \modulus_m_reg[4]  ( .CLK(N40), .DIN(N45), .Q(modulus_m[4]) );
+  lclks1 \modulus_m_reg[3]  ( .CLK(N40), .DIN(N44), .Q(modulus_m[3]) );
+  lclks1 \modulus_m_reg[2]  ( .CLK(N40), .DIN(N43), .Q(modulus_m[2]) );
+  lclks1 \modulus_m_reg[0]  ( .CLK(N40), .DIN(N41), .Q(modulus_m[0]), .QN(n2)
+         );
+  dffs1 \out_val_reg[4]  ( .DIN(n34), .CLK(clock), .Q(out_val[4]), .QN(n16) );
+  dffs1 \out_val_reg[3]  ( .DIN(n33), .CLK(clock), .Q(out_val[3]), .QN(n17) );
+  dffs1 \out_val_reg[2]  ( .DIN(n32), .CLK(clock), .Q(out_val[2]), .QN(n18) );
+  dffs1 \out_val_reg[1]  ( .DIN(n31), .CLK(clock), .Q(out_val[1]), .QN(n19) );
+  dffs1 \out_val_reg[0]  ( .DIN(n30), .CLK(clock), .Q(out_val[0]), .QN(n20) );
+  dffs1 \n_out_val_reg[1]  ( .DIN(n40), .CLK(clock), .Q(n_out_val[1]), .QN(n11) );
+  dffs1 \n_out_val_reg[2]  ( .DIN(n39), .CLK(clock), .Q(n_out_val[2]), .QN(n10) );
+  dffs1 \n_out_val_reg[3]  ( .DIN(n38), .CLK(clock), .Q(n_out_val[3]), .QN(n9)
+         );
+  dffs1 \n_out_val_reg[4]  ( .DIN(n37), .CLK(clock), .Q(n_out_val[4]), .QN(n8)
+         );
+  dffs1 \n_out_val_reg[0]  ( .DIN(n41), .CLK(clock), .Q(n_out_val[0]), .QN(n12) );
+  nor2s1 U3 ( .DIN1(n24), .DIN2(n6), .Q(n28) );
+  ib1s1 U4 ( .DIN(reset), .Q(n4) );
+  nnd2s2 U5 ( .DIN1(enable), .DIN2(n4), .Q(n24) );
+  ib1s1 U6 ( .DIN(n25), .Q(n6) );
+  nnd2s1 U7 ( .DIN1(in_val), .DIN2(n28), .Q(n27) );
+  nnd3s2 U8 ( .DIN1(n27), .DIN2(n4), .DIN3(n25), .Q(n26) );
+  or2s1 U9 ( .DIN1(n25), .DIN2(n24), .Q(n23) );
+  and2s1 U10 ( .DIN1(N32), .DIN2(n28), .Q(N45) );
+  and2s1 U11 ( .DIN1(N31), .DIN2(n28), .Q(N44) );
+  and2s1 U12 ( .DIN1(N30), .DIN2(n28), .Q(N43) );
+  and2s1 U13 ( .DIN1(N29), .DIN2(n28), .Q(N42) );
+  ib1s1 U14 ( .DIN(N13), .Q(n7) );
+  ib1s1 U15 ( .DIN(N12), .Q(n13) );
+  ib1s1 U16 ( .DIN(N11), .Q(n21) );
+  ib1s1 U17 ( .DIN(N10), .Q(n42) );
+  or2s1 U18 ( .DIN1(n3), .DIN2(n27), .Q(n5) );
+  xnr2s1 U19 ( .DIN1(\add_21/carry[5] ), .DIN2(n_out_val[5]), .Q(n3) );
+  hadd1s1 U20 ( .AIN(n_out_val[1]), .BIN(n_out_val[0]), .OUTC(
+        \add_21/carry[2] ), .OUTS(N10) );
+  hadd1s1 U21 ( .AIN(n_out_val[2]), .BIN(\add_21/carry[2] ), .OUTC(
+        \add_21/carry[3] ), .OUTS(N11) );
+  hadd1s1 U22 ( .AIN(n_out_val[3]), .BIN(\add_21/carry[3] ), .OUTC(
+        \add_21/carry[4] ), .OUTS(N12) );
+  hadd1s1 U23 ( .AIN(n_out_val[4]), .BIN(\add_21/carry[4] ), .OUTC(
+        \add_21/carry[5] ), .OUTS(N13) );
+  or4s1 U24 ( .DIN1(modulus_m[5]), .DIN2(modulus_m[4]), .DIN3(modulus_m[2]), 
+        .DIN4(n29), .Q(n25) );
+  and2s1 U25 ( .DIN1(N33), .DIN2(n28), .Q(N46) );
+  and2s1 U26 ( .DIN1(n2), .DIN2(n28), .Q(N41) );
+  hadd1s1 U29 ( .AIN(modulus_m[2]), .BIN(\add_32/carry[2] ), .OUTC(
+        \add_32/carry[3] ), .OUTS(N30) );
+  hadd1s1 U30 ( .AIN(modulus_m[3]), .BIN(\add_32/carry[3] ), .OUTC(
+        \add_32/carry[4] ), .OUTS(N31) );
+  hadd1s1 U31 ( .AIN(modulus_m[1]), .BIN(modulus_m[0]), .OUTC(
+        \add_32/carry[2] ), .OUTS(N29) );
+  hadd1s1 U32 ( .AIN(modulus_m[4]), .BIN(\add_32/carry[4] ), .OUTC(
+        \add_32/carry[5] ), .OUTS(N32) );
+  oai22s1 U33 ( .DIN1(n1), .DIN2(n23), .DIN3(n15), .DIN4(n22), .Q(n35) );
+  oai22s1 U34 ( .DIN1(n22), .DIN2(n20), .DIN3(n23), .DIN4(n12), .Q(n30) );
+  oai22s1 U35 ( .DIN1(n22), .DIN2(n19), .DIN3(n23), .DIN4(n11), .Q(n31) );
+  oai22s1 U36 ( .DIN1(n22), .DIN2(n18), .DIN3(n23), .DIN4(n10), .Q(n32) );
+  oai22s1 U37 ( .DIN1(n22), .DIN2(n17), .DIN3(n23), .DIN4(n9), .Q(n33) );
+  oai22s1 U38 ( .DIN1(n22), .DIN2(n16), .DIN3(n23), .DIN4(n8), .Q(n34) );
+  nnd2s1 U39 ( .DIN1(n23), .DIN2(n4), .Q(n22) );
+  oai22s2 U40 ( .DIN1(n8), .DIN2(n26), .DIN3(n27), .DIN4(n7), .Q(n37) );
+  oai22s2 U41 ( .DIN1(n9), .DIN2(n26), .DIN3(n27), .DIN4(n13), .Q(n38) );
+  oai22s2 U42 ( .DIN1(n10), .DIN2(n26), .DIN3(n27), .DIN4(n21), .Q(n39) );
+  oai22s2 U43 ( .DIN1(n11), .DIN2(n26), .DIN3(n27), .DIN4(n42), .Q(n40) );
+  oai22s2 U44 ( .DIN1(n12), .DIN2(n26), .DIN3(n27), .DIN4(n_out_val[0]), .Q(
+        n41) );
+  oai21s2 U45 ( .DIN1(n1), .DIN2(n26), .DIN3(n5), .Q(n36) );
+  xor2s1 U46 ( .DIN1(\add_32/carry[5] ), .DIN2(modulus_m[5]), .Q(N33) );
+endmodule
+
+
+module LFSR_3 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n15, n16, n17, n18, n19, n20, n21,
+         n22, n23;
+
+  dffles2 \LFSR_reg_reg[2]  ( .DIN(n4), .EB(n15), .CLK(clock), .Q(out_val[1])
+         );
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n22) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n16) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n7), .EB(n15), .CLK(clock), .Q(out_val[4]), 
+        .QN(n23) );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n5), .EB(n15), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n15), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n15), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n6), .EB(n15), .CLK(clock), .Q(out_val[3])
+         );
+  aoi22s1 U2 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n21) );
+  ib1s1 U3 ( .DIN(n3), .Q(n1) );
+  ib1s1 U5 ( .DIN(init), .Q(n3) );
+  ib1s1 U6 ( .DIN(enable), .Q(n15) );
+  oai21s2 U7 ( .DIN1(n1), .DIN2(n17), .DIN3(n16), .Q(N4) );
+  xor2s1 U8 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n17) );
+  oai21s2 U9 ( .DIN1(n1), .DIN2(n23), .DIN3(n22), .Q(N9) );
+  ib1s1 U11 ( .DIN(n21), .Q(n7) );
+  ib1s1 U12 ( .DIN(n20), .Q(n6) );
+  ib1s1 U13 ( .DIN(n18), .Q(n4) );
+  aoi22s1 U14 ( .DIN1(out_val[0]), .DIN2(n3), .DIN3(init_val[1]), .DIN4(n1), 
+        .Q(n18) );
+  ib1s1 U15 ( .DIN(n19), .Q(n5) );
+  aoi22s1 U16 ( .DIN1(out_val[1]), .DIN2(n3), .DIN3(init_val[2]), .DIN4(n1), 
+        .Q(n19) );
+  aoi22s2 U17 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n20) );
+endmodule
+
+
+module SNG_3 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18, n19;
+  wire   [5:0] random_number;
+
+  LFSR_3 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  ib1s1 U3 ( .DIN(n8), .Q(n19) );
+  aoi222s2 U4 ( .DIN1(random_number[2]), .DIN2(n11), .DIN3(n5), .DIN4(
+        random_number[0]), .DIN5(random_number[1]), .DIN6(n12), .Q(n6) );
+  or2s1 U5 ( .DIN1(n15), .DIN2(in_val[4]), .Q(n1) );
+  or2s1 U6 ( .DIN1(n16), .DIN2(in_val[3]), .Q(n2) );
+  nnd3s2 U7 ( .DIN1(n7), .DIN2(n2), .DIN3(n1), .Q(n8) );
+  nnd3s2 U8 ( .DIN1(n3), .DIN2(n4), .DIN3(n18), .Q(n7) );
+  or2s1 U9 ( .DIN1(n13), .DIN2(random_number[3]), .Q(n3) );
+  hi1s1 U10 ( .DIN(random_number[3]), .Q(n16) );
+  ib1s1 U11 ( .DIN(random_number[4]), .Q(n15) );
+  or2s1 U12 ( .DIN1(n11), .DIN2(random_number[2]), .Q(n4) );
+  ib1s1 U13 ( .DIN(random_number[1]), .Q(n17) );
+  i1s1 U14 ( .DIN(in_val[2]), .Q(n11) );
+  hi1s1 U15 ( .DIN(in_val[5]), .Q(n14) );
+  hi1s1 U16 ( .DIN(in_val[3]), .Q(n13) );
+  i1s2 U17 ( .DIN(n6), .Q(n18) );
+  aoi21s2 U18 ( .DIN1(in_val[1]), .DIN2(n17), .DIN3(in_val[0]), .Q(n5) );
+  i1s1 U19 ( .DIN(in_val[1]), .Q(n12) );
+  oai22s3 U20 ( .DIN1(random_number[5]), .DIN2(n14), .DIN3(n10), .DIN4(n9), 
+        .Q(out_val) );
+  aoi21s3 U21 ( .DIN1(in_val[4]), .DIN2(n15), .DIN3(n19), .Q(n9) );
+  and2s1 U22 ( .DIN1(n14), .DIN2(random_number[5]), .Q(n10) );
+endmodule
+
+
+module ESL_bioilar_divider_3 ( clock, reset, enable, a_x, a_y, out_bin );
+  output [5:0] out_bin;
+  input clock, reset, enable, a_x, a_y;
+  wire   SC_estimation, \a_y_bin[5] , n1, n3, n4, n5, n6, n7, n24, n25, n26,
+         n27, n28, n29, n2, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17,
+         n18, n19, n20, n21, n22, n23, n30, n31, n32, n33, n34, n35, n36, n37,
+         n38, n39, n40, n41, n42, n43, n44, n45, n46, n47, n48, n49, n50, n51,
+         n52, n53, n54, n55, n56, n57, n58, n59, n60, n61, n62, n63, n64, n65,
+         n66, n67, n68, n69, n70, n71, n72, n73, n74;
+  wire   [5:0] estimation_tmp;
+  wire   SYNOPSYS_UNCONNECTED__0, SYNOPSYS_UNCONNECTED__1, 
+        SYNOPSYS_UNCONNECTED__2, SYNOPSYS_UNCONNECTED__3, 
+        SYNOPSYS_UNCONNECTED__4;
+
+  dffs2 \estimation_tmp_reg[0]  ( .DIN(n29), .CLK(clock), .Q(n42), .QN(n7) );
+  dffs2 \estimation_tmp_reg[4]  ( .DIN(n27), .CLK(clock), .Q(estimation_tmp[4]), .QN(n3) );
+  dffs2 \estimation_tmp_reg[3]  ( .DIN(n26), .CLK(clock), .Q(estimation_tmp[3]), .QN(n4) );
+  dffs2 \estimation_tmp_reg[1]  ( .DIN(n24), .CLK(clock), .Q(estimation_tmp[1]), .QN(n6) );
+  P2B_3 P2B_inst ( .clock(clock), .reset(n33), .enable(enable), .in_val(a_y), 
+        .out_val({\a_y_bin[5] , SYNOPSYS_UNCONNECTED__0, 
+        SYNOPSYS_UNCONNECTED__1, SYNOPSYS_UNCONNECTED__2, 
+        SYNOPSYS_UNCONNECTED__3, SYNOPSYS_UNCONNECTED__4}) );
+  SNG_3 SNG_inst ( .clock(clock), .reset(n33), .enable(enable), .in_val({
+        estimation_tmp[5:1], n42}), .out_val(SC_estimation) );
+  dffs1 \estimation_tmp_reg[2]  ( .DIN(n25), .CLK(clock), .Q(estimation_tmp[2]), .QN(n5) );
+  dffs2 \estimation_tmp_reg[5]  ( .DIN(n28), .CLK(clock), .Q(estimation_tmp[5]), .QN(n1) );
+  i1s3 U3 ( .DIN(n47), .Q(n46) );
+  and2s2 U4 ( .DIN1(n63), .DIN2(n21), .Q(n54) );
+  nor2s2 U5 ( .DIN1(n62), .DIN2(n69), .Q(n23) );
+  xor2s1 U6 ( .DIN1(n3), .DIN2(\a_y_bin[5] ), .Q(out_bin[4]) );
+  xor2s1 U7 ( .DIN1(n4), .DIN2(\a_y_bin[5] ), .Q(out_bin[3]) );
+  ib1s1 U8 ( .DIN(n46), .Q(n22) );
+  and2s3 U9 ( .DIN1(n48), .DIN2(n22), .Q(n2) );
+  and2s2 U10 ( .DIN1(n63), .DIN2(n62), .Q(n8) );
+  nnd2s1 U11 ( .DIN1(n48), .DIN2(n22), .Q(n68) );
+  nnd2s1 U12 ( .DIN1(estimation_tmp[2]), .DIN2(n21), .Q(n60) );
+  i1s3 U13 ( .DIN(estimation_tmp[2]), .Q(n74) );
+  nnd2s2 U14 ( .DIN1(n15), .DIN2(n46), .Q(n14) );
+  ib1s1 U15 ( .DIN(n1), .Q(n32) );
+  xor2s1 U16 ( .DIN1(n1), .DIN2(\a_y_bin[5] ), .Q(out_bin[5]) );
+  nnd2s1 U17 ( .DIN1(n19), .DIN2(n2), .Q(n52) );
+  i1s1 U18 ( .DIN(n2), .Q(n9) );
+  nnd2s3 U19 ( .DIN1(n73), .DIN2(n67), .Q(n64) );
+  nnd2s3 U20 ( .DIN1(n2), .DIN2(n61), .Q(n73) );
+  oai222s2 U21 ( .DIN1(n69), .DIN2(n58), .DIN3(n57), .DIN4(n9), .DIN5(n4), 
+        .DIN6(n72), .Q(n26) );
+  hi1s1 U22 ( .DIN(a_x), .Q(n10) );
+  i1s1 U23 ( .DIN(n10), .Q(n11) );
+  nnd2s3 U24 ( .DIN1(n63), .DIN2(n62), .Q(n67) );
+  i1s4 U25 ( .DIN(n69), .Q(n63) );
+  oai22s3 U26 ( .DIN1(n45), .DIN2(a_x), .DIN3(n44), .DIN4(n43), .Q(n47) );
+  or2s1 U27 ( .DIN1(n56), .DIN2(n9), .Q(n12) );
+  or2s1 U28 ( .DIN1(n5), .DIN2(n72), .Q(n13) );
+  nnd3s2 U29 ( .DIN1(n12), .DIN2(n13), .DIN3(n55), .Q(n25) );
+  or2s3 U30 ( .DIN1(n14), .DIN2(n37), .Q(n69) );
+  nor2s1 U31 ( .DIN1(n38), .DIN2(n33), .Q(n15) );
+  nor2s3 U32 ( .DIN1(n37), .DIN2(n16), .Q(n48) );
+  ib1s1 U33 ( .DIN(n15), .Q(n16) );
+  ib1s1 U34 ( .DIN(n34), .Q(n33) );
+  nnd3s2 U35 ( .DIN1(n17), .DIN2(n18), .DIN3(n71), .Q(n28) );
+  mxi21s1 U36 ( .DIN1(n2), .DIN2(n63), .SIN(n50), .Q(n51) );
+  nnd3s1 U37 ( .DIN1(n3), .DIN2(n59), .DIN3(n2), .Q(n66) );
+  nnd2s2 U38 ( .DIN1(n20), .DIN2(n52), .Q(n53) );
+  or2s1 U39 ( .DIN1(n73), .DIN2(n1), .Q(n17) );
+  or2s1 U40 ( .DIN1(n1), .DIN2(n72), .Q(n18) );
+  or2s1 U41 ( .DIN1(estimation_tmp[1]), .DIN2(n42), .Q(n19) );
+  or2s1 U42 ( .DIN1(n21), .DIN2(n69), .Q(n20) );
+  hi1s1 U43 ( .DIN(n61), .Q(n59) );
+  oai21s1 U44 ( .DIN1(n2), .DIN2(n63), .DIN3(n7), .Q(n49) );
+  nnd3s1 U45 ( .DIN1(n6), .DIN2(n74), .DIN3(n7), .Q(n56) );
+  ib1s1 U46 ( .DIN(reset), .Q(n34) );
+  ib1s1 U47 ( .DIN(n56), .Q(n39) );
+  ib1s1 U48 ( .DIN(enable), .Q(n38) );
+  oai21s2 U49 ( .DIN1(n6), .DIN2(n72), .DIN3(n51), .Q(n24) );
+  or2s1 U50 ( .DIN1(n60), .DIN2(n4), .Q(n62) );
+  and2s1 U51 ( .DIN1(estimation_tmp[1]), .DIN2(n42), .Q(n21) );
+  xor2s1 U52 ( .DIN1(n7), .DIN2(\a_y_bin[5] ), .Q(out_bin[0]) );
+  ib1s1 U53 ( .DIN(n5), .Q(n40) );
+  ib1s1 U54 ( .DIN(n6), .Q(n41) );
+  nor3s1 U55 ( .DIN1(n61), .DIN2(estimation_tmp[5]), .DIN3(estimation_tmp[4]), 
+        .Q(n45) );
+  xor3s3 U56 ( .DIN1(a_y), .DIN2(a_x), .DIN3(SC_estimation), .Q(n37) );
+  xor2s1 U57 ( .DIN1(estimation_tmp[1]), .DIN2(n42), .Q(n50) );
+  aoi21s1 U58 ( .DIN1(estimation_tmp[3]), .DIN2(n56), .DIN3(n59), .Q(n57) );
+  xor2s1 U59 ( .DIN1(n60), .DIN2(estimation_tmp[3]), .Q(n58) );
+  nnd3s1 U60 ( .DIN1(estimation_tmp[4]), .DIN2(estimation_tmp[3]), .DIN3(
+        estimation_tmp[5]), .Q(n43) );
+  nnd2s1 U61 ( .DIN1(n39), .DIN2(n4), .Q(n61) );
+  aoi123s2 U62 ( .DIN4(n23), .DIN5(estimation_tmp[4]), .DIN6(n1), .DIN2(n8), 
+        .DIN3(n32), .DIN1(n70), .Q(n71) );
+  and3s2 U63 ( .DIN1(n31), .DIN2(n30), .DIN3(n32), .Q(n70) );
+  nnd2s1 U64 ( .DIN1(n69), .DIN2(n3), .Q(n30) );
+  nnd2s1 U65 ( .DIN1(estimation_tmp[4]), .DIN2(n68), .Q(n31) );
+  xnr3s1 U66 ( .DIN1(n11), .DIN2(a_y), .DIN3(SC_estimation), .Q(n35) );
+  nnd2s2 U67 ( .DIN1(enable), .DIN2(n35), .Q(n36) );
+  nnd2s2 U68 ( .DIN1(n34), .DIN2(n36), .Q(n72) );
+  nnd3s2 U69 ( .DIN1(n42), .DIN2(n41), .DIN3(n40), .Q(n44) );
+  oai21s2 U70 ( .DIN1(n7), .DIN2(n72), .DIN3(n49), .Q(n29) );
+  mxi21s2 U71 ( .DIN1(n54), .DIN2(n53), .SIN(estimation_tmp[2]), .Q(n55) );
+  mxi21s2 U72 ( .DIN1(n23), .DIN2(n64), .SIN(estimation_tmp[4]), .Q(n65) );
+  oai211s2 U73 ( .DIN1(n3), .DIN2(n72), .DIN3(n66), .DIN4(n65), .Q(n27) );
+  xor2s2 U74 ( .DIN1(n6), .DIN2(\a_y_bin[5] ), .Q(out_bin[1]) );
+  xor2s2 U75 ( .DIN1(n74), .DIN2(\a_y_bin[5] ), .Q(out_bin[2]) );
+endmodule
+
+
+module processing_element_3 ( clock, reset, enable, input_val_x, input_val_y, 
+        init_val, weight_val, output_val );
+  input [5:0] init_val;
+  input [5:0] weight_val;
+  output [5:0] output_val;
+  input clock, reset, enable, input_val_x, input_val_y;
+  wire   weight_x, mult_x, mult_y, half_sc, half_cnt, init_val_x, output_val_x,
+         output_val_y;
+
+  SNG_15 SNG_weight_inst ( .clock(clock), .reset(reset), .enable(enable), 
+        .in_val(weight_val), .out_val(weight_x) );
+  ESL_multiplier_3 multiplier_inst ( .a_x(weight_x), .a_y(1'b1), .b_x(
+        input_val_x), .b_y(input_val_y), .o_x(mult_x), .o_y(mult_y) );
+  SNG_14 SNG_half_inst ( .clock(clock), .reset(reset), .enable(enable), 
+        .in_val({1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}), .out_val(half_sc) );
+  one_counter_3 one_counter_inst ( .clock(clock), .reset(reset), .enable(
+        enable), .count(half_cnt) );
+  SNG_13 SNG_init_inst ( .clock(clock), .reset(reset), .enable(enable), 
+        .in_val(init_val), .out_val(init_val_x) );
+  ESL_adder_3 adder_inst ( .half_sc(half_sc), .half_cnt(half_cnt), .a_x(mult_x), .a_y(mult_y), .b_x(init_val_x), .b_y(1'b1), .o_x(output_val_x), .o_y(
+        output_val_y) );
+  ESL_bioilar_divider_3 P2B_inst ( .clock(clock), .reset(reset), .enable(
+        enable), .a_x(output_val_x), .a_y(output_val_y), .out_bin(output_val)
+         );
+endmodule
+
+
+module LFSR_12 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n10, n11, n12, n13, n14, n15, n16;
+
+  dffles2 \LFSR_reg_reg[3]  ( .DIN(n11), .EB(n7), .CLK(clock), .Q(out_val[2])
+         );
+  dffles2 \LFSR_reg_reg[4]  ( .DIN(n12), .EB(n7), .CLK(clock), .Q(out_val[3]), 
+        .QN(n1) );
+  dffles2 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n7), .CLK(clock), .Q(out_val[5])
+         );
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n5), .Q(n15) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n13), .EB(n7), .CLK(clock), .Q(out_val[4]), 
+        .QN(n16) );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n10), .EB(n7), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n7), .CLK(clock), .Q(out_val[0])
+         );
+  ib1s1 U2 ( .DIN(n1), .Q(n3) );
+  ib1s1 U3 ( .DIN(n6), .Q(n5) );
+  hi1s1 U5 ( .DIN(enable), .Q(n7) );
+  ib1s1 U6 ( .DIN(init), .Q(n6) );
+  oai21s1 U7 ( .DIN1(n5), .DIN2(n16), .DIN3(n15), .Q(N9) );
+  ib1s1 U8 ( .DIN(n14), .Q(n13) );
+  aoi22s1 U9 ( .DIN1(n3), .DIN2(n6), .DIN3(init_val[4]), .DIN4(n5), .Q(n14) );
+  dsmxc31s1 U10 ( .DIN1(n4), .DIN2(init_val[0]), .CLK(n5), .Q(N4) );
+  xnr2s1 U11 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n4) );
+  dsmxc31s2 U12 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n5), .Q(n10) );
+  dsmxc31s1 U13 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n5), .Q(n11) );
+  dsmxc31s1 U14 ( .DIN1(out_val[2]), .DIN2(init_val[3]), .CLK(n5), .Q(n12) );
+endmodule
+
+
+module SNG_12 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   net6285, net6286, net6287, net6291, net6292, net6297, net6290,
+         net6288, n1, n2, n3, n4, n5, n6;
+  wire   [5:0] random_number;
+
+  LFSR_12 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  aoi21s3 U3 ( .DIN1(random_number[1]), .DIN2(n4), .DIN3(n5), .Q(n1) );
+  i1s3 U4 ( .DIN(random_number[3]), .Q(net6290) );
+  ib1s1 U5 ( .DIN(in_val[1]), .Q(n4) );
+  aoi222s1 U6 ( .DIN1(n1), .DIN2(n2), .DIN3(n3), .DIN4(in_val[2]), .DIN5(
+        in_val[3]), .DIN6(net6290), .Q(net6288) );
+  i1s3 U7 ( .DIN(random_number[2]), .Q(n3) );
+  nor2s2 U8 ( .DIN1(in_val[2]), .DIN2(n3), .Q(n5) );
+  oai211s2 U9 ( .DIN1(random_number[1]), .DIN2(n4), .DIN3(net6297), .DIN4(
+        random_number[0]), .Q(n2) );
+  oai322s3 U10 ( .DIN1(net6285), .DIN2(random_number[4]), .DIN3(net6286), 
+        .DIN4(random_number[5]), .DIN5(net6287), .DIN6(net6288), .DIN7(n6), 
+        .Q(out_val) );
+  ib1s1 U11 ( .DIN(in_val[0]), .Q(net6297) );
+  oai221s1 U12 ( .DIN1(in_val[3]), .DIN2(net6290), .DIN3(in_val[4]), .DIN4(
+        net6291), .DIN5(net6292), .Q(n6) );
+  ib1s1 U13 ( .DIN(random_number[4]), .Q(net6291) );
+  ib1s1 U14 ( .DIN(net6292), .Q(net6285) );
+  ib1s1 U15 ( .DIN(in_val[4]), .Q(net6286) );
+  ib1s1 U16 ( .DIN(in_val[5]), .Q(net6287) );
+  nnd2s2 U17 ( .DIN1(random_number[5]), .DIN2(net6287), .Q(net6292) );
+endmodule
+
+
+module ESL_multiplier_2 ( a_x, a_y, b_x, b_y, o_x, o_y );
+  input a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+
+
+  xnr2s1 U1 ( .DIN1(b_y), .DIN2(a_y), .Q(o_y) );
+  xnr2s2 U2 ( .DIN1(b_x), .DIN2(a_x), .Q(o_x) );
+endmodule
+
+
+module LFSR_11 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n13, n14, n15, n16;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n3), .Q(n15) );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n5), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n12), .EB(n5), .CLK(clock), .Q(out_val[4]), 
+        .QN(n16) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n5), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n11), .EB(n5), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n6), .EB(n5), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n7), .EB(n5), .CLK(clock), .Q(out_val[2])
+         );
+  aoi22s1 U2 ( .DIN1(out_val[2]), .DIN2(n4), .DIN3(init_val[3]), .DIN4(n3), 
+        .Q(n13) );
+  ib1s1 U3 ( .DIN(n4), .Q(n3) );
+  hi1s1 U5 ( .DIN(enable), .Q(n5) );
+  ib1s1 U6 ( .DIN(init), .Q(n4) );
+  oai21s2 U7 ( .DIN1(n3), .DIN2(n16), .DIN3(n15), .Q(N9) );
+  dsmxc31s1 U8 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n3), .Q(n7) );
+  dsmxc31s1 U9 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n3), .Q(n6) );
+  ib1s1 U10 ( .DIN(n13), .Q(n11) );
+  dsmxc31s2 U11 ( .DIN1(n1), .DIN2(init_val[0]), .CLK(n3), .Q(N4) );
+  xnr2s1 U12 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n1) );
+  ib1s1 U13 ( .DIN(n14), .Q(n12) );
+  aoi22s2 U14 ( .DIN1(out_val[3]), .DIN2(n4), .DIN3(init_val[4]), .DIN4(n3), 
+        .Q(n14) );
+endmodule
+
+
+module SNG_11 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18, n19, n20;
+  wire   [5:0] random_number;
+
+  LFSR_11 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  ib1s1 U3 ( .DIN(random_number[1]), .Q(n8) );
+  oai21s2 U4 ( .DIN1(random_number[5]), .DIN2(n20), .DIN3(n19), .Q(out_val) );
+  or2s1 U5 ( .DIN1(random_number[2]), .DIN2(n11), .Q(n1) );
+  or2s1 U6 ( .DIN1(random_number[3]), .DIN2(n10), .Q(n2) );
+  nnd3s1 U7 ( .DIN1(n9), .DIN2(n2), .DIN3(n1), .Q(n12) );
+  or2s1 U8 ( .DIN1(in_val[3]), .DIN2(n14), .Q(n3) );
+  or2s1 U9 ( .DIN1(in_val[4]), .DIN2(n13), .Q(n4) );
+  nnd3s1 U10 ( .DIN1(n3), .DIN2(n4), .DIN3(n12), .Q(n15) );
+  hi1s1 U11 ( .DIN(random_number[3]), .Q(n14) );
+  ib1s1 U12 ( .DIN(in_val[3]), .Q(n10) );
+  ib1s1 U13 ( .DIN(in_val[2]), .Q(n11) );
+  ib1s1 U14 ( .DIN(in_val[5]), .Q(n20) );
+  ib1s1 U15 ( .DIN(in_val[4]), .Q(n16) );
+  ib1s1 U16 ( .DIN(random_number[4]), .Q(n13) );
+  ib1s1 U17 ( .DIN(in_val[1]), .Q(n5) );
+  ib1s1 U18 ( .DIN(random_number[2]), .Q(n6) );
+  ib1s1 U19 ( .DIN(random_number[5]), .Q(n18) );
+  oai21s2 U20 ( .DIN1(random_number[1]), .DIN2(n5), .DIN3(random_number[0]), 
+        .Q(n7) );
+  oai222s1 U21 ( .DIN1(in_val[1]), .DIN2(n8), .DIN3(in_val[0]), .DIN4(n7), 
+        .DIN5(in_val[2]), .DIN6(n6), .Q(n9) );
+  oai21s2 U22 ( .DIN1(random_number[4]), .DIN2(n16), .DIN3(n15), .Q(n17) );
+  oai21s2 U23 ( .DIN1(in_val[5]), .DIN2(n18), .DIN3(n17), .Q(n19) );
+endmodule
+
+
+module one_counter_2 ( clock, reset, enable, count );
+  input clock, reset, enable;
+  output count;
+  wire   n3, n4;
+
+  dffs1 count_reg ( .DIN(n3), .CLK(clock), .Q(count) );
+  nor2s1 U3 ( .DIN1(reset), .DIN2(n4), .Q(n3) );
+  xnr2s1 U4 ( .DIN1(enable), .DIN2(count), .Q(n4) );
+endmodule
+
+
+module LFSR_10 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n14, n15, n16, n17, n18;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n17) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n12) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n11), .EB(n4), .CLK(clock), .Q(out_val[4]), 
+        .QN(n18) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n4), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n6), .EB(n4), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n4), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n7), .EB(n4), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n5), .EB(n4), .CLK(clock), .Q(out_val[1])
+         );
+  ib1s1 U2 ( .DIN(n3), .Q(n1) );
+  hi1s1 U3 ( .DIN(enable), .Q(n4) );
+  ib1s1 U5 ( .DIN(init), .Q(n3) );
+  oai21s2 U6 ( .DIN1(n1), .DIN2(n14), .DIN3(n12), .Q(N4) );
+  xor2s1 U7 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n14) );
+  oai21s2 U8 ( .DIN1(n1), .DIN2(n18), .DIN3(n17), .Q(N9) );
+  ib1s1 U9 ( .DIN(n16), .Q(n11) );
+  aoi22s2 U11 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n16) );
+  dsmxc31s2 U12 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n1), .Q(n6) );
+  dsmxc31s2 U13 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n1), .Q(n5) );
+  ib1s1 U14 ( .DIN(n15), .Q(n7) );
+  aoi22s2 U15 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n15) );
+endmodule
+
+
+module SNG_10 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18, n19;
+  wire   [5:0] random_number;
+
+  LFSR_10 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  aoi22s2 U3 ( .DIN1(random_number[2]), .DIN2(n13), .DIN3(random_number[1]), 
+        .DIN4(n4), .Q(n7) );
+  ib1s1 U4 ( .DIN(n19), .Q(n1) );
+  ib1s1 U5 ( .DIN(random_number[4]), .Q(n8) );
+  ib1s1 U6 ( .DIN(in_val[2]), .Q(n13) );
+  ib1s1 U7 ( .DIN(in_val[4]), .Q(n9) );
+  ib1s1 U8 ( .DIN(in_val[3]), .Q(n10) );
+  ib1s1 U9 ( .DIN(in_val[5]), .Q(n11) );
+  aoi22s2 U10 ( .DIN1(n7), .DIN2(n6), .DIN3(in_val[3]), .DIN4(n5), .Q(n19) );
+  oai21s2 U11 ( .DIN1(random_number[2]), .DIN2(n13), .DIN3(n12), .Q(n17) );
+  nnd3s2 U12 ( .DIN1(n1), .DIN2(n15), .DIN3(n16), .Q(n2) );
+  nnd2s2 U13 ( .DIN1(n2), .DIN2(n18), .Q(out_val) );
+  ib1s1 U14 ( .DIN(random_number[5]), .Q(n14) );
+  ib1s1 U15 ( .DIN(random_number[3]), .Q(n5) );
+  ib1s1 U16 ( .DIN(in_val[0]), .Q(n3) );
+  ib1s2 U17 ( .DIN(in_val[1]), .Q(n4) );
+  oai211s2 U18 ( .DIN1(random_number[1]), .DIN2(n4), .DIN3(random_number[0]), 
+        .DIN4(n3), .Q(n6) );
+  nnd2s2 U19 ( .DIN1(in_val[4]), .DIN2(n8), .Q(n12) );
+  aoai122s3 U20 ( .DIN2(random_number[3]), .DIN3(n10), .DIN4(random_number[4]), 
+        .DIN5(n9), .DIN1(n12), .Q(n15) );
+  nnd2s2 U21 ( .DIN1(random_number[5]), .DIN2(n11), .Q(n16) );
+  aoi23s2 U22 ( .DIN3(n17), .DIN4(n16), .DIN5(n15), .DIN1(in_val[5]), .DIN2(
+        n14), .Q(n18) );
+endmodule
+
+
+module ESL_adder_2 ( half_sc, half_cnt, a_x, a_y, b_x, b_y, o_x, o_y );
+  input half_sc, half_cnt, a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+  wire   n1, n2, n3, n4, n5, n6;
+
+  nnd2s3 U1 ( .DIN1(n5), .DIN2(half_cnt), .Q(n3) );
+  xor3s3 U2 ( .DIN1(a_y), .DIN2(half_sc), .DIN3(b_y), .Q(o_y) );
+  nnd2s2 U3 ( .DIN1(n6), .DIN2(n1), .Q(n2) );
+  nnd2s3 U4 ( .DIN1(n3), .DIN2(n2), .Q(n4) );
+  hi1s1 U5 ( .DIN(half_cnt), .Q(n1) );
+  ib1s6 U6 ( .DIN(n4), .Q(o_x) );
+  xor2s1 U7 ( .DIN1(b_x), .DIN2(a_y), .Q(n6) );
+  xor2s2 U8 ( .DIN1(a_x), .DIN2(b_y), .Q(n5) );
+endmodule
+
+
+module P2B_2 ( clock, reset, enable, in_val, out_val );
+  output [5:0] out_val;
+  input clock, reset, enable, in_val;
+  wire   N10, N11, N12, N13, N29, N30, N31, N32, N33, N40, N41, N42, N43, N44,
+         N45, N46, \add_32/carry[5] , \add_32/carry[4] , \add_32/carry[3] ,
+         \add_32/carry[2] , \add_21/carry[5] , \add_21/carry[4] ,
+         \add_21/carry[3] , \add_21/carry[2] , n2, n3, n4, n5, n6, n7, n13,
+         n21, n42, n43, n44, n45, n46, n47, n48, n49, n50, n51, n52, n53, n54,
+         n55, n56, n57, n58, n59, n60, n61, n62, n63, n64, n65, n66, n67, n68,
+         n69, n70, n71, n72, n73, n74;
+  wire   [5:0] n_out_val;
+  wire   [5:0] modulus_m;
+
+  nnd3s2 U17 ( .DIN1(n56), .DIN2(n4), .DIN3(n58), .Q(n57) );
+  nnd3s2 U27 ( .DIN1(modulus_m[0]), .DIN2(n68), .DIN3(modulus_m[3]), .Q(n54)
+         );
+  nnd2s2 U28 ( .DIN1(n4), .DIN2(n59), .Q(N40) );
+  lclks1 \modulus_m_reg[1]  ( .CLK(N40), .DIN(N42), .Q(modulus_m[1]), .QN(n68)
+         );
+  lclks1 \modulus_m_reg[5]  ( .CLK(N40), .DIN(N46), .Q(modulus_m[5]) );
+  lclks1 \modulus_m_reg[4]  ( .CLK(N40), .DIN(N45), .Q(modulus_m[4]) );
+  lclks1 \modulus_m_reg[3]  ( .CLK(N40), .DIN(N44), .Q(modulus_m[3]) );
+  lclks1 \modulus_m_reg[2]  ( .CLK(N40), .DIN(N43), .Q(modulus_m[2]) );
+  lclks1 \modulus_m_reg[0]  ( .CLK(N40), .DIN(N41), .Q(modulus_m[0]), .QN(n2)
+         );
+  dffs1 \out_val_reg[4]  ( .DIN(n49), .CLK(clock), .Q(out_val[4]), .QN(n66) );
+  dffs1 \out_val_reg[3]  ( .DIN(n50), .CLK(clock), .Q(out_val[3]), .QN(n65) );
+  dffs1 \out_val_reg[2]  ( .DIN(n51), .CLK(clock), .Q(out_val[2]), .QN(n64) );
+  dffs1 \out_val_reg[1]  ( .DIN(n52), .CLK(clock), .Q(out_val[1]), .QN(n63) );
+  dffs1 \out_val_reg[0]  ( .DIN(n53), .CLK(clock), .Q(out_val[0]), .QN(n62) );
+  dffs1 \n_out_val_reg[5]  ( .DIN(n47), .CLK(clock), .QN(n74) );
+  dffs1 \n_out_val_reg[1]  ( .DIN(n43), .CLK(clock), .Q(n_out_val[1]), .QN(n70) );
+  dffs1 \n_out_val_reg[2]  ( .DIN(n44), .CLK(clock), .Q(n_out_val[2]), .QN(n71) );
+  dffs1 \n_out_val_reg[3]  ( .DIN(n45), .CLK(clock), .Q(n_out_val[3]), .QN(n72) );
+  dffs1 \n_out_val_reg[4]  ( .DIN(n46), .CLK(clock), .Q(n_out_val[4]), .QN(n73) );
+  dffs1 \n_out_val_reg[0]  ( .DIN(n42), .CLK(clock), .Q(n_out_val[0]), .QN(n69) );
+  dffs1 \out_val_reg[5]  ( .DIN(n48), .CLK(clock), .Q(out_val[5]), .QN(n67) );
+  nnd2s2 U3 ( .DIN1(in_val), .DIN2(n55), .Q(n56) );
+  nor2s1 U4 ( .DIN1(n59), .DIN2(n5), .Q(n55) );
+  nnd2s2 U5 ( .DIN1(enable), .DIN2(n4), .Q(n59) );
+  ib1s1 U6 ( .DIN(reset), .Q(n4) );
+  nnd2s1 U7 ( .DIN1(n4), .DIN2(n60), .Q(n61) );
+  or2s1 U8 ( .DIN1(n59), .DIN2(n58), .Q(n60) );
+  ib1s1 U9 ( .DIN(n58), .Q(n5) );
+  xor2s1 U10 ( .DIN1(\add_21/carry[5] ), .DIN2(n74), .Q(n3) );
+  ib1s1 U11 ( .DIN(N13), .Q(n6) );
+  ib1s1 U12 ( .DIN(N12), .Q(n7) );
+  ib1s1 U13 ( .DIN(N11), .Q(n13) );
+  ib1s1 U14 ( .DIN(N10), .Q(n21) );
+  oai22s2 U15 ( .DIN1(n61), .DIN2(n62), .DIN3(n60), .DIN4(n69), .Q(n53) );
+  oai22s1 U16 ( .DIN1(n61), .DIN2(n63), .DIN3(n60), .DIN4(n70), .Q(n52) );
+  oai22s1 U18 ( .DIN1(n61), .DIN2(n64), .DIN3(n60), .DIN4(n71), .Q(n51) );
+  oai22s1 U19 ( .DIN1(n61), .DIN2(n65), .DIN3(n60), .DIN4(n72), .Q(n50) );
+  oai22s1 U20 ( .DIN1(n61), .DIN2(n66), .DIN3(n60), .DIN4(n73), .Q(n49) );
+  oai22s2 U21 ( .DIN1(n61), .DIN2(n67), .DIN3(n60), .DIN4(n74), .Q(n48) );
+  hadd1s1 U22 ( .AIN(n_out_val[1]), .BIN(n_out_val[0]), .OUTC(
+        \add_21/carry[2] ), .OUTS(N10) );
+  hadd1s1 U23 ( .AIN(n_out_val[2]), .BIN(\add_21/carry[2] ), .OUTC(
+        \add_21/carry[3] ), .OUTS(N11) );
+  hadd1s1 U24 ( .AIN(n_out_val[3]), .BIN(\add_21/carry[3] ), .OUTC(
+        \add_21/carry[4] ), .OUTS(N12) );
+  hadd1s1 U25 ( .AIN(n_out_val[4]), .BIN(\add_21/carry[4] ), .OUTC(
+        \add_21/carry[5] ), .OUTS(N13) );
+  or4s1 U26 ( .DIN1(modulus_m[5]), .DIN2(modulus_m[4]), .DIN3(modulus_m[2]), 
+        .DIN4(n54), .Q(n58) );
+  hadd1s1 U29 ( .AIN(modulus_m[2]), .BIN(\add_32/carry[2] ), .OUTC(
+        \add_32/carry[3] ), .OUTS(N30) );
+  hadd1s1 U30 ( .AIN(modulus_m[3]), .BIN(\add_32/carry[3] ), .OUTC(
+        \add_32/carry[4] ), .OUTS(N31) );
+  hadd1s1 U31 ( .AIN(modulus_m[1]), .BIN(modulus_m[0]), .OUTC(
+        \add_32/carry[2] ), .OUTS(N29) );
+  hadd1s1 U32 ( .AIN(modulus_m[4]), .BIN(\add_32/carry[4] ), .OUTC(
+        \add_32/carry[5] ), .OUTS(N32) );
+  and2s1 U33 ( .DIN1(N33), .DIN2(n55), .Q(N46) );
+  and2s1 U34 ( .DIN1(N32), .DIN2(n55), .Q(N45) );
+  and2s1 U35 ( .DIN1(N31), .DIN2(n55), .Q(N44) );
+  and2s1 U36 ( .DIN1(N30), .DIN2(n55), .Q(N43) );
+  and2s1 U37 ( .DIN1(N29), .DIN2(n55), .Q(N42) );
+  and2s1 U38 ( .DIN1(n2), .DIN2(n55), .Q(N41) );
+  oai22s1 U39 ( .DIN1(n74), .DIN2(n57), .DIN3(n56), .DIN4(n3), .Q(n47) );
+  oai22s1 U40 ( .DIN1(n73), .DIN2(n57), .DIN3(n56), .DIN4(n6), .Q(n46) );
+  oai22s1 U41 ( .DIN1(n72), .DIN2(n57), .DIN3(n56), .DIN4(n7), .Q(n45) );
+  oai22s1 U42 ( .DIN1(n71), .DIN2(n57), .DIN3(n56), .DIN4(n13), .Q(n44) );
+  oai22s1 U43 ( .DIN1(n70), .DIN2(n57), .DIN3(n56), .DIN4(n21), .Q(n43) );
+  oai22s1 U44 ( .DIN1(n69), .DIN2(n57), .DIN3(n56), .DIN4(n_out_val[0]), .Q(
+        n42) );
+  xor2s1 U45 ( .DIN1(\add_32/carry[5] ), .DIN2(modulus_m[5]), .Q(N33) );
+endmodule
+
+
+module LFSR_2 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n15, n16, n17, n18, n19, n20, n21,
+         n22, n23;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n22) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n16) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n7), .EB(n15), .CLK(clock), .Q(out_val[4]), 
+        .QN(n23) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n15), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n6), .EB(n15), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n5), .EB(n15), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n15), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n4), .EB(n15), .CLK(clock), .Q(out_val[1])
+         );
+  ib1s1 U2 ( .DIN(n3), .Q(n1) );
+  ib1s1 U3 ( .DIN(init), .Q(n3) );
+  hi1s1 U5 ( .DIN(enable), .Q(n15) );
+  oai21s1 U6 ( .DIN1(n1), .DIN2(n17), .DIN3(n16), .Q(N4) );
+  xor2s1 U7 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n17) );
+  oai21s1 U8 ( .DIN1(n1), .DIN2(n23), .DIN3(n22), .Q(N9) );
+  ib1s1 U9 ( .DIN(n18), .Q(n4) );
+  aoi22s1 U11 ( .DIN1(out_val[0]), .DIN2(n3), .DIN3(init_val[1]), .DIN4(n1), 
+        .Q(n18) );
+  ib1s1 U12 ( .DIN(n20), .Q(n6) );
+  ib1s1 U13 ( .DIN(n19), .Q(n5) );
+  aoi22s1 U14 ( .DIN1(out_val[1]), .DIN2(n3), .DIN3(init_val[2]), .DIN4(n1), 
+        .Q(n19) );
+  ib1s1 U15 ( .DIN(n21), .Q(n7) );
+  aoi22s1 U16 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n21) );
+  aoi22s2 U17 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n20) );
+endmodule
+
+
+module SNG_2 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15;
+  wire   [5:0] random_number;
+
+  LFSR_2 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  i1s1 U3 ( .DIN(n2), .Q(n14) );
+  ib1s1 U4 ( .DIN(in_val[2]), .Q(n7) );
+  aoi21s2 U5 ( .DIN1(in_val[1]), .DIN2(n13), .DIN3(in_val[0]), .Q(n1) );
+  i1s1 U6 ( .DIN(in_val[1]), .Q(n8) );
+  aoi21s3 U7 ( .DIN1(in_val[4]), .DIN2(n11), .DIN3(n15), .Q(n5) );
+  oai221s2 U8 ( .DIN1(n9), .DIN2(random_number[3]), .DIN3(n7), .DIN4(
+        random_number[2]), .DIN5(n14), .Q(n3) );
+  ib1s1 U9 ( .DIN(in_val[5]), .Q(n10) );
+  ib1s1 U10 ( .DIN(random_number[3]), .Q(n12) );
+  ib1s1 U11 ( .DIN(random_number[4]), .Q(n11) );
+  ib1s1 U12 ( .DIN(in_val[3]), .Q(n9) );
+  ib1s1 U13 ( .DIN(n4), .Q(n15) );
+  oai221s2 U14 ( .DIN1(n11), .DIN2(in_val[4]), .DIN3(n12), .DIN4(in_val[3]), 
+        .DIN5(n3), .Q(n4) );
+  oai22s3 U15 ( .DIN1(random_number[5]), .DIN2(n10), .DIN3(n6), .DIN4(n5), .Q(
+        out_val) );
+  and2s1 U16 ( .DIN1(n10), .DIN2(random_number[5]), .Q(n6) );
+  aoi222s1 U17 ( .DIN1(random_number[2]), .DIN2(n7), .DIN3(n1), .DIN4(
+        random_number[0]), .DIN5(random_number[1]), .DIN6(n8), .Q(n2) );
+  ib1s2 U18 ( .DIN(random_number[1]), .Q(n13) );
+endmodule
+
+
+module ESL_bioilar_divider_2 ( clock, reset, enable, a_x, a_y, out_bin );
+  output [5:0] out_bin;
+  input clock, reset, enable, a_x, a_y;
+  wire   SC_estimation, \a_y_bin[5] , n3, n4, n26, n27, net6189, net6196,
+         net6197, net6200, net6201, net6202, net6210, net6214, net6216,
+         net6218, net6221, net6228, net6230, net6240, net7428, net7685,
+         net7683, net7819, net7932, net7935, net8004, net8090, n1, n2, n8, n9,
+         n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23,
+         n30, n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43,
+         n44, n45, n46, n47, n48, n49, n50, n51, n52, n53, n54, n55;
+  wire   [5:0] estimation_tmp;
+  wire   SYNOPSYS_UNCONNECTED__0, SYNOPSYS_UNCONNECTED__1, 
+        SYNOPSYS_UNCONNECTED__2, SYNOPSYS_UNCONNECTED__3, 
+        SYNOPSYS_UNCONNECTED__4;
+
+  dffs2 \estimation_tmp_reg[1]  ( .DIN(n52), .CLK(clock), .Q(n37), .QN(n54) );
+  P2B_2 P2B_inst ( .clock(clock), .reset(reset), .enable(enable), .in_val(a_y), 
+        .out_val({\a_y_bin[5] , SYNOPSYS_UNCONNECTED__0, 
+        SYNOPSYS_UNCONNECTED__1, SYNOPSYS_UNCONNECTED__2, 
+        SYNOPSYS_UNCONNECTED__3, SYNOPSYS_UNCONNECTED__4}) );
+  SNG_2 SNG_inst ( .clock(clock), .reset(reset), .enable(enable), .in_val({
+        estimation_tmp[5:2], n37, n38}), .out_val(SC_estimation) );
+  dffs1 \estimation_tmp_reg[5]  ( .DIN(n50), .CLK(clock), .Q(estimation_tmp[5]), .QN(net6189) );
+  dffs1 \estimation_tmp_reg[2]  ( .DIN(n51), .CLK(clock), .Q(estimation_tmp[2]), .QN(n55) );
+  dffs1 \estimation_tmp_reg[4]  ( .DIN(n27), .CLK(clock), .Q(estimation_tmp[4]), .QN(n3) );
+  dffs1 \estimation_tmp_reg[3]  ( .DIN(n26), .CLK(clock), .Q(estimation_tmp[3]), .QN(n4) );
+  dffs1 \estimation_tmp_reg[0]  ( .DIN(n49), .CLK(clock), .Q(n38), .QN(n53) );
+  nnd2s2 U3 ( .DIN1(net6197), .DIN2(n8), .Q(n50) );
+  nnd3s2 U4 ( .DIN1(n32), .DIN2(n18), .DIN3(n3), .Q(n12) );
+  i1s2 U5 ( .DIN(n30), .Q(n32) );
+  nor2s2 U6 ( .DIN1(n16), .DIN2(net6201), .Q(n23) );
+  aoi123s2 U7 ( .DIN4(n23), .DIN5(n9), .DIN6(net6189), .DIN2(n31), .DIN3(
+        estimation_tmp[5]), .DIN1(net6200), .Q(net6197) );
+  and2s2 U8 ( .DIN1(n2), .DIN2(n42), .Q(n1) );
+  and2s2 U9 ( .DIN1(enable), .DIN2(n22), .Q(n2) );
+  and2s2 U10 ( .DIN1(n35), .DIN2(net7683), .Q(n8) );
+  i1s3 U11 ( .DIN(net6202), .Q(n17) );
+  ib1s1 U12 ( .DIN(net7819), .Q(net7932) );
+  nb1s1 U13 ( .DIN(estimation_tmp[4]), .Q(n9) );
+  oai211s2 U14 ( .DIN1(n3), .DIN2(net6196), .DIN3(n12), .DIN4(n13), .Q(n27) );
+  mxi21s2 U15 ( .DIN1(n14), .DIN2(n23), .SIN(n3), .Q(n13) );
+  nnd2s2 U16 ( .DIN1(n10), .DIN2(n11), .Q(n14) );
+  nnd2s2 U17 ( .DIN1(n15), .DIN2(n16), .Q(n11) );
+  ib1s2 U18 ( .DIN(net7819), .Q(n15) );
+  and2s1 U19 ( .DIN1(n15), .DIN2(net7428), .Q(net6221) );
+  nnd2s1 U20 ( .DIN1(net7819), .DIN2(n3), .Q(net7685) );
+  xor2s1 U21 ( .DIN1(n3), .DIN2(\a_y_bin[5] ), .Q(out_bin[4]) );
+  hi1s1 U22 ( .DIN(net6210), .Q(n18) );
+  aoi21s1 U23 ( .DIN1(estimation_tmp[3]), .DIN2(net6218), .DIN3(n18), .Q(n19)
+         );
+  i1s1 U24 ( .DIN(n17), .Q(n30) );
+  or2s1 U25 ( .DIN1(n30), .DIN2(net6218), .Q(net8004) );
+  oai222s1 U26 ( .DIN1(net6201), .DIN2(net6216), .DIN3(n30), .DIN4(n19), 
+        .DIN5(n4), .DIN6(net6196), .Q(n26) );
+  nnd2s2 U27 ( .DIN1(n17), .DIN2(net6210), .Q(n10) );
+  nnd2s2 U28 ( .DIN1(n22), .DIN2(n20), .Q(net6196) );
+  nnd2s1 U29 ( .DIN1(enable), .DIN2(n21), .Q(n20) );
+  xnr3s1 U30 ( .DIN1(a_x), .DIN2(SC_estimation), .DIN3(a_y), .Q(n21) );
+  ib1s1 U31 ( .DIN(reset), .Q(n22) );
+  or2s1 U32 ( .DIN1(net6189), .DIN2(n10), .Q(net7683) );
+  or2s1 U33 ( .DIN1(net6214), .DIN2(n4), .Q(n16) );
+  and2s2 U34 ( .DIN1(net7932), .DIN2(n16), .Q(n31) );
+  nnd3s3 U35 ( .DIN1(net6230), .DIN2(n2), .DIN3(net6228), .Q(net7819) );
+  oai22s2 U36 ( .DIN1(n41), .DIN2(a_x), .DIN3(n40), .DIN4(n39), .Q(net7935) );
+  oai22s2 U37 ( .DIN1(n41), .DIN2(a_x), .DIN3(n40), .DIN4(n39), .Q(n42) );
+  or2s1 U38 ( .DIN1(n34), .DIN2(net6202), .Q(n46) );
+  i1s3 U39 ( .DIN(net7935), .Q(net6228) );
+  nnd3s2 U40 ( .DIN1(net6228), .DIN2(n2), .DIN3(net6230), .Q(net6201) );
+  i1s1 U41 ( .DIN(net6201), .Q(net8090) );
+  or2s1 U42 ( .DIN1(n55), .DIN2(net6196), .Q(n33) );
+  nnd3s2 U43 ( .DIN1(n48), .DIN2(n33), .DIN3(net8004), .Q(n51) );
+  mxi21s2 U44 ( .DIN1(net6221), .DIN2(n47), .SIN(estimation_tmp[2]), .Q(n48)
+         );
+  xnr3s2 U45 ( .DIN1(SC_estimation), .DIN2(a_y), .DIN3(a_x), .Q(net6230) );
+  nor2s1 U46 ( .DIN1(n37), .DIN2(n38), .Q(n34) );
+  nnd2s3 U47 ( .DIN1(net6230), .DIN2(n1), .Q(net6202) );
+  ib1s1 U48 ( .DIN(net6218), .Q(net6240) );
+  or2s1 U49 ( .DIN1(net6189), .DIN2(net6196), .Q(n35) );
+  nnd2s1 U50 ( .DIN1(n9), .DIN2(net6202), .Q(n36) );
+  and3s2 U51 ( .DIN1(net7685), .DIN2(n36), .DIN3(estimation_tmp[5]), .Q(
+        net6200) );
+  xor2s1 U52 ( .DIN1(net6214), .DIN2(estimation_tmp[3]), .Q(net6216) );
+  xor2s1 U53 ( .DIN1(n37), .DIN2(n38), .Q(n44) );
+  and2s1 U54 ( .DIN1(n37), .DIN2(n38), .Q(net7428) );
+  xor2s1 U55 ( .DIN1(net6189), .DIN2(\a_y_bin[5] ), .Q(out_bin[5]) );
+  xor2s1 U56 ( .DIN1(n55), .DIN2(\a_y_bin[5] ), .Q(out_bin[2]) );
+  xor2s1 U57 ( .DIN1(n54), .DIN2(\a_y_bin[5] ), .Q(out_bin[1]) );
+  xor2s1 U58 ( .DIN1(n53), .DIN2(\a_y_bin[5] ), .Q(out_bin[0]) );
+  xor2s1 U59 ( .DIN1(n4), .DIN2(\a_y_bin[5] ), .Q(out_bin[3]) );
+  nor3s1 U60 ( .DIN1(net6210), .DIN2(estimation_tmp[5]), .DIN3(n9), .Q(n41) );
+  nnd3s1 U61 ( .DIN1(estimation_tmp[5]), .DIN2(estimation_tmp[3]), .DIN3(n9), 
+        .Q(n39) );
+  oai21s3 U62 ( .DIN1(net7428), .DIN2(net6201), .DIN3(n46), .Q(n47) );
+  mxi21s1 U63 ( .DIN1(n17), .DIN2(net7932), .SIN(n44), .Q(n45) );
+  oai21s1 U64 ( .DIN1(n17), .DIN2(net8090), .DIN3(n53), .Q(n43) );
+  nnd3s2 U65 ( .DIN1(n54), .DIN2(n55), .DIN3(n53), .Q(net6218) );
+  nnd2s2 U66 ( .DIN1(net6240), .DIN2(n4), .Q(net6210) );
+  nnd3s2 U67 ( .DIN1(n38), .DIN2(n37), .DIN3(estimation_tmp[2]), .Q(n40) );
+  oai21s2 U68 ( .DIN1(n53), .DIN2(net6196), .DIN3(n43), .Q(n49) );
+  oai21s2 U69 ( .DIN1(n54), .DIN2(net6196), .DIN3(n45), .Q(n52) );
+  nnd2s2 U70 ( .DIN1(estimation_tmp[2]), .DIN2(net7428), .Q(net6214) );
+endmodule
+
+
+module processing_element_2 ( clock, reset, enable, input_val_x, input_val_y, 
+        init_val, weight_val, output_val );
+  input [5:0] init_val;
+  input [5:0] weight_val;
+  output [5:0] output_val;
+  input clock, reset, enable, input_val_x, input_val_y;
+  wire   weight_x, mult_x, mult_y, half_sc, half_cnt, init_val_x, output_val_x,
+         output_val_y, n1;
+
+  SNG_12 SNG_weight_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .in_val(weight_val), .out_val(weight_x) );
+  ESL_multiplier_2 multiplier_inst ( .a_x(weight_x), .a_y(1'b1), .b_x(
+        input_val_x), .b_y(input_val_y), .o_x(mult_x), .o_y(mult_y) );
+  SNG_11 SNG_half_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val({
+        1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}), .out_val(half_sc) );
+  one_counter_2 one_counter_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .count(half_cnt) );
+  SNG_10 SNG_init_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val(
+        init_val), .out_val(init_val_x) );
+  ESL_adder_2 adder_inst ( .half_sc(half_sc), .half_cnt(half_cnt), .a_x(mult_x), .a_y(mult_y), .b_x(init_val_x), .b_y(1'b1), .o_x(output_val_x), .o_y(
+        output_val_y) );
+  ESL_bioilar_divider_2 P2B_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .a_x(output_val_x), .a_y(output_val_y), .out_bin(output_val) );
+  nb1s1 U3 ( .DIN(reset), .Q(n1) );
+endmodule
+
+
+module LFSR_9 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n10, n11, n12, n13, n14;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n3), .Q(n13) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n11), .EB(n5), .CLK(clock), .Q(out_val[4]), 
+        .QN(n14) );
+  dffles2 \LFSR_reg_reg[3]  ( .DIN(n7), .EB(n5), .CLK(clock), .Q(out_val[2])
+         );
+  dffles2 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n5), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n5), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n10), .EB(n5), .CLK(clock), .Q(out_val[3])
+         );
+  dffles2 \LFSR_reg_reg[2]  ( .DIN(n6), .EB(n5), .CLK(clock), .Q(out_val[1])
+         );
+  aoi22s1 U2 ( .DIN1(out_val[3]), .DIN2(n4), .DIN3(init_val[4]), .DIN4(n3), 
+        .Q(n12) );
+  ib1s1 U3 ( .DIN(n4), .Q(n3) );
+  ib1s1 U5 ( .DIN(enable), .Q(n5) );
+  ib1s1 U6 ( .DIN(init), .Q(n4) );
+  oai21s2 U7 ( .DIN1(n3), .DIN2(n14), .DIN3(n13), .Q(N9) );
+  dsmxc31s1 U8 ( .DIN1(out_val[2]), .DIN2(init_val[3]), .CLK(n3), .Q(n10) );
+  dsmxc31s1 U9 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n3), .Q(n7) );
+  dsmxc31s1 U10 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n3), .Q(n6) );
+  dsmxc31s2 U11 ( .DIN1(n1), .DIN2(init_val[0]), .CLK(n3), .Q(N4) );
+  xnr2s1 U12 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n1) );
+  ib1s1 U13 ( .DIN(n12), .Q(n11) );
+endmodule
+
+
+module SNG_9 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14;
+  wire   [5:0] random_number;
+
+  LFSR_9 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  aoi222s1 U3 ( .DIN1(in_val[3]), .DIN2(n9), .DIN3(n6), .DIN4(n5), .DIN5(
+        in_val[2]), .DIN6(n4), .Q(n11) );
+  aoi22s3 U4 ( .DIN1(random_number[1]), .DIN2(n3), .DIN3(random_number[2]), 
+        .DIN4(n1), .Q(n6) );
+  i1s1 U5 ( .DIN(random_number[2]), .Q(n4) );
+  ib1s1 U6 ( .DIN(in_val[4]), .Q(n13) );
+  ib1s1 U7 ( .DIN(n7), .Q(n14) );
+  ib1s1 U8 ( .DIN(random_number[3]), .Q(n9) );
+  ib1s1 U9 ( .DIN(random_number[4]), .Q(n8) );
+  ib1s1 U10 ( .DIN(in_val[1]), .Q(n3) );
+  ib1s1 U11 ( .DIN(in_val[5]), .Q(n12) );
+  ib1s1 U12 ( .DIN(in_val[2]), .Q(n1) );
+  ib1s1 U13 ( .DIN(in_val[0]), .Q(n2) );
+  oai322s3 U14 ( .DIN1(n14), .DIN2(random_number[4]), .DIN3(n13), .DIN4(
+        random_number[5]), .DIN5(n12), .DIN6(n11), .DIN7(n10), .Q(out_val) );
+  nnd2s2 U15 ( .DIN1(random_number[5]), .DIN2(n12), .Q(n7) );
+  oai211s2 U16 ( .DIN1(n3), .DIN2(random_number[1]), .DIN3(random_number[0]), 
+        .DIN4(n2), .Q(n5) );
+  oai221s2 U17 ( .DIN1(in_val[3]), .DIN2(n9), .DIN3(in_val[4]), .DIN4(n8), 
+        .DIN5(n7), .Q(n10) );
+endmodule
+
+
+module ESL_multiplier_1 ( a_x, a_y, b_x, b_y, o_x, o_y );
+  input a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+
+
+  xnr2s1 U1 ( .DIN1(b_y), .DIN2(a_y), .Q(o_y) );
+  xnr2s2 U2 ( .DIN1(b_x), .DIN2(a_x), .Q(o_x) );
+endmodule
+
+
+module LFSR_8 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n13, n14, n15, n16;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n3), .Q(n15) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n12), .EB(n5), .CLK(clock), .Q(out_val[4]), 
+        .QN(n16) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n5), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n11), .EB(n5), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n6), .EB(n5), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n5), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n7), .EB(n5), .CLK(clock), .Q(out_val[2])
+         );
+  dsmxc31s1 U2 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n3), .Q(n6) );
+  aoi22s1 U3 ( .DIN1(out_val[3]), .DIN2(n4), .DIN3(init_val[4]), .DIN4(n3), 
+        .Q(n14) );
+  ib1s1 U5 ( .DIN(n4), .Q(n3) );
+  ib1s1 U6 ( .DIN(enable), .Q(n5) );
+  ib1s1 U7 ( .DIN(init), .Q(n4) );
+  oai21s2 U8 ( .DIN1(n3), .DIN2(n16), .DIN3(n15), .Q(N9) );
+  dsmxc31s1 U9 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n3), .Q(n7) );
+  ib1s1 U10 ( .DIN(n13), .Q(n11) );
+  aoi22s1 U11 ( .DIN1(out_val[2]), .DIN2(n4), .DIN3(init_val[3]), .DIN4(n3), 
+        .Q(n13) );
+  dsmxc31s2 U12 ( .DIN1(n1), .DIN2(init_val[0]), .CLK(n3), .Q(N4) );
+  xnr2s1 U13 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n1) );
+  ib1s1 U14 ( .DIN(n14), .Q(n12) );
+endmodule
+
+
+module SNG_8 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   net6160, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14,
+         n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26;
+  wire   [5:0] random_number;
+
+  LFSR_8 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  ib1s1 U3 ( .DIN(random_number[1]), .Q(n5) );
+  ib1s1 U4 ( .DIN(random_number[2]), .Q(n6) );
+  or5s1 U5 ( .DIN1(in_val[1]), .DIN2(n5), .DIN3(n15), .DIN4(n22), .DIN5(n10), 
+        .Q(n2) );
+  ib1s1 U6 ( .DIN(n21), .Q(n22) );
+  and4s1 U7 ( .DIN1(n1), .DIN2(n2), .DIN3(n3), .DIN4(n4), .Q(net6160) );
+  ib1s1 U8 ( .DIN(random_number[3]), .Q(n7) );
+  ib1s1 U9 ( .DIN(n23), .Q(n15) );
+  nor2s1 U10 ( .DIN1(in_val[3]), .DIN2(n7), .Q(n17) );
+  ib1s1 U11 ( .DIN(in_val[4]), .Q(n9) );
+  nor2s1 U12 ( .DIN1(in_val[2]), .DIN2(n6), .Q(n16) );
+  aoi21s2 U13 ( .DIN1(n5), .DIN2(in_val[1]), .DIN3(n11), .Q(n13) );
+  ib1s1 U14 ( .DIN(in_val[0]), .Q(n12) );
+  aoi21s2 U15 ( .DIN1(in_val[3]), .DIN2(n7), .DIN3(n15), .Q(n14) );
+  oai21s2 U16 ( .DIN1(random_number[5]), .DIN2(n26), .DIN3(n25), .Q(out_val)
+         );
+  aoi22s2 U17 ( .DIN1(n17), .DIN2(n18), .DIN3(random_number[4]), .DIN4(n9), 
+        .Q(n3) );
+  nor2s1 U18 ( .DIN1(random_number[4]), .DIN2(n9), .Q(n10) );
+  i1s1 U19 ( .DIN(random_number[4]), .Q(n8) );
+  nnd2s2 U20 ( .DIN1(random_number[0]), .DIN2(n12), .Q(n11) );
+  nnd3s2 U21 ( .DIN1(n14), .DIN2(n19), .DIN3(n13), .Q(n4) );
+  nnd3s2 U22 ( .DIN1(n20), .DIN2(n21), .DIN3(n16), .Q(n1) );
+  nnd2s2 U23 ( .DIN1(in_val[2]), .DIN2(n6), .Q(n23) );
+  nnd2s2 U24 ( .DIN1(in_val[3]), .DIN2(n7), .Q(n21) );
+  nnd2s2 U25 ( .DIN1(in_val[4]), .DIN2(n8), .Q(n18) );
+  nnd2s2 U26 ( .DIN1(in_val[4]), .DIN2(n8), .Q(n19) );
+  nnd2s2 U27 ( .DIN1(in_val[4]), .DIN2(n8), .Q(n20) );
+  ib1s1 U28 ( .DIN(in_val[5]), .Q(n26) );
+  ib1s1 U29 ( .DIN(random_number[5]), .Q(n24) );
+  oai21s2 U30 ( .DIN1(in_val[5]), .DIN2(n24), .DIN3(net6160), .Q(n25) );
+endmodule
+
+
+module one_counter_1 ( clock, reset, enable, count );
+  input clock, reset, enable;
+  output count;
+  wire   n3, n4;
+
+  dffs1 count_reg ( .DIN(n3), .CLK(clock), .Q(count) );
+  nor2s1 U3 ( .DIN1(reset), .DIN2(n4), .Q(n3) );
+  xnr2s1 U4 ( .DIN1(enable), .DIN2(count), .Q(n4) );
+endmodule
+
+
+module LFSR_7 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n14, n15, n16, n17, n18;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n17) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n12) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n11), .EB(n4), .CLK(clock), .Q(out_val[4]), 
+        .QN(n18) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n4), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n4), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n5), .EB(n4), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n7), .EB(n4), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n6), .EB(n4), .CLK(clock), .Q(out_val[2])
+         );
+  aoi22s1 U2 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n16) );
+  ib1s1 U3 ( .DIN(n3), .Q(n1) );
+  ib1s1 U5 ( .DIN(enable), .Q(n4) );
+  ib1s1 U6 ( .DIN(init), .Q(n3) );
+  oai21s2 U7 ( .DIN1(n1), .DIN2(n14), .DIN3(n12), .Q(N4) );
+  xor2s1 U8 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n14) );
+  oai21s2 U9 ( .DIN1(n1), .DIN2(n18), .DIN3(n17), .Q(N9) );
+  dsmxc31s2 U11 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n1), .Q(n6) );
+  dsmxc31s2 U12 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n1), .Q(n5) );
+  ib1s1 U13 ( .DIN(n15), .Q(n7) );
+  aoi22s2 U14 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n15) );
+  ib1s1 U15 ( .DIN(n16), .Q(n11) );
+endmodule
+
+
+module SNG_7 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   net6151, net6147, net6145, net6143, net6142, net6141, net6140,
+         net6139, net6137, net6136, net6153, net6144, n1, n2, n3, n4, n5;
+  wire   [5:0] random_number;
+
+  LFSR_7 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  i1s3 U3 ( .DIN(in_val[1]), .Q(net6145) );
+  aoi22s2 U4 ( .DIN1(n1), .DIN2(net6143), .DIN3(net6153), .DIN4(in_val[4]), 
+        .Q(net6137) );
+  oai22s3 U5 ( .DIN1(net6153), .DIN2(in_val[4]), .DIN3(n3), .DIN4(in_val[3]), 
+        .Q(net6144) );
+  i1s3 U6 ( .DIN(net6144), .Q(net6143) );
+  ib1s1 U7 ( .DIN(random_number[3]), .Q(n3) );
+  ib1s1 U8 ( .DIN(random_number[4]), .Q(net6153) );
+  i1s2 U9 ( .DIN(in_val[3]), .Q(n2) );
+  oai22s3 U10 ( .DIN1(random_number[2]), .DIN2(net6151), .DIN3(
+        random_number[3]), .DIN4(n2), .Q(n1) );
+  aoai122s3 U11 ( .DIN2(random_number[5]), .DIN3(net6136), .DIN4(net6137), 
+        .DIN5(n4), .DIN1(net6139), .Q(out_val) );
+  nnd2s2 U12 ( .DIN1(in_val[5]), .DIN2(net6140), .Q(net6139) );
+  ib1s1 U13 ( .DIN(random_number[5]), .Q(net6140) );
+  nnd3s2 U14 ( .DIN1(net6141), .DIN2(net6142), .DIN3(net6143), .Q(n4) );
+  oai211s2 U15 ( .DIN1(random_number[1]), .DIN2(net6145), .DIN3(
+        random_number[0]), .DIN4(n5), .Q(net6142) );
+  ib1s1 U16 ( .DIN(in_val[0]), .Q(n5) );
+  aoi22s3 U17 ( .DIN1(random_number[1]), .DIN2(net6145), .DIN3(net6147), 
+        .DIN4(random_number[2]), .Q(net6141) );
+  i1s2 U18 ( .DIN(in_val[2]), .Q(net6147) );
+  i1s1 U19 ( .DIN(in_val[2]), .Q(net6151) );
+  ib1s1 U20 ( .DIN(in_val[5]), .Q(net6136) );
+endmodule
+
+
+module ESL_adder_1 ( half_sc, half_cnt, a_x, a_y, b_x, b_y, o_x, o_y );
+  input half_sc, half_cnt, a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+  wire   net7830, net6135, net7828, net7827, n1, n2;
+
+  xor3s2 U1 ( .DIN1(a_y), .DIN2(half_sc), .DIN3(b_y), .Q(o_y) );
+  xor2s2 U2 ( .DIN1(b_x), .DIN2(a_y), .Q(n1) );
+  nnd2s3 U3 ( .DIN1(n1), .DIN2(net7827), .Q(net7828) );
+  nnd2s3 U4 ( .DIN1(net7828), .DIN2(n2), .Q(net7830) );
+  ib1s1 U5 ( .DIN(half_cnt), .Q(net7827) );
+  nnd2s3 U6 ( .DIN1(net6135), .DIN2(half_cnt), .Q(n2) );
+  ib1s6 U7 ( .DIN(net7830), .Q(o_x) );
+  xor2s2 U8 ( .DIN1(a_x), .DIN2(b_y), .Q(net6135) );
+endmodule
+
+
+module P2B_1 ( clock, reset, enable, in_val, out_val );
+  output [5:0] out_val;
+  input clock, reset, enable, in_val;
+  wire   N10, N11, N12, N13, N29, N30, N31, N32, N33, N40, N41, N42, N43, N44,
+         N45, N46, \add_32/carry[5] , \add_32/carry[4] , \add_32/carry[3] ,
+         \add_32/carry[2] , \add_21/carry[5] , \add_21/carry[4] ,
+         \add_21/carry[3] , \add_21/carry[2] , n2, n3, n4, n5, n6, n7, n13,
+         n21, n42, n43, n44, n45, n46, n47, n48, n49, n50, n51, n52, n53, n54,
+         n55, n56, n57, n58, n59, n60, n61, n62, n63, n64, n65, n66, n67, n68,
+         n69, n70, n71, n72, n73, n74, n75;
+  wire   [5:0] n_out_val;
+  wire   [5:0] modulus_m;
+
+  dffs2 \out_val_reg[5]  ( .DIN(n49), .CLK(clock), .Q(out_val[5]), .QN(n68) );
+  nnd3s2 U17 ( .DIN1(n57), .DIN2(n4), .DIN3(n59), .Q(n58) );
+  nnd3s2 U27 ( .DIN1(modulus_m[0]), .DIN2(n69), .DIN3(modulus_m[3]), .Q(n55)
+         );
+  nnd2s2 U28 ( .DIN1(n4), .DIN2(n60), .Q(N40) );
+  dffs1 \n_out_val_reg[4]  ( .DIN(n47), .CLK(clock), .Q(n_out_val[4]), .QN(n74) );
+  lclks1 \modulus_m_reg[1]  ( .CLK(N40), .DIN(N42), .Q(modulus_m[1]), .QN(n69)
+         );
+  lclks1 \modulus_m_reg[5]  ( .CLK(N40), .DIN(N46), .Q(modulus_m[5]) );
+  lclks1 \modulus_m_reg[4]  ( .CLK(N40), .DIN(N45), .Q(modulus_m[4]) );
+  lclks1 \modulus_m_reg[3]  ( .CLK(N40), .DIN(N44), .Q(modulus_m[3]) );
+  lclks1 \modulus_m_reg[2]  ( .CLK(N40), .DIN(N43), .Q(modulus_m[2]) );
+  lclks1 \modulus_m_reg[0]  ( .CLK(N40), .DIN(N41), .Q(modulus_m[0]), .QN(n2)
+         );
+  dffs1 \out_val_reg[4]  ( .DIN(n50), .CLK(clock), .Q(out_val[4]), .QN(n67) );
+  dffs1 \out_val_reg[3]  ( .DIN(n51), .CLK(clock), .Q(out_val[3]), .QN(n66) );
+  dffs1 \out_val_reg[2]  ( .DIN(n52), .CLK(clock), .Q(out_val[2]), .QN(n65) );
+  dffs1 \out_val_reg[1]  ( .DIN(n53), .CLK(clock), .Q(out_val[1]), .QN(n64) );
+  dffs1 \out_val_reg[0]  ( .DIN(n54), .CLK(clock), .Q(out_val[0]), .QN(n63) );
+  dffs1 \n_out_val_reg[5]  ( .DIN(n48), .CLK(clock), .Q(n_out_val[5]), .QN(n75) );
+  dffs1 \n_out_val_reg[1]  ( .DIN(n44), .CLK(clock), .Q(n_out_val[1]), .QN(n71) );
+  dffs1 \n_out_val_reg[2]  ( .DIN(n45), .CLK(clock), .Q(n_out_val[2]), .QN(n72) );
+  dffs1 \n_out_val_reg[3]  ( .DIN(n46), .CLK(clock), .Q(n_out_val[3]), .QN(n73) );
+  dffs1 \n_out_val_reg[0]  ( .DIN(n43), .CLK(clock), .Q(n_out_val[0]), .QN(n70) );
+  nor2s1 U3 ( .DIN1(n60), .DIN2(n6), .Q(n56) );
+  nnd2s2 U4 ( .DIN1(enable), .DIN2(n4), .Q(n60) );
+  nnd2s1 U5 ( .DIN1(in_val), .DIN2(n56), .Q(n57) );
+  ib1s1 U6 ( .DIN(reset), .Q(n4) );
+  nnd2s1 U7 ( .DIN1(n61), .DIN2(n4), .Q(n62) );
+  or2s1 U8 ( .DIN1(n59), .DIN2(n60), .Q(n61) );
+  ib1s1 U9 ( .DIN(n59), .Q(n6) );
+  ib1s1 U10 ( .DIN(N12), .Q(n13) );
+  ib1s1 U11 ( .DIN(N11), .Q(n21) );
+  ib1s1 U12 ( .DIN(N10), .Q(n42) );
+  ib1s1 U13 ( .DIN(N13), .Q(n7) );
+  or2s1 U14 ( .DIN1(n3), .DIN2(n57), .Q(n5) );
+  xnr2s1 U15 ( .DIN1(\add_21/carry[5] ), .DIN2(n_out_val[5]), .Q(n3) );
+  oai22s2 U16 ( .DIN1(n75), .DIN2(n61), .DIN3(n68), .DIN4(n62), .Q(n49) );
+  oai22s1 U18 ( .DIN1(n62), .DIN2(n63), .DIN3(n61), .DIN4(n70), .Q(n54) );
+  oai22s1 U19 ( .DIN1(n62), .DIN2(n64), .DIN3(n61), .DIN4(n71), .Q(n53) );
+  oai22s1 U20 ( .DIN1(n62), .DIN2(n65), .DIN3(n61), .DIN4(n72), .Q(n52) );
+  oai22s1 U21 ( .DIN1(n62), .DIN2(n66), .DIN3(n61), .DIN4(n73), .Q(n51) );
+  oai22s1 U22 ( .DIN1(n62), .DIN2(n67), .DIN3(n61), .DIN4(n74), .Q(n50) );
+  hadd1s1 U23 ( .AIN(n_out_val[1]), .BIN(n_out_val[0]), .OUTC(
+        \add_21/carry[2] ), .OUTS(N10) );
+  hadd1s1 U24 ( .AIN(n_out_val[2]), .BIN(\add_21/carry[2] ), .OUTC(
+        \add_21/carry[3] ), .OUTS(N11) );
+  hadd1s1 U25 ( .AIN(n_out_val[3]), .BIN(\add_21/carry[3] ), .OUTC(
+        \add_21/carry[4] ), .OUTS(N12) );
+  hadd1s1 U26 ( .AIN(n_out_val[4]), .BIN(\add_21/carry[4] ), .OUTC(
+        \add_21/carry[5] ), .OUTS(N13) );
+  or4s1 U29 ( .DIN1(modulus_m[5]), .DIN2(modulus_m[4]), .DIN3(modulus_m[2]), 
+        .DIN4(n55), .Q(n59) );
+  hadd1s1 U30 ( .AIN(modulus_m[2]), .BIN(\add_32/carry[2] ), .OUTC(
+        \add_32/carry[3] ), .OUTS(N30) );
+  hadd1s1 U31 ( .AIN(modulus_m[3]), .BIN(\add_32/carry[3] ), .OUTC(
+        \add_32/carry[4] ), .OUTS(N31) );
+  hadd1s1 U32 ( .AIN(modulus_m[1]), .BIN(modulus_m[0]), .OUTC(
+        \add_32/carry[2] ), .OUTS(N29) );
+  hadd1s1 U33 ( .AIN(modulus_m[4]), .BIN(\add_32/carry[4] ), .OUTC(
+        \add_32/carry[5] ), .OUTS(N32) );
+  and2s1 U34 ( .DIN1(N33), .DIN2(n56), .Q(N46) );
+  and2s1 U35 ( .DIN1(N32), .DIN2(n56), .Q(N45) );
+  and2s1 U36 ( .DIN1(N31), .DIN2(n56), .Q(N44) );
+  and2s1 U37 ( .DIN1(N30), .DIN2(n56), .Q(N43) );
+  and2s1 U38 ( .DIN1(N29), .DIN2(n56), .Q(N42) );
+  and2s1 U39 ( .DIN1(n2), .DIN2(n56), .Q(N41) );
+  oai21s2 U40 ( .DIN1(n75), .DIN2(n58), .DIN3(n5), .Q(n48) );
+  oai22s1 U41 ( .DIN1(n74), .DIN2(n58), .DIN3(n57), .DIN4(n7), .Q(n47) );
+  oai22s1 U42 ( .DIN1(n73), .DIN2(n58), .DIN3(n57), .DIN4(n13), .Q(n46) );
+  oai22s1 U43 ( .DIN1(n72), .DIN2(n58), .DIN3(n57), .DIN4(n21), .Q(n45) );
+  oai22s1 U44 ( .DIN1(n71), .DIN2(n58), .DIN3(n57), .DIN4(n42), .Q(n44) );
+  oai22s1 U45 ( .DIN1(n70), .DIN2(n58), .DIN3(n57), .DIN4(n_out_val[0]), .Q(
+        n43) );
+  xor2s1 U46 ( .DIN1(\add_32/carry[5] ), .DIN2(modulus_m[5]), .Q(N33) );
+endmodule
+
+
+module LFSR_1 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n15, n16, n17, n18, n19, n20, n21,
+         n22, n23;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n22) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n16) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n7), .EB(n15), .CLK(clock), .Q(out_val[4]), 
+        .QN(n23) );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n5), .EB(n15), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n6), .EB(n15), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n4), .EB(n15), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n15), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n15), .CLK(clock), .Q(out_val[0])
+         );
+  ib1s1 U2 ( .DIN(n3), .Q(n1) );
+  ib1s1 U3 ( .DIN(init), .Q(n3) );
+  ib1s1 U5 ( .DIN(enable), .Q(n15) );
+  oai21s1 U6 ( .DIN1(n1), .DIN2(n17), .DIN3(n16), .Q(N4) );
+  xor2s1 U7 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n17) );
+  oai21s1 U8 ( .DIN1(n1), .DIN2(n23), .DIN3(n22), .Q(N9) );
+  ib1s1 U9 ( .DIN(n19), .Q(n5) );
+  ib1s1 U11 ( .DIN(n20), .Q(n6) );
+  ib1s1 U12 ( .DIN(n18), .Q(n4) );
+  aoi22s1 U13 ( .DIN1(out_val[0]), .DIN2(n3), .DIN3(init_val[1]), .DIN4(n1), 
+        .Q(n18) );
+  ib1s1 U14 ( .DIN(n21), .Q(n7) );
+  aoi22s1 U15 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n21) );
+  aoi22s1 U16 ( .DIN1(out_val[1]), .DIN2(n3), .DIN3(init_val[2]), .DIN4(n1), 
+        .Q(n19) );
+  aoi22s2 U17 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n20) );
+endmodule
+
+
+module SNG_1 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17;
+  wire   [5:0] random_number;
+
+  LFSR_1 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  or2s1 U3 ( .DIN1(n13), .DIN2(in_val[4]), .Q(n1) );
+  or2s1 U4 ( .DIN1(n14), .DIN2(in_val[3]), .Q(n2) );
+  nnd3s1 U5 ( .DIN1(n1), .DIN2(n2), .DIN3(n5), .Q(n6) );
+  ib1s1 U6 ( .DIN(n6), .Q(n17) );
+  aoi21s1 U7 ( .DIN1(in_val[4]), .DIN2(n13), .DIN3(n17), .Q(n7) );
+  hi1s1 U8 ( .DIN(in_val[5]), .Q(n12) );
+  ib1s1 U9 ( .DIN(random_number[3]), .Q(n14) );
+  i1s1 U10 ( .DIN(n4), .Q(n16) );
+  i1s1 U11 ( .DIN(in_val[1]), .Q(n10) );
+  aoi21s2 U12 ( .DIN1(in_val[1]), .DIN2(n15), .DIN3(in_val[0]), .Q(n3) );
+  ib1s1 U13 ( .DIN(in_val[2]), .Q(n9) );
+  ib1s1 U14 ( .DIN(random_number[4]), .Q(n13) );
+  hi1s1 U15 ( .DIN(in_val[3]), .Q(n11) );
+  ib1s1 U16 ( .DIN(random_number[1]), .Q(n15) );
+  oai22s3 U17 ( .DIN1(random_number[5]), .DIN2(n12), .DIN3(n8), .DIN4(n7), .Q(
+        out_val) );
+  oai221s2 U18 ( .DIN1(n11), .DIN2(random_number[3]), .DIN3(n9), .DIN4(
+        random_number[2]), .DIN5(n16), .Q(n5) );
+  and2s1 U19 ( .DIN1(n12), .DIN2(random_number[5]), .Q(n8) );
+  aoi222s1 U20 ( .DIN1(random_number[2]), .DIN2(n9), .DIN3(n3), .DIN4(
+        random_number[0]), .DIN5(random_number[1]), .DIN6(n10), .Q(n4) );
+endmodule
+
+
+module ESL_bioilar_divider_1 ( clock, reset, enable, a_x, a_y, out_bin );
+  output [5:0] out_bin;
+  input clock, reset, enable, a_x, a_y;
+  wire   SC_estimation, \a_y_bin[5] , n1, n3, n5, n6, n7, n27, n28, n29,
+         net6086, net6092, net6098, net6107, net6110, net6111, net6112,
+         net6117, net6120, net7680, net7679, net7881, net7916, net7946,
+         net7973, net8015, net8037, net8379, net8385, net6132, net6105,
+         net6099, net6096, net6093, net6085, net9557, net6130, net6108,
+         net6100, net6081, net7954, net6089, net6087, net8402, net7636,
+         net8383, net8006, net7953, net7952, net7951, net7766, net6126,
+         net6125, net6124, net6121, net6118, net6094, net6090, net6080,
+         net6079, n2, n4, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18,
+         n19, n20, n21, n22, n23, n30, n31, n32, n33, n34, n35, n36, n37, n38;
+  wire   [5:0] estimation_tmp;
+  wire   SYNOPSYS_UNCONNECTED__0, SYNOPSYS_UNCONNECTED__1, 
+        SYNOPSYS_UNCONNECTED__2, SYNOPSYS_UNCONNECTED__3, 
+        SYNOPSYS_UNCONNECTED__4;
+
+  dffs2 \estimation_tmp_reg[0]  ( .DIN(n29), .CLK(clock), .Q(estimation_tmp[0]), .QN(n7) );
+  dffs2 \estimation_tmp_reg[1]  ( .DIN(n38), .CLK(clock), .Q(estimation_tmp[1]), .QN(n6) );
+  P2B_1 P2B_inst ( .clock(clock), .reset(reset), .enable(enable), .in_val(a_y), 
+        .out_val({\a_y_bin[5] , SYNOPSYS_UNCONNECTED__0, 
+        SYNOPSYS_UNCONNECTED__1, SYNOPSYS_UNCONNECTED__2, 
+        SYNOPSYS_UNCONNECTED__3, SYNOPSYS_UNCONNECTED__4}) );
+  SNG_1 SNG_inst ( .clock(clock), .reset(reset), .enable(enable), .in_val(
+        estimation_tmp), .out_val(SC_estimation) );
+  dffs1 \estimation_tmp_reg[5]  ( .DIN(n28), .CLK(clock), .Q(estimation_tmp[5]), .QN(n1) );
+  dffs1 \estimation_tmp_reg[4]  ( .DIN(n27), .CLK(clock), .Q(estimation_tmp[4]), .QN(n3) );
+  dffs2 \estimation_tmp_reg[3]  ( .DIN(n36), .CLK(clock), .Q(estimation_tmp[3]), .QN(net6081) );
+  dffs2 \estimation_tmp_reg[2]  ( .DIN(n37), .CLK(clock), .Q(estimation_tmp[2]), .QN(n5) );
+  and2s1 U3 ( .DIN1(net8402), .DIN2(net7881), .Q(net8379) );
+  nnd2s2 U4 ( .DIN1(n20), .DIN2(n33), .Q(net6112) );
+  and2s2 U5 ( .DIN1(net8379), .DIN2(n30), .Q(net6111) );
+  nnd2s2 U6 ( .DIN1(net6132), .DIN2(n16), .Q(net6086) );
+  and3s1 U7 ( .DIN1(net7881), .DIN2(net7766), .DIN3(net7636), .Q(n2) );
+  and2s3 U8 ( .DIN1(enable), .DIN2(n16), .Q(net7636) );
+  and2s2 U9 ( .DIN1(net7946), .DIN2(n4), .Q(net9557) );
+  oai21s2 U10 ( .DIN1(n9), .DIN2(net8379), .DIN3(n7), .Q(net6117) );
+  and2s2 U11 ( .DIN1(net7881), .DIN2(n8), .Q(n4) );
+  ib1s1 U12 ( .DIN(net6098), .Q(n8) );
+  i1s1 U13 ( .DIN(net6092), .Q(n9) );
+  nnd2s1 U14 ( .DIN1(net8006), .DIN2(net6080), .Q(net7951) );
+  nnd2s2 U15 ( .DIN1(net8402), .DIN2(net7881), .Q(net8006) );
+  xor2s2 U16 ( .DIN1(net6080), .DIN2(\a_y_bin[5] ), .Q(out_bin[4]) );
+  ib1s1 U17 ( .DIN(estimation_tmp[4]), .Q(net6080) );
+  ib1s1 U18 ( .DIN(net8037), .Q(net8385) );
+  ib1s1 U19 ( .DIN(net6079), .Q(net7953) );
+  nnd2s2 U20 ( .DIN1(net7916), .DIN2(n11), .Q(n38) );
+  oai21s2 U21 ( .DIN1(n7), .DIN2(net6086), .DIN3(net6117), .Q(n29) );
+  mxi21s3 U22 ( .DIN1(net6112), .DIN2(net6111), .SIN(n5), .Q(net6110) );
+  i1s3 U23 ( .DIN(net6118), .Q(net7766) );
+  nor2s2 U24 ( .DIN1(n12), .DIN2(net6121), .Q(net8402) );
+  i1s3 U25 ( .DIN(net8383), .Q(net6099) );
+  and2s2 U26 ( .DIN1(n17), .DIN2(net7954), .Q(n10) );
+  and2s2 U27 ( .DIN1(n22), .DIN2(n23), .Q(n11) );
+  nnd3s3 U28 ( .DIN1(net6110), .DIN2(net7680), .DIN3(net7679), .Q(n37) );
+  ib1s1 U29 ( .DIN(net7636), .Q(n12) );
+  and3s2 U30 ( .DIN1(net7951), .DIN2(net7952), .DIN3(net7953), .Q(net6090) );
+  aoi123s2 U31 ( .DIN4(net9557), .DIN5(n15), .DIN6(net6079), .DIN2(net6089), 
+        .DIN3(estimation_tmp[5]), .DIN1(net6090), .Q(net6087) );
+  i1s3 U32 ( .DIN(estimation_tmp[5]), .Q(net6079) );
+  xor2s2 U33 ( .DIN1(net6079), .DIN2(\a_y_bin[5] ), .Q(out_bin[5]) );
+  or2s1 U34 ( .DIN1(net6079), .DIN2(net6085), .Q(net7954) );
+  nnd2s2 U35 ( .DIN1(net8383), .DIN2(n15), .Q(net7952) );
+  ib1s1 U36 ( .DIN(n3), .Q(n15) );
+  nnd3s1 U37 ( .DIN1(estimation_tmp[5]), .DIN2(estimation_tmp[3]), .DIN3(n15), 
+        .Q(net6126) );
+  nor3s1 U38 ( .DIN1(net6100), .DIN2(estimation_tmp[5]), .DIN3(n15), .Q(
+        net6124) );
+  nnd3s1 U39 ( .DIN1(net6080), .DIN2(net6105), .DIN3(n2), .Q(net6094) );
+  nnd3s3 U40 ( .DIN1(net6120), .DIN2(net7766), .DIN3(net7636), .Q(net8383) );
+  nnd3s1 U41 ( .DIN1(net7636), .DIN2(net7766), .DIN3(net7881), .Q(net6092) );
+  i1s3 U42 ( .DIN(net6121), .Q(net6118) );
+  and2s2 U43 ( .DIN1(net6118), .DIN2(net7636), .Q(net7946) );
+  oai22s3 U44 ( .DIN1(net6124), .DIN2(a_x), .DIN3(net6125), .DIN4(net6126), 
+        .Q(net6121) );
+  nnd3s2 U45 ( .DIN1(estimation_tmp[0]), .DIN2(n14), .DIN3(estimation_tmp[2]), 
+        .Q(net6125) );
+  ib1s1 U46 ( .DIN(n6), .Q(n14) );
+  mxi21s2 U47 ( .DIN1(net6096), .DIN2(net9557), .SIN(n3), .Q(n13) );
+  oai211s2 U48 ( .DIN1(n3), .DIN2(net6086), .DIN3(net6094), .DIN4(n13), .Q(n27) );
+  nnd2s1 U49 ( .DIN1(net8402), .DIN2(net7881), .Q(net8037) );
+  ib1s1 U50 ( .DIN(reset), .Q(n16) );
+  xnr3s2 U51 ( .DIN1(a_x), .DIN2(SC_estimation), .DIN3(a_y), .Q(net6120) );
+  xnr3s2 U52 ( .DIN1(a_x), .DIN2(SC_estimation), .DIN3(a_y), .Q(net7881) );
+  or2s1 U53 ( .DIN1(n5), .DIN2(net6086), .Q(net7680) );
+  nnd3s1 U54 ( .DIN1(n6), .DIN2(n5), .DIN3(n7), .Q(net6108) );
+  or2s1 U55 ( .DIN1(n6), .DIN2(net6086), .Q(net7916) );
+  nnd2s3 U56 ( .DIN1(net6099), .DIN2(net6100), .Q(net6085) );
+  nnd2s2 U57 ( .DIN1(n10), .DIN2(net6087), .Q(n28) );
+  i1s1 U58 ( .DIN(net6093), .Q(net6089) );
+  or2s1 U59 ( .DIN1(n1), .DIN2(net6086), .Q(n17) );
+  nnd2s2 U60 ( .DIN1(net6130), .DIN2(net6081), .Q(net6100) );
+  ib1s1 U61 ( .DIN(net6100), .Q(net6105) );
+  xor2s2 U62 ( .DIN1(net6081), .DIN2(\a_y_bin[5] ), .Q(out_bin[3]) );
+  ib1s1 U63 ( .DIN(net6108), .Q(net6130) );
+  or2s1 U64 ( .DIN1(net6108), .DIN2(net7973), .Q(net7679) );
+  aoi21s2 U65 ( .DIN1(estimation_tmp[3]), .DIN2(net6108), .DIN3(net6105), .Q(
+        net6107) );
+  nnd2s2 U66 ( .DIN1(net6085), .DIN2(net6093), .Q(net6096) );
+  i1s1 U67 ( .DIN(net6099), .Q(net7973) );
+  nnd2s1 U68 ( .DIN1(enable), .DIN2(net7881), .Q(net6132) );
+  nnd2s2 U69 ( .DIN1(n18), .DIN2(net7946), .Q(net6093) );
+  and2s2 U70 ( .DIN1(net6120), .DIN2(net6098), .Q(n18) );
+  nnd2s2 U71 ( .DIN1(n19), .DIN2(net8385), .Q(n20) );
+  i1s1 U72 ( .DIN(n30), .Q(n19) );
+  nnd2s2 U73 ( .DIN1(net8015), .DIN2(n31), .Q(n33) );
+  i1s2 U74 ( .DIN(net6092), .Q(net8015) );
+  nnd2s1 U75 ( .DIN1(net8385), .DIN2(n32), .Q(n23) );
+  oai222s1 U76 ( .DIN1(net8037), .DIN2(n34), .DIN3(net6107), .DIN4(net7973), 
+        .DIN5(net6081), .DIN6(net6086), .Q(n36) );
+  nnd2s1 U77 ( .DIN1(n9), .DIN2(n21), .Q(n22) );
+  hi1s1 U78 ( .DIN(n32), .Q(n21) );
+  xor2s1 U79 ( .DIN1(n5), .DIN2(\a_y_bin[5] ), .Q(out_bin[2]) );
+  xor2s1 U80 ( .DIN1(estimation_tmp[1]), .DIN2(estimation_tmp[0]), .Q(n32) );
+  and2s1 U81 ( .DIN1(estimation_tmp[1]), .DIN2(estimation_tmp[0]), .Q(n30) );
+  or2s1 U82 ( .DIN1(n35), .DIN2(net6081), .Q(net6098) );
+  xor2s1 U83 ( .DIN1(n7), .DIN2(\a_y_bin[5] ), .Q(out_bin[0]) );
+  nnd2s1 U84 ( .DIN1(estimation_tmp[2]), .DIN2(n30), .Q(n35) );
+  xor2s1 U85 ( .DIN1(n35), .DIN2(estimation_tmp[3]), .Q(n34) );
+  or2s1 U86 ( .DIN1(estimation_tmp[1]), .DIN2(estimation_tmp[0]), .Q(n31) );
+  xor2s2 U87 ( .DIN1(n6), .DIN2(\a_y_bin[5] ), .Q(out_bin[1]) );
+endmodule
+
+
+module processing_element_1 ( clock, reset, enable, input_val_x, input_val_y, 
+        init_val, weight_val, output_val );
+  input [5:0] init_val;
+  input [5:0] weight_val;
+  output [5:0] output_val;
+  input clock, reset, enable, input_val_x, input_val_y;
+  wire   weight_x, mult_x, mult_y, half_sc, half_cnt, init_val_x, output_val_x,
+         output_val_y, n1;
+
+  SNG_9 SNG_weight_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val(
+        weight_val), .out_val(weight_x) );
+  ESL_multiplier_1 multiplier_inst ( .a_x(weight_x), .a_y(1'b1), .b_x(
+        input_val_x), .b_y(input_val_y), .o_x(mult_x), .o_y(mult_y) );
+  SNG_8 SNG_half_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val({
+        1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}), .out_val(half_sc) );
+  one_counter_1 one_counter_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .count(half_cnt) );
+  SNG_7 SNG_init_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val(
+        init_val), .out_val(init_val_x) );
+  ESL_adder_1 adder_inst ( .half_sc(half_sc), .half_cnt(half_cnt), .a_x(mult_x), .a_y(mult_y), .b_x(init_val_x), .b_y(1'b1), .o_x(output_val_x), .o_y(
+        output_val_y) );
+  ESL_bioilar_divider_1 P2B_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .a_x(output_val_x), .a_y(output_val_y), .out_bin(output_val) );
+  nb1s1 U3 ( .DIN(reset), .Q(n1) );
+endmodule
+
+
+module LFSR_6 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18;
+
+  dffles2 \LFSR_reg_reg[2]  ( .DIN(n12), .EB(n11), .CLK(clock), .Q(out_val[1]), 
+        .QN(n4) );
+  dffles2 \LFSR_reg_reg[3]  ( .DIN(n13), .EB(n11), .CLK(clock), .Q(out_val[2]), 
+        .QN(n1) );
+  dffles2 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n11), .CLK(clock), .Q(out_val[5])
+         );
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n7), .Q(n17) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n15), .EB(n11), .CLK(clock), .Q(out_val[4]), 
+        .QN(n18) );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n11), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n14), .EB(n11), .CLK(clock), .Q(out_val[3])
+         );
+  ib1s1 U2 ( .DIN(n1), .Q(n3) );
+  ib1s1 U3 ( .DIN(n4), .Q(n5) );
+  ib1s1 U5 ( .DIN(n10), .Q(n7) );
+  hi1s1 U6 ( .DIN(enable), .Q(n11) );
+  ib1s1 U7 ( .DIN(init), .Q(n10) );
+  oai21s2 U8 ( .DIN1(n7), .DIN2(n18), .DIN3(n17), .Q(N9) );
+  ib1s1 U9 ( .DIN(n16), .Q(n15) );
+  aoi22s1 U10 ( .DIN1(out_val[3]), .DIN2(n10), .DIN3(init_val[4]), .DIN4(n7), 
+        .Q(n16) );
+  dsmxc31s1 U11 ( .DIN1(n5), .DIN2(init_val[2]), .CLK(n7), .Q(n13) );
+  dsmxc31s1 U12 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n7), .Q(n12) );
+  dsmxc31s2 U13 ( .DIN1(n6), .DIN2(init_val[0]), .CLK(n7), .Q(N4) );
+  xnr2s1 U14 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n6) );
+  dsmxc31s2 U15 ( .DIN1(n3), .DIN2(init_val[3]), .CLK(n7), .Q(n14) );
+endmodule
+
+
+module SNG_6 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17;
+  wire   [5:0] random_number;
+
+  LFSR_6 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  nnd2s2 U3 ( .DIN1(in_val[2]), .DIN2(n7), .Q(n3) );
+  oai322s1 U4 ( .DIN1(n17), .DIN2(random_number[4]), .DIN3(n16), .DIN4(
+        random_number[5]), .DIN5(n15), .DIN6(n13), .DIN7(n14), .Q(out_val) );
+  ib1s1 U5 ( .DIN(n10), .Q(n17) );
+  aoi22s3 U6 ( .DIN1(n6), .DIN2(random_number[1]), .DIN3(random_number[2]), 
+        .DIN4(n4), .Q(n9) );
+  nnd2s1 U7 ( .DIN1(in_val[3]), .DIN2(n12), .Q(n1) );
+  nnd2s2 U8 ( .DIN1(n9), .DIN2(n8), .Q(n2) );
+  and3s2 U9 ( .DIN1(n2), .DIN2(n1), .DIN3(n3), .Q(n14) );
+  ib1s1 U10 ( .DIN(random_number[3]), .Q(n12) );
+  ib1s1 U11 ( .DIN(random_number[4]), .Q(n11) );
+  i1s1 U12 ( .DIN(random_number[2]), .Q(n7) );
+  ib1s1 U13 ( .DIN(in_val[4]), .Q(n16) );
+  ib1s1 U14 ( .DIN(in_val[1]), .Q(n6) );
+  ib1s1 U15 ( .DIN(in_val[5]), .Q(n15) );
+  ib1s1 U16 ( .DIN(in_val[2]), .Q(n4) );
+  ib1s1 U17 ( .DIN(in_val[0]), .Q(n5) );
+  nnd2s2 U18 ( .DIN1(random_number[5]), .DIN2(n15), .Q(n10) );
+  oai211s2 U19 ( .DIN1(n6), .DIN2(random_number[1]), .DIN3(n5), .DIN4(
+        random_number[0]), .Q(n8) );
+  oai221s2 U20 ( .DIN1(in_val[3]), .DIN2(n12), .DIN3(in_val[4]), .DIN4(n11), 
+        .DIN5(n10), .Q(n13) );
+endmodule
+
+
+module ESL_multiplier_0 ( a_x, a_y, b_x, b_y, o_x, o_y );
+  input a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+  wire   n1, n2, n3, n4;
+
+  i1s1 U1 ( .DIN(a_x), .Q(n2) );
+  nnd2s1 U2 ( .DIN1(n2), .DIN2(n1), .Q(n4) );
+  ib1s1 U3 ( .DIN(b_x), .Q(n1) );
+  nnd2s1 U4 ( .DIN1(b_x), .DIN2(a_x), .Q(n3) );
+  nnd2s2 U5 ( .DIN1(n3), .DIN2(n4), .Q(o_x) );
+  xnr2s1 U6 ( .DIN1(b_y), .DIN2(a_y), .Q(o_y) );
+endmodule
+
+
+module LFSR_5 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n13, n14, n15, n16;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n3), .Q(n15) );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n11), .EB(n5), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n12), .EB(n5), .CLK(clock), .Q(out_val[4]), 
+        .QN(n16) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n5), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n5), .CLK(clock), .Q(out_val[0])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n6), .EB(n5), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n7), .EB(n5), .CLK(clock), .Q(out_val[2])
+         );
+  ib1s1 U2 ( .DIN(n4), .Q(n3) );
+  hi1s1 U3 ( .DIN(enable), .Q(n5) );
+  ib1s1 U5 ( .DIN(init), .Q(n4) );
+  oai21s2 U6 ( .DIN1(n3), .DIN2(n16), .DIN3(n15), .Q(N9) );
+  dsmxc31s1 U7 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n3), .Q(n7) );
+  dsmxc31s1 U8 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n3), .Q(n6) );
+  ib1s1 U9 ( .DIN(n13), .Q(n11) );
+  aoi22s1 U10 ( .DIN1(out_val[2]), .DIN2(n4), .DIN3(init_val[3]), .DIN4(n3), 
+        .Q(n13) );
+  dsmxc31s2 U11 ( .DIN1(n1), .DIN2(init_val[0]), .CLK(n3), .Q(N4) );
+  xnr2s1 U12 ( .DIN1(out_val[4]), .DIN2(out_val[5]), .Q(n1) );
+  ib1s1 U13 ( .DIN(n14), .Q(n12) );
+  aoi22s2 U14 ( .DIN1(out_val[3]), .DIN2(n4), .DIN3(init_val[4]), .DIN4(n3), 
+        .Q(n14) );
+endmodule
+
+
+module SNG_5 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18;
+  wire   [5:0] random_number;
+
+  LFSR_5 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  ib1s1 U3 ( .DIN(random_number[1]), .Q(n6) );
+  ib1s1 U4 ( .DIN(random_number[2]), .Q(n4) );
+  or2s1 U5 ( .DIN1(in_val[3]), .DIN2(n12), .Q(n1) );
+  or2s1 U6 ( .DIN1(in_val[4]), .DIN2(n11), .Q(n2) );
+  nnd3s1 U7 ( .DIN1(n10), .DIN2(n2), .DIN3(n1), .Q(n13) );
+  hi1s1 U8 ( .DIN(random_number[3]), .Q(n12) );
+  oai21s3 U9 ( .DIN1(random_number[5]), .DIN2(n18), .DIN3(n17), .Q(out_val) );
+  ib1s1 U10 ( .DIN(in_val[3]), .Q(n8) );
+  ib1s1 U11 ( .DIN(in_val[2]), .Q(n9) );
+  ib1s1 U12 ( .DIN(in_val[5]), .Q(n18) );
+  ib1s1 U13 ( .DIN(in_val[4]), .Q(n14) );
+  ib1s1 U14 ( .DIN(random_number[4]), .Q(n11) );
+  ib1s1 U15 ( .DIN(in_val[1]), .Q(n3) );
+  ib1s1 U16 ( .DIN(random_number[5]), .Q(n16) );
+  oai21s2 U17 ( .DIN1(random_number[1]), .DIN2(n3), .DIN3(random_number[0]), 
+        .Q(n5) );
+  oai222s1 U18 ( .DIN1(in_val[1]), .DIN2(n6), .DIN3(in_val[0]), .DIN4(n5), 
+        .DIN5(in_val[2]), .DIN6(n4), .Q(n7) );
+  oai221s2 U19 ( .DIN1(random_number[2]), .DIN2(n9), .DIN3(random_number[3]), 
+        .DIN4(n8), .DIN5(n7), .Q(n10) );
+  oai21s2 U20 ( .DIN1(random_number[4]), .DIN2(n14), .DIN3(n13), .Q(n15) );
+  oai21s2 U21 ( .DIN1(in_val[5]), .DIN2(n16), .DIN3(n15), .Q(n17) );
+endmodule
+
+
+module one_counter_0 ( clock, reset, enable, count );
+  input clock, reset, enable;
+  output count;
+  wire   n3, n4;
+
+  dffs1 count_reg ( .DIN(n3), .CLK(clock), .Q(count) );
+  nor2s1 U3 ( .DIN1(reset), .DIN2(n4), .Q(n3) );
+  xnr2s1 U4 ( .DIN1(enable), .DIN2(count), .Q(n4) );
+endmodule
+
+
+module LFSR_4 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n11, n12, n14, n15, n16, n17, n18;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n17) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n12) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n11), .EB(n4), .CLK(clock), .Q(out_val[4]), 
+        .QN(n18) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n4), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n7), .EB(n4), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n6), .EB(n4), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n5), .EB(n4), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n4), .CLK(clock), .Q(out_val[0])
+         );
+  ib1s1 U2 ( .DIN(n3), .Q(n1) );
+  hi1s1 U3 ( .DIN(enable), .Q(n4) );
+  ib1s1 U5 ( .DIN(init), .Q(n3) );
+  oai21s2 U6 ( .DIN1(n1), .DIN2(n14), .DIN3(n12), .Q(N4) );
+  xor2s1 U7 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n14) );
+  oai21s2 U8 ( .DIN1(n1), .DIN2(n18), .DIN3(n17), .Q(N9) );
+  ib1s1 U9 ( .DIN(n16), .Q(n11) );
+  aoi22s2 U11 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n16) );
+  dsmxc31s2 U12 ( .DIN1(out_val[1]), .DIN2(init_val[2]), .CLK(n1), .Q(n6) );
+  dsmxc31s2 U13 ( .DIN1(out_val[0]), .DIN2(init_val[1]), .CLK(n1), .Q(n5) );
+  ib1s1 U14 ( .DIN(n15), .Q(n7) );
+  aoi22s2 U15 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n15) );
+endmodule
+
+
+module SNG_4 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17, n18, n19;
+  wire   [5:0] random_number;
+
+  LFSR_4 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  aoi22s3 U3 ( .DIN1(random_number[2]), .DIN2(n13), .DIN3(random_number[1]), 
+        .DIN4(n4), .Q(n7) );
+  i1s3 U4 ( .DIN(in_val[2]), .Q(n13) );
+  oai21s3 U5 ( .DIN1(random_number[2]), .DIN2(n13), .DIN3(n12), .Q(n17) );
+  ib1s1 U6 ( .DIN(random_number[4]), .Q(n8) );
+  i1s1 U7 ( .DIN(n19), .Q(n1) );
+  ib1s1 U8 ( .DIN(in_val[3]), .Q(n10) );
+  ib1s1 U9 ( .DIN(in_val[5]), .Q(n11) );
+  i1s3 U10 ( .DIN(in_val[1]), .Q(n4) );
+  nnd3s1 U11 ( .DIN1(n1), .DIN2(n15), .DIN3(n16), .Q(n2) );
+  nnd2s3 U12 ( .DIN1(in_val[4]), .DIN2(n8), .Q(n12) );
+  ib1s1 U13 ( .DIN(in_val[0]), .Q(n3) );
+  nnd2s2 U14 ( .DIN1(n2), .DIN2(n18), .Q(out_val) );
+  ib1s1 U15 ( .DIN(random_number[5]), .Q(n14) );
+  ib1s1 U16 ( .DIN(random_number[3]), .Q(n5) );
+  oai211s2 U17 ( .DIN1(random_number[1]), .DIN2(n4), .DIN3(random_number[0]), 
+        .DIN4(n3), .Q(n6) );
+  aoi22s2 U18 ( .DIN1(n6), .DIN2(n7), .DIN3(in_val[3]), .DIN4(n5), .Q(n19) );
+  ib1s2 U19 ( .DIN(in_val[4]), .Q(n9) );
+  aoai122s3 U20 ( .DIN2(random_number[3]), .DIN3(n10), .DIN4(random_number[4]), 
+        .DIN5(n9), .DIN1(n12), .Q(n15) );
+  nnd2s2 U21 ( .DIN1(random_number[5]), .DIN2(n11), .Q(n16) );
+  aoi23s2 U22 ( .DIN3(n15), .DIN4(n16), .DIN5(n17), .DIN1(in_val[5]), .DIN2(
+        n14), .Q(n18) );
+endmodule
+
+
+module ESL_adder_0 ( half_sc, half_cnt, a_x, a_y, b_x, b_y, o_x, o_y );
+  input half_sc, half_cnt, a_x, a_y, b_x, b_y;
+  output o_x, o_y;
+  wire   n1, n2;
+
+  xor3s3 U1 ( .DIN1(a_y), .DIN2(half_sc), .DIN3(b_y), .Q(o_y) );
+  xor2s2 U2 ( .DIN1(b_x), .DIN2(a_y), .Q(n2) );
+  xor2s2 U3 ( .DIN1(a_x), .DIN2(b_y), .Q(n1) );
+  mxi21s3 U4 ( .DIN1(n2), .DIN2(n1), .SIN(half_cnt), .Q(o_x) );
+endmodule
+
+
+module P2B_0 ( clock, reset, enable, in_val, out_val );
+  output [5:0] out_val;
+  input clock, reset, enable, in_val;
+  wire   N10, N11, N12, N13, N29, N30, N31, N32, N33, N40, N41, N42, N43, N44,
+         N45, N46, \add_32/carry[5] , \add_32/carry[4] , \add_32/carry[3] ,
+         \add_32/carry[2] , \add_21/carry[5] , \add_21/carry[4] ,
+         \add_21/carry[3] , \add_21/carry[2] , n2, n3, n4, n5, n6, n7, n13,
+         n21, n42, n43, n44, n45, n46, n47, n48, n49, n50, n51, n52, n53, n54,
+         n55, n56, n57, n58, n59, n60, n61, n62, n63, n64, n65, n66, n67, n68,
+         n69, n70, n71, n72, n73, n74, n75;
+  wire   [5:0] n_out_val;
+  wire   [5:0] modulus_m;
+
+  nnd2s2 U9 ( .DIN1(n5), .DIN2(n61), .Q(n62) );
+  nnd3s2 U27 ( .DIN1(modulus_m[0]), .DIN2(n69), .DIN3(modulus_m[3]), .Q(n55)
+         );
+  nnd2s2 U28 ( .DIN1(n5), .DIN2(n60), .Q(N40) );
+  nnd2s2 U29 ( .DIN1(enable), .DIN2(n5), .Q(n60) );
+  lclks1 \modulus_m_reg[1]  ( .CLK(N40), .DIN(N42), .Q(modulus_m[1]), .QN(n69)
+         );
+  lclks1 \modulus_m_reg[5]  ( .CLK(N40), .DIN(N46), .Q(modulus_m[5]) );
+  lclks1 \modulus_m_reg[2]  ( .CLK(N40), .DIN(N43), .Q(modulus_m[2]) );
+  lclks1 \modulus_m_reg[4]  ( .CLK(N40), .DIN(N45), .Q(modulus_m[4]) );
+  lclks1 \modulus_m_reg[3]  ( .CLK(N40), .DIN(N44), .Q(modulus_m[3]) );
+  lclks1 \modulus_m_reg[0]  ( .CLK(N40), .DIN(N41), .Q(modulus_m[0]), .QN(n3)
+         );
+  dffs1 \out_val_reg[4]  ( .DIN(n50), .CLK(clock), .Q(out_val[4]), .QN(n67) );
+  dffs1 \out_val_reg[3]  ( .DIN(n51), .CLK(clock), .Q(out_val[3]), .QN(n66) );
+  dffs1 \out_val_reg[2]  ( .DIN(n52), .CLK(clock), .Q(out_val[2]), .QN(n65) );
+  dffs1 \out_val_reg[1]  ( .DIN(n53), .CLK(clock), .Q(out_val[1]), .QN(n64) );
+  dffs1 \out_val_reg[0]  ( .DIN(n54), .CLK(clock), .Q(out_val[0]), .QN(n63) );
+  dffs1 \n_out_val_reg[5]  ( .DIN(n48), .CLK(clock), .Q(n_out_val[5]), .QN(n75) );
+  dffs1 \n_out_val_reg[1]  ( .DIN(n44), .CLK(clock), .Q(n_out_val[1]), .QN(n71) );
+  dffs1 \n_out_val_reg[2]  ( .DIN(n45), .CLK(clock), .Q(n_out_val[2]), .QN(n72) );
+  dffs1 \n_out_val_reg[3]  ( .DIN(n46), .CLK(clock), .Q(n_out_val[3]), .QN(n73) );
+  dffs1 \n_out_val_reg[4]  ( .DIN(n47), .CLK(clock), .Q(n_out_val[4]), .QN(n74) );
+  dffs1 \n_out_val_reg[0]  ( .DIN(n43), .CLK(clock), .Q(n_out_val[0]), .QN(n70) );
+  dffs1 \out_val_reg[5]  ( .DIN(n49), .CLK(clock), .Q(out_val[5]), .QN(n68) );
+  nor2s1 U3 ( .DIN1(n60), .DIN2(n6), .Q(n56) );
+  or2s1 U4 ( .DIN1(n60), .DIN2(n59), .Q(n61) );
+  xnr2s1 U5 ( .DIN1(\add_21/carry[5] ), .DIN2(n_out_val[5]), .Q(n2) );
+  nnd2s2 U6 ( .DIN1(n4), .DIN2(n57), .Q(n58) );
+  nnd2s2 U7 ( .DIN1(in_val), .DIN2(n56), .Q(n57) );
+  oai22s1 U8 ( .DIN1(n75), .DIN2(n58), .DIN3(n57), .DIN4(n2), .Q(n48) );
+  ib1s1 U10 ( .DIN(reset), .Q(n5) );
+  and2s1 U11 ( .DIN1(n59), .DIN2(n5), .Q(n4) );
+  ib1s1 U12 ( .DIN(n59), .Q(n6) );
+  and2s1 U13 ( .DIN1(N32), .DIN2(n56), .Q(N45) );
+  and2s1 U14 ( .DIN1(N31), .DIN2(n56), .Q(N44) );
+  and2s1 U15 ( .DIN1(N30), .DIN2(n56), .Q(N43) );
+  and2s1 U16 ( .DIN1(N29), .DIN2(n56), .Q(N42) );
+  oai22s1 U17 ( .DIN1(n74), .DIN2(n58), .DIN3(n57), .DIN4(n7), .Q(n47) );
+  ib1s1 U18 ( .DIN(N13), .Q(n7) );
+  oai22s1 U19 ( .DIN1(n73), .DIN2(n58), .DIN3(n57), .DIN4(n13), .Q(n46) );
+  ib1s1 U20 ( .DIN(N12), .Q(n13) );
+  oai22s1 U21 ( .DIN1(n72), .DIN2(n58), .DIN3(n57), .DIN4(n21), .Q(n45) );
+  ib1s1 U22 ( .DIN(N11), .Q(n21) );
+  oai22s1 U23 ( .DIN1(n71), .DIN2(n58), .DIN3(n57), .DIN4(n42), .Q(n44) );
+  ib1s1 U24 ( .DIN(N10), .Q(n42) );
+  oai22s1 U25 ( .DIN1(n70), .DIN2(n58), .DIN3(n57), .DIN4(n_out_val[0]), .Q(
+        n43) );
+  hadd1s1 U26 ( .AIN(n_out_val[1]), .BIN(n_out_val[0]), .OUTC(
+        \add_21/carry[2] ), .OUTS(N10) );
+  hadd1s1 U30 ( .AIN(n_out_val[2]), .BIN(\add_21/carry[2] ), .OUTC(
+        \add_21/carry[3] ), .OUTS(N11) );
+  hadd1s1 U31 ( .AIN(n_out_val[3]), .BIN(\add_21/carry[3] ), .OUTC(
+        \add_21/carry[4] ), .OUTS(N12) );
+  hadd1s1 U32 ( .AIN(n_out_val[4]), .BIN(\add_21/carry[4] ), .OUTC(
+        \add_21/carry[5] ), .OUTS(N13) );
+  and2s1 U33 ( .DIN1(N33), .DIN2(n56), .Q(N46) );
+  and2s1 U34 ( .DIN1(n3), .DIN2(n56), .Q(N41) );
+  hadd1s1 U35 ( .AIN(modulus_m[3]), .BIN(\add_32/carry[3] ), .OUTC(
+        \add_32/carry[4] ), .OUTS(N31) );
+  hadd1s1 U36 ( .AIN(modulus_m[2]), .BIN(\add_32/carry[2] ), .OUTC(
+        \add_32/carry[3] ), .OUTS(N30) );
+  hadd1s1 U37 ( .AIN(modulus_m[1]), .BIN(modulus_m[0]), .OUTC(
+        \add_32/carry[2] ), .OUTS(N29) );
+  hadd1s1 U38 ( .AIN(modulus_m[4]), .BIN(\add_32/carry[4] ), .OUTC(
+        \add_32/carry[5] ), .OUTS(N32) );
+  or4s1 U39 ( .DIN1(modulus_m[5]), .DIN2(modulus_m[4]), .DIN3(modulus_m[2]), 
+        .DIN4(n55), .Q(n59) );
+  oai22s1 U40 ( .DIN1(n62), .DIN2(n63), .DIN3(n61), .DIN4(n70), .Q(n54) );
+  oai22s1 U41 ( .DIN1(n62), .DIN2(n68), .DIN3(n61), .DIN4(n75), .Q(n49) );
+  oai22s1 U42 ( .DIN1(n62), .DIN2(n67), .DIN3(n61), .DIN4(n74), .Q(n50) );
+  oai22s1 U43 ( .DIN1(n62), .DIN2(n66), .DIN3(n61), .DIN4(n73), .Q(n51) );
+  oai22s1 U44 ( .DIN1(n62), .DIN2(n65), .DIN3(n61), .DIN4(n72), .Q(n52) );
+  oai22s1 U45 ( .DIN1(n62), .DIN2(n64), .DIN3(n61), .DIN4(n71), .Q(n53) );
+  xor2s1 U46 ( .DIN1(\add_32/carry[5] ), .DIN2(modulus_m[5]), .Q(N33) );
+endmodule
+
+
+module LFSR_0 ( clock, enable, init, init_val, out_val );
+  input [5:0] init_val;
+  output [5:0] out_val;
+  input clock, enable, init;
+  wire   N4, N9, n1, n3, n4, n5, n6, n7, n15, n16, n17, n18, n19, n20, n21,
+         n22, n23;
+
+  nnd2s2 U4 ( .DIN1(init_val[5]), .DIN2(n1), .Q(n22) );
+  nnd2s2 U10 ( .DIN1(init_val[0]), .DIN2(n1), .Q(n16) );
+  dffles1 \LFSR_reg_reg[5]  ( .DIN(n7), .EB(n15), .CLK(clock), .Q(out_val[4]), 
+        .QN(n23) );
+  dffles1 \LFSR_reg_reg[6]  ( .DIN(N9), .EB(n15), .CLK(clock), .Q(out_val[5])
+         );
+  dffles1 \LFSR_reg_reg[4]  ( .DIN(n6), .EB(n15), .CLK(clock), .Q(out_val[3])
+         );
+  dffles1 \LFSR_reg_reg[3]  ( .DIN(n5), .EB(n15), .CLK(clock), .Q(out_val[2])
+         );
+  dffles1 \LFSR_reg_reg[2]  ( .DIN(n4), .EB(n15), .CLK(clock), .Q(out_val[1])
+         );
+  dffles1 \LFSR_reg_reg[1]  ( .DIN(N4), .EB(n15), .CLK(clock), .Q(out_val[0])
+         );
+  ib1s1 U2 ( .DIN(n3), .Q(n1) );
+  ib1s1 U3 ( .DIN(init), .Q(n3) );
+  hi1s1 U5 ( .DIN(enable), .Q(n15) );
+  oai21s2 U6 ( .DIN1(n1), .DIN2(n17), .DIN3(n16), .Q(N4) );
+  xor2s1 U7 ( .DIN1(out_val[5]), .DIN2(out_val[4]), .Q(n17) );
+  oai21s1 U8 ( .DIN1(n1), .DIN2(n23), .DIN3(n22), .Q(N9) );
+  ib1s1 U9 ( .DIN(n18), .Q(n4) );
+  aoi22s1 U11 ( .DIN1(out_val[0]), .DIN2(n3), .DIN3(init_val[1]), .DIN4(n1), 
+        .Q(n18) );
+  ib1s1 U12 ( .DIN(n20), .Q(n6) );
+  aoi22s1 U13 ( .DIN1(out_val[2]), .DIN2(n3), .DIN3(init_val[3]), .DIN4(n1), 
+        .Q(n20) );
+  ib1s1 U14 ( .DIN(n19), .Q(n5) );
+  aoi22s1 U15 ( .DIN1(out_val[1]), .DIN2(n3), .DIN3(init_val[2]), .DIN4(n1), 
+        .Q(n19) );
+  ib1s1 U16 ( .DIN(n21), .Q(n7) );
+  aoi22s1 U17 ( .DIN1(out_val[3]), .DIN2(n3), .DIN3(init_val[4]), .DIN4(n1), 
+        .Q(n21) );
+endmodule
+
+
+module SNG_0 ( clock, reset, enable, in_val, out_val );
+  input [5:0] in_val;
+  input clock, reset, enable;
+  output out_val;
+  wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
+         n17;
+  wire   [5:0] random_number;
+
+  LFSR_0 UUT ( .clock(clock), .enable(enable), .init(reset), .init_val({1'b0, 
+        1'b0, 1'b1, 1'b0, 1'b1, 1'b0}), .out_val(random_number) );
+  ib1s1 U3 ( .DIN(n4), .Q(n16) );
+  or2s1 U4 ( .DIN1(n13), .DIN2(in_val[4]), .Q(n1) );
+  or2s1 U5 ( .DIN1(n14), .DIN2(in_val[3]), .Q(n2) );
+  nnd3s2 U6 ( .DIN1(n1), .DIN2(n2), .DIN3(n5), .Q(n6) );
+  oai221s2 U7 ( .DIN1(n11), .DIN2(random_number[3]), .DIN3(n9), .DIN4(
+        random_number[2]), .DIN5(n16), .Q(n5) );
+  aoi21s2 U8 ( .DIN1(in_val[4]), .DIN2(n13), .DIN3(n17), .Q(n7) );
+  ib1s1 U9 ( .DIN(n6), .Q(n17) );
+  ib1s1 U10 ( .DIN(random_number[3]), .Q(n14) );
+  hi1s1 U11 ( .DIN(in_val[5]), .Q(n12) );
+  i1s1 U12 ( .DIN(in_val[1]), .Q(n10) );
+  ib1s1 U13 ( .DIN(random_number[4]), .Q(n13) );
+  ib1s1 U14 ( .DIN(in_val[2]), .Q(n9) );
+  ib1s1 U15 ( .DIN(in_val[3]), .Q(n11) );
+  ib1s1 U16 ( .DIN(random_number[1]), .Q(n15) );
+  oai22s3 U17 ( .DIN1(random_number[5]), .DIN2(n12), .DIN3(n8), .DIN4(n7), .Q(
+        out_val) );
+  and2s1 U18 ( .DIN1(n12), .DIN2(random_number[5]), .Q(n8) );
+  aoi21s1 U19 ( .DIN1(in_val[1]), .DIN2(n15), .DIN3(in_val[0]), .Q(n3) );
+  aoi222s1 U20 ( .DIN1(random_number[2]), .DIN2(n9), .DIN3(n3), .DIN4(
+        random_number[0]), .DIN5(random_number[1]), .DIN6(n10), .Q(n4) );
+endmodule
+
+
+module ESL_bioilar_divider_0 ( clock, reset, enable, a_x, a_y, out_bin );
+  output [5:0] out_bin;
+  input clock, reset, enable, a_x, a_y;
+  wire   SC_estimation, \a_y_bin[5] , n2, n8, n9, n10, n11, n12, n13, n14, n15,
+         n16, n17, n18, n19, n20, n21, n22, n23, n30, n31, n32, n33, n34, n35,
+         n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46, n47, n48, n49,
+         n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60, n61, n62, n63,
+         n64, n65, n66, n67, n68, n69, n70, n71, n72, n73, n74, n75, n76, n77,
+         n78, n79, n80, n81, n82, n83;
+  wire   [5:0] estimation_tmp;
+  wire   SYNOPSYS_UNCONNECTED__0, SYNOPSYS_UNCONNECTED__1, 
+        SYNOPSYS_UNCONNECTED__2, SYNOPSYS_UNCONNECTED__3, 
+        SYNOPSYS_UNCONNECTED__4;
+
+  P2B_0 P2B_inst ( .clock(clock), .reset(reset), .enable(enable), .in_val(a_y), 
+        .out_val({\a_y_bin[5] , SYNOPSYS_UNCONNECTED__0, 
+        SYNOPSYS_UNCONNECTED__1, SYNOPSYS_UNCONNECTED__2, 
+        SYNOPSYS_UNCONNECTED__3, SYNOPSYS_UNCONNECTED__4}) );
+  SNG_0 SNG_inst ( .clock(clock), .reset(reset), .enable(enable), .in_val({
+        estimation_tmp[5], n11, estimation_tmp[3:2], n37, n38}), .out_val(
+        SC_estimation) );
+  dffs1 \estimation_tmp_reg[5]  ( .DIN(n73), .CLK(clock), .Q(estimation_tmp[5]), .QN(n83) );
+  dffs1 \estimation_tmp_reg[2]  ( .DIN(n76), .CLK(clock), .Q(estimation_tmp[2]), .QN(n80) );
+  dffs1 \estimation_tmp_reg[4]  ( .DIN(n74), .CLK(clock), .QN(n82) );
+  dffs1 \estimation_tmp_reg[3]  ( .DIN(n75), .CLK(clock), .Q(estimation_tmp[3]), .QN(n81) );
+  dffs1 \estimation_tmp_reg[0]  ( .DIN(n72), .CLK(clock), .Q(n38), .QN(n78) );
+  dffs1 \estimation_tmp_reg[1]  ( .DIN(n77), .CLK(clock), .Q(n37), .QN(n79) );
+  ib1s6 U3 ( .DIN(n66), .Q(n60) );
+  and2s2 U4 ( .DIN1(enable), .DIN2(n33), .Q(n8) );
+  nnd3s2 U5 ( .DIN1(n50), .DIN2(n16), .DIN3(n15), .Q(n76) );
+  and2s2 U6 ( .DIN1(n56), .DIN2(n60), .Q(n2) );
+  and2s2 U7 ( .DIN1(n56), .DIN2(n60), .Q(n9) );
+  nnd3s1 U8 ( .DIN1(n44), .DIN2(n8), .DIN3(n43), .Q(n19) );
+  ib1s1 U9 ( .DIN(n82), .Q(n11) );
+  and2s2 U10 ( .DIN1(n21), .DIN2(n20), .Q(n10) );
+  i1s2 U11 ( .DIN(n42), .Q(n44) );
+  nnd2s3 U12 ( .DIN1(n64), .DIN2(n71), .Q(n61) );
+  ib1s1 U13 ( .DIN(n64), .Q(n68) );
+  i1s1 U14 ( .DIN(n58), .Q(n12) );
+  i1s5 U15 ( .DIN(n65), .Q(n58) );
+  and2s1 U16 ( .DIN1(n60), .DIN2(n23), .Q(n49) );
+  nnd2s2 U17 ( .DIN1(n19), .DIN2(n82), .Q(n30) );
+  and2s2 U18 ( .DIN1(n42), .DIN2(n8), .Q(n13) );
+  or2s1 U19 ( .DIN1(n83), .DIN2(n71), .Q(n20) );
+  nnd2s1 U20 ( .DIN1(n17), .DIN2(n60), .Q(n18) );
+  i1s1 U21 ( .DIN(n60), .Q(n14) );
+  and3s2 U22 ( .DIN1(n30), .DIN2(n31), .DIN3(estimation_tmp[5]), .Q(n67) );
+  nnd2s3 U23 ( .DIN1(n58), .DIN2(n57), .Q(n71) );
+  nnd2s2 U24 ( .DIN1(n10), .DIN2(n69), .Q(n73) );
+  nnd3s3 U25 ( .DIN1(n43), .DIN2(n8), .DIN3(n44), .Q(n66) );
+  nnd2s3 U26 ( .DIN1(n60), .DIN2(n59), .Q(n64) );
+  or2s1 U27 ( .DIN1(n51), .DIN2(n12), .Q(n15) );
+  or2s1 U28 ( .DIN1(n80), .DIN2(n70), .Q(n16) );
+  nnd2s2 U29 ( .DIN1(n18), .DIN2(n47), .Q(n48) );
+  ib1s1 U30 ( .DIN(n23), .Q(n17) );
+  nnd2s2 U31 ( .DIN1(n33), .DIN2(n35), .Q(n70) );
+  mxi21s2 U32 ( .DIN1(n49), .DIN2(n48), .SIN(estimation_tmp[2]), .Q(n50) );
+  nnd2s1 U33 ( .DIN1(n32), .DIN2(n58), .Q(n47) );
+  nnd2s3 U34 ( .DIN1(n13), .DIN2(n43), .Q(n65) );
+  oai22s3 U35 ( .DIN1(n41), .DIN2(a_x), .DIN3(n40), .DIN4(n39), .Q(n42) );
+  or2s1 U36 ( .DIN1(n83), .DIN2(n70), .Q(n21) );
+  ib1s1 U37 ( .DIN(reset), .Q(n33) );
+  ib1s1 U38 ( .DIN(n57), .Q(n54) );
+  ib1s1 U39 ( .DIN(n51), .Q(n36) );
+  ib1s1 U40 ( .DIN(n59), .Q(n56) );
+  xor2s1 U41 ( .DIN1(n55), .DIN2(estimation_tmp[3]), .Q(n53) );
+  nor3s1 U42 ( .DIN1(n57), .DIN2(estimation_tmp[5]), .DIN3(n11), .Q(n41) );
+  mxi21s1 U43 ( .DIN1(n60), .DIN2(n58), .SIN(n22), .Q(n46) );
+  xnr2s1 U44 ( .DIN1(n37), .DIN2(n38), .Q(n22) );
+  or2s1 U45 ( .DIN1(n55), .DIN2(n81), .Q(n59) );
+  and2s1 U46 ( .DIN1(n37), .DIN2(n38), .Q(n23) );
+  xor2s1 U47 ( .DIN1(n83), .DIN2(\a_y_bin[5] ), .Q(out_bin[5]) );
+  xor2s1 U48 ( .DIN1(n82), .DIN2(\a_y_bin[5] ), .Q(out_bin[4]) );
+  xor2s1 U49 ( .DIN1(n81), .DIN2(\a_y_bin[5] ), .Q(out_bin[3]) );
+  xor2s1 U50 ( .DIN1(n79), .DIN2(\a_y_bin[5] ), .Q(out_bin[1]) );
+  xor2s1 U51 ( .DIN1(n78), .DIN2(\a_y_bin[5] ), .Q(out_bin[0]) );
+  xor2s1 U52 ( .DIN1(n80), .DIN2(\a_y_bin[5] ), .Q(out_bin[2]) );
+  xnr3s2 U53 ( .DIN1(SC_estimation), .DIN2(a_x), .DIN3(a_y), .Q(n43) );
+  nnd2s1 U54 ( .DIN1(n65), .DIN2(n11), .Q(n31) );
+  or2s1 U55 ( .DIN1(n37), .DIN2(n38), .Q(n32) );
+  aoi123s2 U56 ( .DIN4(n2), .DIN5(n11), .DIN6(n83), .DIN2(n68), .DIN3(
+        estimation_tmp[5]), .DIN1(n67), .Q(n69) );
+  xnr3s1 U57 ( .DIN1(a_x), .DIN2(SC_estimation), .DIN3(a_y), .Q(n34) );
+  nnd3s1 U58 ( .DIN1(n58), .DIN2(n54), .DIN3(n82), .Q(n63) );
+  oai21s1 U59 ( .DIN1(n58), .DIN2(n60), .DIN3(n78), .Q(n45) );
+  nnd2s2 U60 ( .DIN1(enable), .DIN2(n34), .Q(n35) );
+  nnd3s2 U61 ( .DIN1(n79), .DIN2(n80), .DIN3(n78), .Q(n51) );
+  nnd2s2 U62 ( .DIN1(n36), .DIN2(n81), .Q(n57) );
+  nnd3s2 U63 ( .DIN1(n38), .DIN2(n37), .DIN3(estimation_tmp[2]), .Q(n40) );
+  nnd3s2 U64 ( .DIN1(estimation_tmp[5]), .DIN2(estimation_tmp[3]), .DIN3(n11), 
+        .Q(n39) );
+  oai21s2 U65 ( .DIN1(n78), .DIN2(n70), .DIN3(n45), .Q(n72) );
+  oai21s2 U66 ( .DIN1(n79), .DIN2(n70), .DIN3(n46), .Q(n77) );
+  nnd2s2 U67 ( .DIN1(estimation_tmp[2]), .DIN2(n23), .Q(n55) );
+  aoi21s2 U68 ( .DIN1(estimation_tmp[3]), .DIN2(n51), .DIN3(n54), .Q(n52) );
+  oai222s1 U69 ( .DIN1(n14), .DIN2(n53), .DIN3(n52), .DIN4(n65), .DIN5(n81), 
+        .DIN6(n70), .Q(n75) );
+  mxi21s2 U70 ( .DIN1(n9), .DIN2(n61), .SIN(n11), .Q(n62) );
+  oai211s2 U71 ( .DIN1(n82), .DIN2(n70), .DIN3(n63), .DIN4(n62), .Q(n74) );
+endmodule
+
+
+module processing_element_0 ( clock, reset, enable, input_val_x, input_val_y, 
+        init_val, weight_val, output_val );
+  input [5:0] init_val;
+  input [5:0] weight_val;
+  output [5:0] output_val;
+  input clock, reset, enable, input_val_x, input_val_y;
+  wire   weight_x, mult_x, mult_y, half_sc, half_cnt, init_val_x, output_val_x,
+         output_val_y, n1;
+
+  SNG_6 SNG_weight_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val(
+        weight_val), .out_val(weight_x) );
+  ESL_multiplier_0 multiplier_inst ( .a_x(weight_x), .a_y(1'b1), .b_x(
+        input_val_x), .b_y(input_val_y), .o_x(mult_x), .o_y(mult_y) );
+  SNG_5 SNG_half_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val({
+        1'b1, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}), .out_val(half_sc) );
+  one_counter_0 one_counter_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .count(half_cnt) );
+  SNG_4 SNG_init_inst ( .clock(clock), .reset(n1), .enable(enable), .in_val(
+        init_val), .out_val(init_val_x) );
+  ESL_adder_0 adder_inst ( .half_sc(half_sc), .half_cnt(half_cnt), .a_x(mult_x), .a_y(mult_y), .b_x(init_val_x), .b_y(1'b1), .o_x(output_val_x), .o_y(
+        output_val_y) );
+  ESL_bioilar_divider_0 P2B_inst ( .clock(clock), .reset(n1), .enable(enable), 
+        .a_x(output_val_x), .a_y(output_val_y), .out_bin(output_val) );
+  nb1s1 U3 ( .DIN(reset), .Q(n1) );
+endmodule
+
+
+module index_counter ( clock, reset, enable, width_index, height_index );
+  output [1:0] width_index;
+  output [1:0] height_index;
+  input clock, reset, enable;
+  wire   n1, n2, n4, n6, n7, n10, n11, n12, n13, n3, n5, n8, n9, n14, n15, n16,
+         n17, n18, n19;
+
+  dffs2 \width_index_reg[0]  ( .DIN(n13), .CLK(clock), .Q(width_index[0]), 
+        .QN(n2) );
+  dffs2 \width_index_reg[1]  ( .DIN(n12), .CLK(clock), .Q(width_index[1]), 
+        .QN(n1) );
+  dffs2 \height_index_reg[0]  ( .DIN(n10), .CLK(clock), .Q(height_index[0]) );
+  dffs1 \height_index_reg[1]  ( .DIN(n11), .CLK(clock), .Q(height_index[1]) );
+  ib1s1 U3 ( .DIN(n15), .Q(n17) );
+  ib1s1 U4 ( .DIN(reset), .Q(n9) );
+  ib1s1 U5 ( .DIN(enable), .Q(n8) );
+  ib1s1 U6 ( .DIN(n1), .Q(n16) );
+  nor2s1 U7 ( .DIN1(reset), .DIN2(n4), .Q(n10) );
+  nor2s1 U8 ( .DIN1(reset), .DIN2(n6), .Q(n11) );
+  xor2s1 U9 ( .DIN1(n7), .DIN2(height_index[1]), .Q(n6) );
+  and3s1 U10 ( .DIN1(n16), .DIN2(n5), .DIN3(enable), .Q(n3) );
+  oai21s1 U11 ( .DIN1(reset), .DIN2(n19), .DIN3(n18), .Q(n12) );
+  ib1s1 U12 ( .DIN(n2), .Q(n5) );
+  aoi23s1 U13 ( .DIN3(n1), .DIN4(n5), .DIN5(n15), .DIN1(n16), .DIN2(n2), .Q(
+        n19) );
+  nnd2s2 U14 ( .DIN1(n9), .DIN2(n2), .Q(n14) );
+  nnd2s2 U15 ( .DIN1(n9), .DIN2(n8), .Q(n15) );
+  mxi21s2 U16 ( .DIN1(n14), .DIN2(n2), .SIN(n17), .Q(n13) );
+  nnd2s2 U17 ( .DIN1(n17), .DIN2(n16), .Q(n18) );
+  nnd2s2 U18 ( .DIN1(height_index[0]), .DIN2(n3), .Q(n7) );
+  oai21s2 U19 ( .DIN1(height_index[0]), .DIN2(n3), .DIN3(n7), .Q(n4) );
+endmodule
+
+
+module partial_result_buffer ( clock, reset, enable, .store_vals({
+        \store_vals[1][5] , \store_vals[1][4] , \store_vals[1][3] , 
+        \store_vals[1][2] , \store_vals[1][1] , \store_vals[1][0] , 
+        \store_vals[0][5] , \store_vals[0][4] , \store_vals[0][3] , 
+        \store_vals[0][2] , \store_vals[0][1] , \store_vals[0][0] }), 
+        width_index, .fetch_vals({\fetch_vals[1][5] , \fetch_vals[1][4] , 
+        \fetch_vals[1][3] , \fetch_vals[1][2] , \fetch_vals[1][1] , 
+        \fetch_vals[1][0] , \fetch_vals[0][5] , \fetch_vals[0][4] , 
+        \fetch_vals[0][3] , \fetch_vals[0][2] , \fetch_vals[0][1] , 
+        \fetch_vals[0][0] }) );
+  input [1:0] width_index;
+  input clock, reset, enable, \store_vals[1][5] , \store_vals[1][4] ,
+         \store_vals[1][3] , \store_vals[1][2] , \store_vals[1][1] ,
+         \store_vals[1][0] , \store_vals[0][5] , \store_vals[0][4] ,
+         \store_vals[0][3] , \store_vals[0][2] , \store_vals[0][1] ,
+         \store_vals[0][0] ;
+  output \fetch_vals[1][5] , \fetch_vals[1][4] , \fetch_vals[1][3] ,
+         \fetch_vals[1][2] , \fetch_vals[1][1] , \fetch_vals[1][0] ,
+         \fetch_vals[0][5] , \fetch_vals[0][4] , \fetch_vals[0][3] ,
+         \fetch_vals[0][2] , \fetch_vals[0][1] , \fetch_vals[0][0] ;
+  wire   N5, N6, \stored_partial_sums[0][3][5] ,
+         \stored_partial_sums[0][3][4] , \stored_partial_sums[0][3][2] ,
+         \stored_partial_sums[0][3][0] , \stored_partial_sums[0][2][5] ,
+         \stored_partial_sums[0][2][4] , \stored_partial_sums[0][2][2] ,
+         \stored_partial_sums[0][2][0] , \stored_partial_sums[0][1][5] ,
+         \stored_partial_sums[0][1][4] , \stored_partial_sums[0][1][2] ,
+         \stored_partial_sums[0][1][0] , \stored_partial_sums[0][0][5] ,
+         \stored_partial_sums[0][0][4] , \stored_partial_sums[0][0][2] ,
+         \stored_partial_sums[0][0][0] , n37, n38, n39, n40, n41, n48, n49,
+         n56, n57, net3702, net3708, net3709, net3710, net5007, net5012,
+         net5017, net5022, net5027, net5032, net5929, net5930, net5931,
+         net5939, net5940, net5946, net5947, net5951, net5952, \C82/net5923 ,
+         \C82/net5922 , \C82/net5917 , \C82/net5916 , \C82/net5913 ,
+         \C82/net5912 , \C82/net5910 , \C82/net5908 , \C82/net5907 ,
+         \C82/net5906 , net7223, net7229, net7692, net7948, net7979, net8556,
+         net8915, net8916, net8917, net8918, net9084, net9056, net9055,
+         net9051, net9028, net9146, net9076, net9065, net8975, net8922,
+         net7577, \C82/net5921 , \C82/net5920 , \C82/net6593 , n19, n20, n21,
+         n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35,
+         n36, n42, n43, n44, n45, n46, n47, n50, n51, n52, n53, n54, n55, n58,
+         n59, n60, n61, n62, n63, n64, n65, n66, n67, n68, n69, n70, n71, n72,
+         n73;
+  assign N5 = width_index[0];
+  assign N6 = width_index[1];
+
+  nnd2s2 U35 ( .DIN1(enable), .DIN2(n58), .Q(n39) );
+  dffles1 \stored_partial_sums_reg[0][3][1]  ( .DIN(1'b0), .EB(n58), .CLK(
+        clock), .QN(net7223) );
+  dffles1 \stored_partial_sums_reg[0][3][0]  ( .DIN(1'b0), .EB(n58), .CLK(
+        clock), .Q(\stored_partial_sums[0][3][0] ) );
+  dffles1 \stored_partial_sums_reg[0][3][5]  ( .DIN(1'b0), .EB(n58), .CLK(
+        clock), .Q(\stored_partial_sums[0][3][5] ) );
+  dffs1 \stored_partial_sums_reg[0][2][1]  ( .DIN(n62), .CLK(clock), .Q(n30), 
+        .QN(net7229) );
+  dffs1 \stored_partial_sums_reg[0][2][4]  ( .DIN(net3710), .CLK(clock), .Q(
+        \stored_partial_sums[0][2][4] ) );
+  dffs1 \stored_partial_sums_reg[0][2][2]  ( .DIN(n65), .CLK(clock), .Q(
+        \stored_partial_sums[0][2][2] ) );
+  dffs1 \stored_partial_sums_reg[0][0][2]  ( .DIN(n67), .CLK(clock), .Q(
+        \stored_partial_sums[0][0][2] ) );
+  dffs1 \stored_partial_sums_reg[0][1][0]  ( .DIN(n60), .CLK(clock), .Q(
+        \stored_partial_sums[0][1][0] ) );
+  dffs1 \stored_partial_sums_reg[0][0][4]  ( .DIN(net3708), .CLK(clock), .Q(
+        \stored_partial_sums[0][0][4] ) );
+  dffs1 \stored_partial_sums_reg[0][2][5]  ( .DIN(n71), .CLK(clock), .Q(
+        \stored_partial_sums[0][2][5] ) );
+  dffs1 \stored_partial_sums_reg[0][0][5]  ( .DIN(n73), .CLK(clock), .Q(
+        \stored_partial_sums[0][0][5] ) );
+  dffs1 \stored_partial_sums_reg[0][1][4]  ( .DIN(net3709), .CLK(clock), .Q(
+        \stored_partial_sums[0][1][4] ) );
+  dffs1 \stored_partial_sums_reg[0][1][5]  ( .DIN(n72), .CLK(clock), .Q(
+        \stored_partial_sums[0][1][5] ) );
+  dffs1 \stored_partial_sums_reg[0][1][3]  ( .DIN(n69), .CLK(clock), .Q(n20), 
+        .QN(net8915) );
+  dffs1 \stored_partial_sums_reg[0][0][3]  ( .DIN(n70), .CLK(clock), .Q(n19), 
+        .QN(net8916) );
+  dffs1 \stored_partial_sums_reg[0][2][3]  ( .DIN(n68), .CLK(clock), .Q(n24), 
+        .QN(net8556) );
+  dffs1 \stored_partial_sums_reg[0][1][2]  ( .DIN(n66), .CLK(clock), .Q(
+        \stored_partial_sums[0][1][2] ) );
+  dffs1 \stored_partial_sums_reg[0][1][1]  ( .DIN(n63), .CLK(clock), .Q(n31), 
+        .QN(net8917) );
+  dffs1 \stored_partial_sums_reg[0][0][1]  ( .DIN(n64), .CLK(clock), .Q(n32), 
+        .QN(net8918) );
+  dffs1 \stored_partial_sums_reg[0][0][0]  ( .DIN(n61), .CLK(clock), .Q(
+        \stored_partial_sums[0][0][0] ) );
+  dffles1 \stored_partial_sums_reg[0][3][4]  ( .DIN(1'b0), .EB(n58), .CLK(
+        clock), .Q(\stored_partial_sums[0][3][4] ) );
+  dffles1 \stored_partial_sums_reg[0][3][2]  ( .DIN(1'b0), .EB(n58), .CLK(
+        clock), .Q(\stored_partial_sums[0][3][2] ) );
+  dffles1 \stored_partial_sums_reg[0][3][3]  ( .DIN(1'b0), .EB(n58), .CLK(
+        clock), .QN(net7692) );
+  dffs1 \stored_partial_sums_reg[0][2][0]  ( .DIN(n59), .CLK(clock), .Q(
+        \stored_partial_sums[0][2][0] ) );
+  ib1s1 U9 ( .DIN(1'b1), .Q(\fetch_vals[0][5] ) );
+  ib1s1 U11 ( .DIN(1'b1), .Q(\fetch_vals[0][4] ) );
+  ib1s1 U13 ( .DIN(1'b1), .Q(\fetch_vals[0][3] ) );
+  ib1s1 U15 ( .DIN(1'b1), .Q(\fetch_vals[0][2] ) );
+  ib1s1 U17 ( .DIN(1'b1), .Q(\fetch_vals[0][1] ) );
+  ib1s1 U19 ( .DIN(1'b1), .Q(\fetch_vals[0][0] ) );
+  ib1s2 U21 ( .DIN(N5), .Q(n22) );
+  nb1s1 U22 ( .DIN(N5), .Q(net9076) );
+  i1s4 U23 ( .DIN(net9065), .Q(net8922) );
+  nnd2s2 U24 ( .DIN1(n27), .DIN2(net9028), .Q(\fetch_vals[1][3] ) );
+  i1s8 U25 ( .DIN(N5), .Q(n21) );
+  and2s2 U26 ( .DIN1(n22), .DIN2(N6), .Q(\C82/net6593 ) );
+  aoi22s3 U27 ( .DIN1(net8922), .DIN2(\stored_partial_sums[0][3][2] ), .DIN3(
+        \C82/net6593 ), .DIN4(\stored_partial_sums[0][2][2] ), .Q(
+        \C82/net5917 ) );
+  aoi22s1 U28 ( .DIN1(\stored_partial_sums[0][3][0] ), .DIN2(net8922), .DIN3(
+        \stored_partial_sums[0][2][0] ), .DIN4(\C82/net6593 ), .Q(
+        \C82/net5907 ) );
+  aoi22s2 U29 ( .DIN1(\stored_partial_sums[0][3][4] ), .DIN2(net8922), .DIN3(
+        \stored_partial_sums[0][2][4] ), .DIN4(\C82/net6593 ), .Q(
+        \C82/net5921 ) );
+  aoi22s1 U30 ( .DIN1(\stored_partial_sums[0][3][5] ), .DIN2(\C82/net5908 ), 
+        .DIN3(\stored_partial_sums[0][2][5] ), .DIN4(\C82/net6593 ), .Q(
+        \C82/net5923 ) );
+  and2s2 U31 ( .DIN1(n22), .DIN2(net9051), .Q(net8975) );
+  and2s2 U32 ( .DIN1(n22), .DIN2(net9051), .Q(net7577) );
+  ib1s6 U33 ( .DIN(N6), .Q(net9051) );
+  i1s8 U34 ( .DIN(N5), .Q(net9146) );
+  nnd2s2 U36 ( .DIN1(\C82/net5920 ), .DIN2(\C82/net5921 ), .Q(
+        \fetch_vals[1][4] ) );
+  i1s1 U37 ( .DIN(net8922), .Q(net9084) );
+  nnd2s3 U38 ( .DIN1(net9076), .DIN2(net7948), .Q(net9065) );
+  ib1s6 U39 ( .DIN(net9051), .Q(net7948) );
+  mxi21s2 U40 ( .DIN1(net9055), .DIN2(net9056), .SIN(net7979), .Q(net9028) );
+  aoi22s2 U41 ( .DIN1(\stored_partial_sums[0][1][4] ), .DIN2(n23), .DIN3(
+        \stored_partial_sums[0][0][4] ), .DIN4(net7577), .Q(\C82/net5920 ) );
+  aoi22s1 U42 ( .DIN1(net5012), .DIN2(\store_vals[0][4] ), .DIN3(
+        \stored_partial_sums[0][2][4] ), .DIN4(net5007), .Q(n56) );
+  aoi22s1 U43 ( .DIN1(net5022), .DIN2(\store_vals[0][4] ), .DIN3(
+        \stored_partial_sums[0][1][4] ), .DIN4(net5017), .Q(n48) );
+  nor2s2 U44 ( .DIN1(net7948), .DIN2(n21), .Q(n23) );
+  aoi22s2 U45 ( .DIN1(\stored_partial_sums[0][1][2] ), .DIN2(n23), .DIN3(
+        \stored_partial_sums[0][0][2] ), .DIN4(net8975), .Q(\C82/net5916 ) );
+  aoi22s1 U46 ( .DIN1(\store_vals[0][4] ), .DIN2(net5032), .DIN3(
+        \stored_partial_sums[0][0][4] ), .DIN4(net5027), .Q(n37) );
+  aoi22s1 U47 ( .DIN1(\stored_partial_sums[0][1][5] ), .DIN2(\C82/net5910 ), 
+        .DIN3(\stored_partial_sums[0][0][5] ), .DIN4(net7577), .Q(
+        \C82/net5922 ) );
+  aoi22s1 U48 ( .DIN1(\stored_partial_sums[0][1][0] ), .DIN2(\C82/net5910 ), 
+        .DIN3(\stored_partial_sums[0][0][0] ), .DIN4(net7577), .Q(
+        \C82/net5906 ) );
+  ib1s6 U49 ( .DIN(net9146), .Q(net7979) );
+  nnd2s2 U50 ( .DIN1(net5027), .DIN2(n19), .Q(net5939) );
+  nnd2s2 U51 ( .DIN1(net5017), .DIN2(n20), .Q(net5946) );
+  nnd2s2 U52 ( .DIN1(net5007), .DIN2(n24), .Q(net5951) );
+  nnd2s2 U53 ( .DIN1(n25), .DIN2(n21), .Q(\C82/net5913 ) );
+  nnd2s2 U54 ( .DIN1(n26), .DIN2(net7979), .Q(\C82/net5912 ) );
+  nor2s1 U55 ( .DIN1(net7948), .DIN2(n21), .Q(\C82/net5910 ) );
+  ib1s1 U56 ( .DIN(net9084), .Q(\C82/net5908 ) );
+  nor2s1 U57 ( .DIN1(net7692), .DIN2(net9051), .Q(net9056) );
+  nor2s1 U58 ( .DIN1(net8556), .DIN2(net9051), .Q(net9055) );
+  mxi21s2 U59 ( .DIN1(n28), .DIN2(n29), .SIN(net7979), .Q(n27) );
+  nor2s2 U60 ( .DIN1(net7948), .DIN2(net8916), .Q(n28) );
+  nor2s2 U61 ( .DIN1(net7948), .DIN2(net8915), .Q(n29) );
+  mxi21s3 U62 ( .DIN1(net8917), .DIN2(net7223), .SIN(net7948), .Q(n26) );
+  mxi21s3 U63 ( .DIN1(net8918), .DIN2(net7229), .SIN(net7948), .Q(n25) );
+  oai13s3 U64 ( .DIN2(n41), .DIN3(net9146), .DIN4(n45), .DIN1(n58), .Q(net5940) );
+  aoi21s1 U65 ( .DIN1(net3702), .DIN2(net9146), .DIN3(n39), .Q(n40) );
+  nnd2s2 U66 ( .DIN1(\C82/net5912 ), .DIN2(\C82/net5913 ), .Q(
+        \fetch_vals[1][1] ) );
+  nnd2s1 U67 ( .DIN1(\C82/net5906 ), .DIN2(\C82/net5907 ), .Q(
+        \fetch_vals[1][0] ) );
+  aoi22s1 U68 ( .DIN1(\store_vals[0][5] ), .DIN2(net5032), .DIN3(
+        \stored_partial_sums[0][0][5] ), .DIN4(net5027), .Q(n38) );
+  aoi22s1 U69 ( .DIN1(net5012), .DIN2(\store_vals[0][5] ), .DIN3(
+        \stored_partial_sums[0][2][5] ), .DIN4(net5007), .Q(n57) );
+  ib1s1 U70 ( .DIN(net5929), .Q(net5032) );
+  ib1s1 U71 ( .DIN(net5931), .Q(net5012) );
+  ib1s1 U72 ( .DIN(net5940), .Q(net5027) );
+  ib1s1 U73 ( .DIN(net5952), .Q(net5007) );
+  ib1s1 U74 ( .DIN(net5930), .Q(net5022) );
+  ib1s1 U75 ( .DIN(n39), .Q(n46) );
+  ib1s1 U76 ( .DIN(n41), .Q(n33) );
+  ib1s1 U77 ( .DIN(net5947), .Q(net5017) );
+  nor2s1 U78 ( .DIN1(net3702), .DIN2(n21), .Q(n41) );
+  ib1s1 U79 ( .DIN(n40), .Q(n45) );
+  ib1s1 U80 ( .DIN(n37), .Q(net3708) );
+  ib1s1 U81 ( .DIN(n38), .Q(n73) );
+  ib1s1 U82 ( .DIN(n56), .Q(net3710) );
+  ib1s1 U83 ( .DIN(n57), .Q(n71) );
+  nnd2s2 U84 ( .DIN1(\C82/net5916 ), .DIN2(\C82/net5917 ), .Q(
+        \fetch_vals[1][2] ) );
+  ib1s1 U85 ( .DIN(reset), .Q(n58) );
+  ib1s1 U86 ( .DIN(n48), .Q(net3709) );
+  ib1s1 U87 ( .DIN(n49), .Q(n72) );
+  aoi22s2 U88 ( .DIN1(net5022), .DIN2(\store_vals[0][5] ), .DIN3(
+        \stored_partial_sums[0][1][5] ), .DIN4(net5017), .Q(n49) );
+  ib1s1 U89 ( .DIN(\store_vals[0][2] ), .Q(n51) );
+  ib1s1 U90 ( .DIN(\store_vals[0][1] ), .Q(n53) );
+  ib1s1 U91 ( .DIN(\store_vals[0][0] ), .Q(n55) );
+  ib1s1 U92 ( .DIN(\store_vals[0][3] ), .Q(n47) );
+  nnd2s2 U93 ( .DIN1(\C82/net5922 ), .DIN2(\C82/net5923 ), .Q(
+        \fetch_vals[1][5] ) );
+  hi1s1 U94 ( .DIN(net7948), .Q(net3702) );
+  oai21s1 U95 ( .DIN1(net7979), .DIN2(n45), .DIN3(n58), .Q(net5947) );
+  oai21s2 U96 ( .DIN1(n45), .DIN2(n33), .DIN3(n58), .Q(net5952) );
+  nnd2s2 U97 ( .DIN1(net5952), .DIN2(n46), .Q(net5931) );
+  oai21s2 U98 ( .DIN1(n47), .DIN2(net5931), .DIN3(net5951), .Q(n68) );
+  nnd2s2 U99 ( .DIN1(\stored_partial_sums[0][2][2] ), .DIN2(net5007), .Q(n34)
+         );
+  oai21s2 U100 ( .DIN1(n51), .DIN2(net5931), .DIN3(n34), .Q(n65) );
+  nnd2s2 U101 ( .DIN1(n30), .DIN2(net5007), .Q(n35) );
+  oai21s2 U102 ( .DIN1(n53), .DIN2(net5931), .DIN3(n35), .Q(n62) );
+  nnd2s2 U103 ( .DIN1(\stored_partial_sums[0][2][0] ), .DIN2(net5007), .Q(n36)
+         );
+  oai21s2 U104 ( .DIN1(n55), .DIN2(net5931), .DIN3(n36), .Q(n59) );
+  nnd2s2 U105 ( .DIN1(net5947), .DIN2(n46), .Q(net5930) );
+  oai21s2 U106 ( .DIN1(n47), .DIN2(net5930), .DIN3(net5946), .Q(n69) );
+  nnd2s2 U107 ( .DIN1(\stored_partial_sums[0][1][2] ), .DIN2(net5017), .Q(n42)
+         );
+  oai21s2 U108 ( .DIN1(n51), .DIN2(net5930), .DIN3(n42), .Q(n66) );
+  nnd2s2 U109 ( .DIN1(n31), .DIN2(net5017), .Q(n43) );
+  oai21s2 U110 ( .DIN1(n53), .DIN2(net5930), .DIN3(n43), .Q(n63) );
+  nnd2s2 U111 ( .DIN1(\stored_partial_sums[0][1][0] ), .DIN2(net5017), .Q(n44)
+         );
+  oai21s2 U112 ( .DIN1(n55), .DIN2(net5930), .DIN3(n44), .Q(n60) );
+  nnd2s2 U113 ( .DIN1(net5940), .DIN2(n46), .Q(net5929) );
+  oai21s2 U114 ( .DIN1(net5929), .DIN2(n47), .DIN3(net5939), .Q(n70) );
+  nnd2s2 U115 ( .DIN1(\stored_partial_sums[0][0][2] ), .DIN2(net5027), .Q(n50)
+         );
+  oai21s2 U116 ( .DIN1(net5929), .DIN2(n51), .DIN3(n50), .Q(n67) );
+  nnd2s2 U117 ( .DIN1(n32), .DIN2(net5027), .Q(n52) );
+  oai21s2 U118 ( .DIN1(net5929), .DIN2(n53), .DIN3(n52), .Q(n64) );
+  nnd2s2 U119 ( .DIN1(\stored_partial_sums[0][0][0] ), .DIN2(net5027), .Q(n54)
+         );
+  oai21s2 U120 ( .DIN1(net5929), .DIN2(n55), .DIN3(n54), .Q(n61) );
+endmodule
+
+
+module processing_unit ( clock, reset, start, input_req, input_val, 
+        input_ready, .weight_vals({\weight_vals[1][1][5] , 
+        \weight_vals[1][1][4] , \weight_vals[1][1][3] , \weight_vals[1][1][2] , 
+        \weight_vals[1][1][1] , \weight_vals[1][1][0] , \weight_vals[1][0][5] , 
+        \weight_vals[1][0][4] , \weight_vals[1][0][3] , \weight_vals[1][0][2] , 
+        \weight_vals[1][0][1] , \weight_vals[1][0][0] , \weight_vals[0][1][5] , 
+        \weight_vals[0][1][4] , \weight_vals[0][1][3] , \weight_vals[0][1][2] , 
+        \weight_vals[0][1][1] , \weight_vals[0][1][0] , \weight_vals[0][0][5] , 
+        \weight_vals[0][0][4] , \weight_vals[0][0][3] , \weight_vals[0][0][2] , 
+        \weight_vals[0][0][1] , \weight_vals[0][0][0] }), output_val, 
+        output_valid, done );
+  input [5:0] input_val;
+  output [5:0] output_val;
+  input clock, reset, start, input_ready, \weight_vals[1][1][5] ,
+         \weight_vals[1][1][4] , \weight_vals[1][1][3] ,
+         \weight_vals[1][1][2] , \weight_vals[1][1][1] ,
+         \weight_vals[1][1][0] , \weight_vals[1][0][5] ,
+         \weight_vals[1][0][4] , \weight_vals[1][0][3] ,
+         \weight_vals[1][0][2] , \weight_vals[1][0][1] ,
+         \weight_vals[1][0][0] , \weight_vals[0][1][5] ,
+         \weight_vals[0][1][4] , \weight_vals[0][1][3] ,
+         \weight_vals[0][1][2] , \weight_vals[0][1][1] ,
+         \weight_vals[0][1][0] , \weight_vals[0][0][5] ,
+         \weight_vals[0][0][4] , \weight_vals[0][0][3] ,
+         \weight_vals[0][0][2] , \weight_vals[0][0][1] ,
+         \weight_vals[0][0][0] ;
+  output input_req, output_valid, done;
+  wire   PE_reset, PE_enable, index_reset, index_enable, partial_sum_reset,
+         partial_sum_enable, output_valid_tmp, SNG_enable, input_x, _4_net_,
+         \init_vals[1][1][5] , \init_vals[1][1][4] , \init_vals[1][1][3] ,
+         \init_vals[1][1][2] , \init_vals[1][1][1] , \init_vals[1][1][0] ,
+         \init_vals[1][0][5] , \init_vals[1][0][4] , \init_vals[1][0][3] ,
+         \init_vals[1][0][2] , \init_vals[1][0][1] , \init_vals[1][0][0] ,
+         \init_vals[0][1][5] , \init_vals[0][1][4] , \init_vals[0][1][3] ,
+         \init_vals[0][1][2] , \init_vals[0][1][1] , \init_vals[0][1][0] ,
+         _10_net_, _16_net_, _22_net_, N5, N19, N22, N23, \store_vals[0][5] ,
+         \store_vals[0][4] , \store_vals[0][3] , \store_vals[0][2] ,
+         \store_vals[0][1] , \store_vals[0][0] , N41, N42, N45, N47, _27_net_,
+         _28_net_, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15,
+         n16, n17, n18, n19, n20, n21, n22, n23;
+  wire   [1:0] width_index;
+  wire   [1:0] height_index;
+  wire   SYNOPSYS_UNCONNECTED__0, SYNOPSYS_UNCONNECTED__1, 
+        SYNOPSYS_UNCONNECTED__2, SYNOPSYS_UNCONNECTED__3, 
+        SYNOPSYS_UNCONNECTED__4, SYNOPSYS_UNCONNECTED__5;
+
+  nor2s3 U8 ( .DIN1(n6), .DIN2(n7), .Q(_22_net_) );
+  nor2s3 U13 ( .DIN1(n5), .DIN2(n6), .Q(_10_net_) );
+  or4s3 U14 ( .DIN1(n4), .DIN2(N22), .DIN3(N23), .DIN4(N23), .Q(n6) );
+  controller controller_inst ( .clock(clock), .reset(reset), .start(start), 
+        .input_ready(input_ready), .sc_count_done(1'b0), .width_index({n12, 
+        n13}), .height_index(height_index), .PE_reset(PE_reset), .PE_enable(
+        PE_enable), .index_reset(index_reset), .index_enable(index_enable), 
+        .partial_sum_reset(partial_sum_reset), .partial_sum_enable(
+        partial_sum_enable), .output_valid(output_valid_tmp), .input_req(
+        input_req), .SNG_enable(SNG_enable), .done(done) );
+  SNG_16 SNG_inst ( .clock(clock), .reset(reset), .enable(SNG_enable), 
+        .in_val(input_val), .out_val(input_x) );
+  processing_element_3 \PE_row[0].PE_column[0].PEs  ( .clock(clock), .reset(
+        n14), .enable(_4_net_), .input_val_x(input_x), .input_val_y(1'b1), 
+        .init_val({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}), .weight_val({
+        \weight_vals[0][0][5] , \weight_vals[0][0][4] , \weight_vals[0][0][3] , 
+        \weight_vals[0][0][2] , \weight_vals[0][0][1] , \weight_vals[0][0][0] }), .output_val({\init_vals[0][1][5] , \init_vals[0][1][4] , 
+        \init_vals[0][1][3] , \init_vals[0][1][2] , \init_vals[0][1][1] , 
+        \init_vals[0][1][0] }) );
+  processing_element_2 \PE_row[0].PE_column[1].PEs  ( .clock(clock), .reset(
+        n14), .enable(_10_net_), .input_val_x(input_x), .input_val_y(1'b1), 
+        .init_val({\init_vals[0][1][5] , \init_vals[0][1][4] , 
+        \init_vals[0][1][3] , \init_vals[0][1][2] , \init_vals[0][1][1] , 
+        \init_vals[0][1][0] }), .weight_val({\weight_vals[0][1][5] , 
+        \weight_vals[0][1][4] , \weight_vals[0][1][3] , \weight_vals[0][1][2] , 
+        \weight_vals[0][1][1] , \weight_vals[0][1][0] }), .output_val({
+        \store_vals[0][5] , \store_vals[0][4] , \store_vals[0][3] , 
+        \store_vals[0][2] , \store_vals[0][1] , \store_vals[0][0] }) );
+  processing_element_1 \PE_row[1].PE_column[0].PEs  ( .clock(clock), .reset(
+        n14), .enable(_16_net_), .input_val_x(input_x), .input_val_y(1'b1), 
+        .init_val({\init_vals[1][0][5] , \init_vals[1][0][4] , 
+        \init_vals[1][0][3] , \init_vals[1][0][2] , \init_vals[1][0][1] , 
+        \init_vals[1][0][0] }), .weight_val({\weight_vals[1][0][5] , 
+        \weight_vals[1][0][4] , \weight_vals[1][0][3] , \weight_vals[1][0][2] , 
+        \weight_vals[1][0][1] , \weight_vals[1][0][0] }), .output_val({
+        \init_vals[1][1][5] , \init_vals[1][1][4] , \init_vals[1][1][3] , 
+        \init_vals[1][1][2] , \init_vals[1][1][1] , \init_vals[1][1][0] }) );
+  processing_element_0 \PE_row[1].PE_column[1].PEs  ( .clock(clock), .reset(
+        n14), .enable(_22_net_), .input_val_x(input_x), .input_val_y(1'b1), 
+        .init_val({\init_vals[1][1][5] , \init_vals[1][1][4] , 
+        \init_vals[1][1][3] , \init_vals[1][1][2] , \init_vals[1][1][1] , 
+        \init_vals[1][1][0] }), .weight_val({\weight_vals[1][1][5] , 
+        \weight_vals[1][1][4] , \weight_vals[1][1][3] , \weight_vals[1][1][2] , 
+        \weight_vals[1][1][1] , \weight_vals[1][1][0] }), .output_val(
+        output_val) );
+  index_counter index_counter_inst ( .clock(clock), .reset(_27_net_), .enable(
+        index_enable), .width_index(width_index), .height_index(height_index)
+         );
+  partial_result_buffer partial_result_buffer_inst ( .clock(clock), .reset(
+        _28_net_), .enable(partial_sum_enable), .store_vals({output_val, 
+        \store_vals[0][5] , \store_vals[0][4] , \store_vals[0][3] , 
+        \store_vals[0][2] , \store_vals[0][1] , \store_vals[0][0] }), 
+        .width_index(width_index), .fetch_vals({\init_vals[1][0][5] , 
+        \init_vals[1][0][4] , \init_vals[1][0][3] , \init_vals[1][0][2] , 
+        \init_vals[1][0][1] , \init_vals[1][0][0] , SYNOPSYS_UNCONNECTED__0, 
+        SYNOPSYS_UNCONNECTED__1, SYNOPSYS_UNCONNECTED__2, 
+        SYNOPSYS_UNCONNECTED__3, SYNOPSYS_UNCONNECTED__4, 
+        SYNOPSYS_UNCONNECTED__5}) );
+  ib1s1 U19 ( .DIN(PE_enable), .Q(n20) );
+  or5s1 U20 ( .DIN1(N47), .DIN2(N47), .DIN3(N45), .DIN4(n3), .DIN5(n20), .Q(n7) );
+  i1s3 U21 ( .DIN(n11), .Q(n12) );
+  nor2s2 U22 ( .DIN1(N5), .DIN2(n7), .Q(_16_net_) );
+  nor2s1 U23 ( .DIN1(PE_reset), .DIN2(reset), .Q(n10) );
+  ib1s1 U24 ( .DIN(n22), .Q(N5) );
+  ib1s1 U25 ( .DIN(n16), .Q(N23) );
+  xor2s1 U26 ( .DIN1(n9), .DIN2(n12), .Q(N19) );
+  i1s8 U27 ( .DIN(width_index[0]), .Q(n8) );
+  hi1s1 U28 ( .DIN(n8), .Q(n13) );
+  nor2s2 U29 ( .DIN1(n8), .DIN2(N19), .Q(n15) );
+  nnd2s2 U30 ( .DIN1(n15), .DIN2(n22), .Q(n16) );
+  i1s1 U31 ( .DIN(n8), .Q(n9) );
+  ib1s1 U32 ( .DIN(n10), .Q(n14) );
+  nor2s2 U33 ( .DIN1(N5), .DIN2(n5), .Q(_4_net_) );
+  i1s1 U34 ( .DIN(n18), .Q(N47) );
+  or2s1 U35 ( .DIN1(n20), .DIN2(n19), .Q(n5) );
+  hi1s1 U36 ( .DIN(n23), .Q(n19) );
+  nor3s1 U37 ( .DIN1(n3), .DIN2(n4), .DIN3(n21), .Q(output_valid) );
+  ib1s1 U38 ( .DIN(output_valid_tmp), .Q(n21) );
+  nor2s1 U39 ( .DIN1(height_index[0]), .DIN2(height_index[1]), .Q(n3) );
+  hi1s1 U40 ( .DIN(height_index[0]), .Q(N41) );
+  i1s8 U41 ( .DIN(width_index[1]), .Q(n11) );
+  nor2s1 U42 ( .DIN1(n13), .DIN2(n12), .Q(n4) );
+  nnd2s1 U43 ( .DIN1(n9), .DIN2(n12), .Q(n22) );
+  or2s1 U44 ( .DIN1(index_reset), .DIN2(reset), .Q(_27_net_) );
+  or2s1 U45 ( .DIN1(partial_sum_reset), .DIN2(reset), .Q(_28_net_) );
+  oai21s1 U46 ( .DIN1(n15), .DIN2(n22), .DIN3(n16), .Q(N22) );
+  nor2s1 U47 ( .DIN1(N41), .DIN2(N42), .Q(n17) );
+  nnd2s1 U48 ( .DIN1(n17), .DIN2(n23), .Q(n18) );
+  oai21s1 U49 ( .DIN1(n17), .DIN2(n23), .DIN3(n18), .Q(N45) );
+  nnd2s2 U56 ( .DIN1(height_index[0]), .DIN2(height_index[1]), .Q(n23) );
+  xor2s2 U57 ( .DIN1(height_index[0]), .DIN2(height_index[1]), .Q(N42) );
+endmodule
+

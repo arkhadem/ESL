@@ -1,0 +1,1653 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                 Version O-2018.06 for linux64 - May 21, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+#/***********************************************************/
+#/*   FILE        : script.tcl                                */
+#/*   Description : Default Synopsys Design Compiler Script */
+#/*   Usage       : dc_shell -tcl_mode -f script.scr          */
+#/*   You'll need to minimally set design_name & read files */
+#/***********************************************************/
+set output_path ./outputs
+./outputs
+set report_path ./reports
+./reports
+#/***********************************************************/
+#/* The rest of this file may be left alone for most small  */
+#/* to moderate sized designs.  You may need to alter it    */
+#/* when synthesizing your final project.                   */
+#/***********************************************************/
+set SYN_DIR ./
+./
+set target_library "lec25dscc25_TT.db"
+lec25dscc25_TT.db
+set link_library [concat  "*" $target_library]
+* lec25dscc25_TT.db
+#/***********************************************************/
+#/* The following lines must be updated for every           */
+#/* new design                                              */
+#/***********************************************************/
+set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
+./ /afs/umich.edu/class/eecs470/lib/synopsys/
+set src_files [list "sys_defs.svh controller.sv sc_counter.sv one_counter.sv ESL_adder.sv P2B.sv LFSR.sv SNG.sv ESL_bipolar_divider.sv ESL_divider.sv ESL_multiplier.sv index_counter.sv partial_result_buffer.sv processing_element.sv processing_unit.sv"]
+{sys_defs.svh controller.sv sc_counter.sv one_counter.sv ESL_adder.sv P2B.sv LFSR.sv SNG.sv ESL_bipolar_divider.sv ESL_divider.sv ESL_multiplier.sv index_counter.sv partial_result_buffer.sv processing_element.sv processing_unit.sv}
+set design_name processing_unit
+processing_unit
+read_file -f sverilog $src_files
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
+  Loading link library 'lec25dscc25_TT'
+  Loading link library 'gtech'
+Loading sverilog files: '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sys_defs.svh' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sc_counter.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/one_counter.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_adder.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_divider.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_multiplier.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/index_counter.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/partial_result_buffer.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_element.sv' '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv' 
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sc_counter.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/one_counter.sv
+Opening include file sys_defs.svh
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sc_counter.sv:20: Port sc_count_done of type input is being assigned.  (VER-1005)
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_adder.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv
+Opening include file sys_defs.svh
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv:13: The construct 'declaration initial assignment' is not supported in synthesis; it is ignored. (VER-708)
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_divider.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_multiplier.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/index_counter.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/partial_result_buffer.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_element.sv
+Opening include file sys_defs.svh
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv
+Opening include file sys_defs.svh
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:77: the undeclared symbol 'input_x' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv:133: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv:133: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv:106: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 39 in file
+	'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            54            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 104 in file
+	'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           106            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine controller line 144 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/sc_counter.sv:20: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine one_counter line 12 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/one_counter.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      count_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv:37: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine P2B line 17 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    n_out_val_reg    | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine P2B line 25 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|    modulus_m_reg    | Latch |   6   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine P2B line 39 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     out_val_reg     | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine LFSR line 17 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/LFSR.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    LFSR_reg_reg     | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv:22: signed to unsigned assignment occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv:21: signed to unsigned assignment occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv:22: signed to unsigned assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine ESL_bioilar_divider line 38 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| estimation_tmp_reg  | Flip-flop |   6   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/index_counter.sv:16: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine index_counter line 11 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/index_counter.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  height_index_reg   | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+|   width_index_reg   | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/partial_result_buffer.sv:26: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine partial_result_buffer line 17 in file
+		'/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/partial_result_buffer.sv'.
+===================================================================================
+|      Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===================================================================================
+| stored_partial_sums_reg | Flip-flop |  24   |  Y  | N  | N  | N  | N  | N  | N  |
+===================================================================================
+Statistics for MUX_OPs
+==============================================================
+|     block name/line      | Inputs | Outputs | # sel inputs |
+==============================================================
+| partial_result_buffer/33 |   4    |    6    |      2       |
+==============================================================
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:102: signed to unsigned conversion occurs. (VER-318)
+Warning:  /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv:109: signed to unsigned conversion occurs. (VER-318)
+Presto compilation completed successfully.
+Current design is now '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/controller.db:controller'
+Loaded 14 designs.
+Current design is 'controller'.
+controller sc_counter one_counter ESL_adder P2B LFSR SNG ESL_bioilar_divider ESL_divider ESL_multiplier index_counter partial_result_buffer processing_element processing_unit
+set clock_name clock
+clock
+set reset_name reset
+reset
+set CLK_PERIOD 2.39
+2.39
+#/***********************************************************/
+#/*  Clk Periods/uncertainty/transition                     */
+set CLK_TRANSITION 0.1
+0.1
+set CLK_UNCERTAINTY 0.1
+0.1
+set CLK_LATENCY 0.1
+0.1
+#/* Input/output Delay values */
+set AVG_INPUT_DELAY 0.1
+0.1
+set AVG_OUTPUT_DELAY 0.1
+0.1
+#/* Critical Range (ns) */
+set CRIT_RANGE 1.0
+1.0
+#/***********************************************************/
+#/* Design Constrains: Not all used                         */
+set MAX_TRANSITION 1.0
+1.0
+set FAST_TRANSITION 0.1
+0.1
+set MAX_FANOUT 32
+32
+set MID_FANOUT 8
+8
+set LOW_FANOUT 1
+1
+set HIGH_DRIVE 0
+0
+set HIGH_LOAD 1.0
+1.0
+set AVG_LOAD 0.1
+0.1
+set AVG_FANOUT_LOAD 10
+10
+###############################################################
+# check the design for any possible error
+###############################################################
+analyze -library WORK -format sverilog $src_files
+Running PRESTO HDLC
+Error:  Unable to open file `sys_defs.svh controller.sv sc_counter.sv one_counter.sv ESL_adder.sv P2B.sv LFSR.sv SNG.sv ESL_bipolar_divider.sv ESL_divider.sv ESL_multiplier.sv index_counter.sv partial_result_buffer.sv processing_element.sv processing_unit.sv': in search_path {./ /afs/umich.edu/class/eecs470/lib/synopsys/}. (VER-41)
+*** Presto compilation terminated with 1 errors. ***
+0
+elaborate $design_name
+Error: Cannot find the design 'processing_unit' in the library 'WORK'. (LBR-0)
+0
+current_design $design_name
+Current design is 'processing_unit'.
+{processing_unit}
+link
+
+  Linking design 'processing_unit'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (14 designs)              /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.db, etc
+  lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+
+1
+uniquify
+Information: Uniquified 4 instances of design 'processing_element'. (OPT-1056)
+Information: Uniquified 4 instances of design 'one_counter'. (OPT-1056)
+Information: Uniquified 4 instances of design 'ESL_adder'. (OPT-1056)
+Information: Uniquified 4 instances of design 'ESL_bioilar_divider'. (OPT-1056)
+Information: Uniquified 4 instances of design 'P2B'. (OPT-1056)
+Information: Uniquified 17 instances of design 'SNG'. (OPT-1056)
+Information: Uniquified 17 instances of design 'LFSR'. (OPT-1056)
+Information: Uniquified 4 instances of design 'ESL_multiplier'. (OPT-1056)
+1
+check_design
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06
+Date:        Mon Dec  2 03:37:18 2019
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     17
+    Unconnected ports (LINT-28)                                     6
+    Shorted outputs (LINT-31)                                       5
+    Constant outputs (LINT-52)                                      6
+
+Cells                                                             200
+    Cells do not drive (LINT-1)                                    20
+    Cells do not have output pins (LINT-10)                         1
+    Connected to power or ground (LINT-32)                        138
+    Nets connected to multiple pins on same cell (LINT-33)         38
+    Leaf pins connected to undriven nets (LINT-58)                  2
+    Cells have undriven hier pins (LINT-59)                         1
+
+Designs                                                             1
+    Black box (LINT-55)                                             1
+
+Nets                                                               22
+    Unloaded nets (LINT-2)                                         21
+    Undriven nets (LINT-3)                                          1
+--------------------------------------------------------------------------------
+
+Warning: In design 'processing_unit', cell 'sc_counter_inst' does not drive any nets. (LINT-1)
+Warning: In design 'index_counter', cell 'C51' does not drive any nets. (LINT-1)
+Warning: In design 'index_counter', cell 'C52' does not drive any nets. (LINT-1)
+Warning: In design 'partial_result_buffer', cell 'C92' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_3', cell 'C112' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_3', cell 'C113' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_3', cell 'C124' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_3', cell 'C132' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_0', cell 'C112' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_0', cell 'C113' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_1', cell 'C112' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_1', cell 'C113' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_2', cell 'C112' does not drive any nets. (LINT-1)
+Warning: In design 'ESL_bioilar_divider_2', cell 'C113' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_0', cell 'C124' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_0', cell 'C132' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_1', cell 'C124' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_1', cell 'C132' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_2', cell 'C124' does not drive any nets. (LINT-1)
+Warning: In design 'P2B_2', cell 'C132' does not drive any nets. (LINT-1)
+Warning: In design 'processing_unit', net 'PE_init' driven by pin 'controller_inst/PE_init' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[0].PEs/P2B_inst/a_y_bin[0]' driven by pin 'PE_row[0].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[0]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[0].PEs/P2B_inst/a_y_bin[1]' driven by pin 'PE_row[0].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[1]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[0].PEs/P2B_inst/a_y_bin[2]' driven by pin 'PE_row[0].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[2]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[0].PEs/P2B_inst/a_y_bin[3]' driven by pin 'PE_row[0].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[3]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[0].PEs/P2B_inst/a_y_bin[4]' driven by pin 'PE_row[0].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[4]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[1].PEs/P2B_inst/a_y_bin[0]' driven by pin 'PE_row[1].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[0]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[1].PEs/P2B_inst/a_y_bin[1]' driven by pin 'PE_row[1].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[1]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[1].PEs/P2B_inst/a_y_bin[2]' driven by pin 'PE_row[1].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[2]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[1].PEs/P2B_inst/a_y_bin[3]' driven by pin 'PE_row[1].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[3]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[1].PEs/P2B_inst/a_y_bin[4]' driven by pin 'PE_row[1].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[4]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[0].PEs/P2B_inst/a_y_bin[0]' driven by pin 'PE_row[1].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[0]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[0].PEs/P2B_inst/a_y_bin[1]' driven by pin 'PE_row[1].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[1]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[0].PEs/P2B_inst/a_y_bin[2]' driven by pin 'PE_row[1].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[2]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[0].PEs/P2B_inst/a_y_bin[3]' driven by pin 'PE_row[1].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[3]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[1].PE_column[0].PEs/P2B_inst/a_y_bin[4]' driven by pin 'PE_row[1].PE_column[0].PEs/P2B_inst/P2B_inst/out_val[4]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[1].PEs/P2B_inst/a_y_bin[0]' driven by pin 'PE_row[0].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[0]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[1].PEs/P2B_inst/a_y_bin[1]' driven by pin 'PE_row[0].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[1]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[1].PEs/P2B_inst/a_y_bin[2]' driven by pin 'PE_row[0].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[2]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[1].PEs/P2B_inst/a_y_bin[3]' driven by pin 'PE_row[0].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[3]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'PE_row[0].PE_column[1].PEs/P2B_inst/a_y_bin[4]' driven by pin 'PE_row[0].PE_column[1].PEs/P2B_inst/P2B_inst/out_val[4]' has no loads. (LINT-2)
+Warning: In design 'processing_unit', net 'sc_count_done' has no drivers.  Logic 0 assumed. (LINT-3)
+Warning: In design 'processing_unit', cell 'sc_counter_inst' has no output pins. (LINT-10)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][5]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][4]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][3]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][2]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][1]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][0]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][5]' is connected directly to output port 'fetch_vals[0][0]'. (LINT-31)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][5]' is connected directly to output port 'fetch_vals[0][1]'. (LINT-31)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][5]' is connected directly to output port 'fetch_vals[0][2]'. (LINT-31)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][5]' is connected directly to output port 'fetch_vals[0][3]'. (LINT-31)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][5]' is connected directly to output port 'fetch_vals[0][4]'. (LINT-31)
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[1].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[1].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[1].PE_column[1].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'processing_element_0', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'processing_element_1', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'processing_element_2', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_16', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_16', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'processing_element_3', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'processing_element_0', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'processing_element_1', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'processing_element_2', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'SNG_0', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_0', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_1', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_1', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_2', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_2', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_3', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_3', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_4', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_4', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_5', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_5', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_6', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_6', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_7', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_7', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_8', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_8', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_9', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_9', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_10', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_10', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_11', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_11', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_12', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_12', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_13', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_13', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_14', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_14', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_15', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_15', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][5]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][4]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][3]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][2]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][1]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'partial_result_buffer', output port 'fetch_vals[0][0]' is connected directly to 'logic 0'. (LINT-52)
+Information: Design 'sc_counter' does not contain any cells or nets. (LINT-55)
+Warning: In design 'processing_unit', input pin 'sc_count_done' of leaf cell 'sc_counter_inst' is connected to undriven net 'sc_count_done'.  (LINT-58)
+Warning: In design 'controller', input pin 'DATA5_0' of leaf cell 'C170' is connected to undriven net 'sc_count_done'.  (LINT-58)
+Warning: In design 'processing_unit', input pin 'sc_count_done' of hierarchical cell 'controller_inst' has one or more internal loads, but is not connected to any nets. 'Logic 0' is assumed. (LINT-59)
+1
+###############################################################
+# set timing and area constraints to synthesis the design
+###############################################################
+#set CLK_PERIOD [expr 1000 / $clk_freq_MHz]
+set find_clock [find port [list $clock_name]]
+{clock}
+if { $find_clock != [list] } {
+	create_clock -period $CLK_PERIOD $clock_name
+	set_dont_touch_network $clock_name
+	set_fix_hold $clock_name
+
+    #set_clock_uncertainty $CLK_UNCERTAINTY $clock_name
+    #remove_driving_cell [find port $clock_name]
+    #set_input_delay $AVG_INPUT_DELAY -clock $clock_name [all_inputs]
+    #remove_input_delay -clock $clock_name [find port $clock_name]
+    #set_output_delay $AVG_OUTPUT_DELAY -clock $clock_name [all_outputs]
+} else {
+	create_clock -period $CLK_PERIOD -name vclk
+	set_dont_touch_network vclk
+	#do not put buffer in clk path.
+	set_fix_hold vclk
+	#want to meet hold time.
+
+    #set_clock_uncertainty $CLK_UNCERTAINTY vclk
+    #remove_driving_cell [find port vclk]
+    #set_input_delay $AVG_INPUT_DELAY -clock vclk [all_inputs]
+    #remove_input_delay -clock vclk [find port vclk]
+    #set_output_delay $AVG_OUTPUT_DELAY -clock vclk [all_outputs]
+}
+1
+set my_input_delay_ns 0
+0
+set my_output_delay_ns 0
+0
+#/***********************************************************/
+#/* Set some flags for optimization */
+set compile_top_all_paths "true"
+true
+set auto_wire_load_selection "false"
+false
+#/***********************************************************/
+#/*BASIC_INPUT = cb18os120_tsmc_max/nd02d1/A1
+#BASIC_OUTPUT = cb18os120_tsmc_max/nd02d1/ZN*/
+set DRIVING_CELL dffacs1
+dffacs1
+#/* DONT_USE_LIST = {   } */
+#/*************operation cons**************/
+#/*OP_WCASE = WCCOM;
+#OP_BCASE = BCCOM;*/
+set WIRE_LOAD "tsmcwire"
+tsmcwire
+set LOGICLIB lec25dscc25_TT
+lec25dscc25_TT
+#/*****************************/
+#/* Sourcing the file that sets the Search path and the libraries(target,link) */
+set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
+./processing_unit.chk
+#/* if we didnt find errors at this point, run */
+if {  $dc_shell_status != [list] } {
+  set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
+  set_wire_load_mode top
+  set_fix_multiple_port_nets -outputs -buffer_constants
+  group_path -from [all_inputs] -name input_grp
+  group_path -to [all_outputs] -name output_grp
+  set_driving_cell  -lib_cell $DRIVING_CELL [all_inputs]
+  #set_fanout_load $AVG_FANOUT_LOAD [all_outputs]
+  #set_load $AVG_LOAD [all_outputs]
+  set_dont_touch $reset_name
+  set_resistance 0 $reset_name
+  set_drive 0 $reset_name
+  set_critical_range $CRIT_RANGE [current_design]
+  set_max_delay $CLK_PERIOD [all_outputs]
+  #set MAX_FANOUT $MAX_FANOUT
+  #set MAX_TRANSITION $MAX_TRANSITION
+  #ungroup -all -flatten
+  compile -map_effort high
+  check_design
+
+  ###############################################################
+  # create netlist file
+  # in this part you can create ddc, sdc and etc files either
+  ###############################################################
+  set netlist_file [format "%s%s" $design_name ".vg"]
+  write -f verilog -hierarchy -output $output_path/$netlist_file
+  set filename [format "%s%s" $design_name ".ddc"]
+  write -format ddc -hierarchy -output $output_path/$filename
+  set filename [format "%s%s" $design_name "_synopsys_design_constraints.sdc"]
+  write_sdc $output_path/$filename
+  #set filename [format "%s%s" $design_name ".db"]
+  #write -f db -hier -output $output_path/$filename
+
+  report_timing -transition_time -max_paths 10 -input_pins -nets -attributes -nosplit > $report_path/timing.rpt
+  report_area -nosplit -hierarchy > $report_path/area.rpt
+  report_power -nosplit -hier > $report_path/power.rpt
+  report_reference -nosplit -hierarchy > $report_path/reference.rpt
+  report_resources -nosplit -hierarchy > $report_path/resources.rpt
+  report_constraint -all_violators > $report_path/violations.rpt
+
+  remove_design -all
+  read_file -format verilog $output_path/$netlist_file
+  quit
+} else {
+   quit
+}
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Current design is 'processing_unit'.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.0 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 239 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'partial_result_buffer'
+  Processing 'index_counter'
+  Processing 'LFSR_0'
+  Processing 'SNG_0'
+  Processing 'P2B_0'
+  Processing 'ESL_bioilar_divider_0'
+  Processing 'ESL_adder_0'
+  Processing 'one_counter_0'
+  Processing 'ESL_multiplier_0'
+  Processing 'processing_element_0'
+  Processing 'processing_element_3'
+  Processing 'controller'
+  Processing 'processing_unit'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'processing_unit_DW01_dec_0'
+  Processing 'processing_unit_DW01_dec_1'
+  Processing 'ESL_bioilar_divider_0_DW01_dec_0'
+  Processing 'ESL_bioilar_divider_0_DW01_inc_0'
+  Processing 'SNG_0_DW01_cmp2_0'
+  Processing 'P2B_0_DW01_inc_0'
+  Processing 'P2B_0_DW01_inc_1'
+  Processing 'SNG_4_DW01_cmp2_0'
+  Processing 'SNG_5_DW01_cmp2_0'
+  Processing 'SNG_6_DW01_cmp2_0'
+  Processing 'ESL_bioilar_divider_1_DW01_dec_0'
+  Processing 'ESL_bioilar_divider_1_DW01_inc_0'
+  Processing 'SNG_1_DW01_cmp2_0'
+  Processing 'P2B_1_DW01_inc_0'
+  Processing 'P2B_1_DW01_inc_1'
+  Processing 'SNG_7_DW01_cmp2_0'
+  Processing 'SNG_8_DW01_cmp2_0'
+  Processing 'SNG_9_DW01_cmp2_0'
+  Processing 'ESL_bioilar_divider_2_DW01_dec_0'
+  Processing 'ESL_bioilar_divider_2_DW01_inc_0'
+  Processing 'SNG_2_DW01_cmp2_0'
+  Processing 'P2B_2_DW01_inc_0'
+  Processing 'P2B_2_DW01_inc_1'
+  Processing 'SNG_10_DW01_cmp2_0'
+  Processing 'SNG_11_DW01_cmp2_0'
+  Processing 'SNG_12_DW01_cmp2_0'
+  Processing 'ESL_bioilar_divider_3_DW01_dec_0'
+  Processing 'ESL_bioilar_divider_3_DW01_inc_0'
+  Processing 'SNG_3_DW01_cmp2_0'
+  Processing 'P2B_3_DW01_inc_0'
+  Processing 'P2B_3_DW01_inc_1'
+  Processing 'SNG_13_DW01_cmp2_0'
+  Processing 'SNG_14_DW01_cmp2_0'
+  Processing 'SNG_15_DW01_cmp2_0'
+  Processing 'SNG_16_DW01_cmp2_0'
+  Processing 'DW01_add_width4'
+  Processing 'DW01_dec_width4'
+  Processing 'DW01_add_width4'
+  Processing 'DW01_dec_width4'
+
+  Beginning Mapping Optimizations  (High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:04  145276.7      0.33      12.5       7.7                                0.00  
+    0:00:04  145243.5      0.33      13.1       7.7                                0.00  
+    0:00:04  145243.5      0.33      13.1       7.7                                0.00  
+    0:00:05  145384.5      0.33      13.1       7.6                                0.00  
+    0:00:05  145384.5      0.33      13.1       7.6                                0.00  
+    0:00:05  104430.9      0.74       8.6       0.0                                0.00  
+    0:00:05  105373.6      0.49       6.3       0.0                                0.00  
+    0:00:05  105224.4      0.57       6.8       0.0                                0.00  
+    0:00:05  105249.2      0.40       5.3       0.0                                0.00  
+    0:00:05  105531.2      0.37       5.1       0.0                                0.00  
+    0:00:05  105688.8      0.34       4.5       0.0                                0.00  
+    0:00:06  105871.3      0.33       4.8       0.0                                0.00  
+    0:00:06  106493.4      0.40       4.6       0.0                                0.00  
+    0:00:06  106413.3      0.34       4.0       0.0                                0.00  
+    0:00:06  106377.3      0.31       3.4       0.0                                0.00  
+    0:00:06  106507.2      0.31       3.2       0.0                                0.00  
+    0:00:06  107093.3      0.30       3.1       0.0                                0.00  
+    0:00:06  107325.5      0.30       2.9       0.0                                0.00  
+    0:00:06  107433.3      0.30       3.1       0.0                                0.00  
+    0:00:06  107499.7      0.30       2.9       0.0                                0.00  
+    0:00:06  107972.5      0.30       2.6       0.0                                0.00  
+    0:00:06  108127.3      0.29       2.7       0.0                                0.00  
+    0:00:06  108210.2      0.29       2.6       0.0                                0.00  
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:06  108243.4      0.29       2.6       0.0                                0.00  
+    0:00:06  108235.1      0.27       2.6       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:06  107994.6      0.25       2.4       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:06  108475.6      0.15       2.1       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:07  108591.8      0.14       2.1       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:07  108483.9      0.14       2.0       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:07  108633.2      0.14       1.9       0.0 PE_row[0].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[2]/DIN      0.00  
+    0:00:07  108970.5      0.12       1.7       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:07  109128.1      0.11       1.5       0.0 PE_row[0].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:07  109194.4      0.11       1.5       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:07  109368.6      0.10       1.3       0.0 PE_row[0].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:07  109368.6      0.10       1.6       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:07  109493.0      0.09       1.3       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:07  109542.8      0.08       1.0       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:07  109542.8      0.08       1.0       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  109542.8      0.08       1.0       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  109567.7      0.08       1.0       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  109592.6      0.07       1.0       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:08  109841.4      0.07       1.0       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  109858.0      0.07       1.0       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  109924.3      0.06       0.9       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  109924.3      0.06       0.9       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:08  110753.8      0.06       0.9       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:08  110803.6      0.06       0.9       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:08  111210.0      0.06       0.7       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[2]/DIN      0.00  
+    0:00:08  111226.6      0.06       0.7       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:08  111226.6      0.06       0.7       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:09  111367.6      0.05       0.7       0.1 PE_row[0].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:09  111367.6      0.05       0.7       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:09  112246.8      0.05       0.7       0.1                                0.00  
+    0:00:09  112230.2      0.05       0.6       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:09  112288.2      0.05       0.6       0.1 PE_row[0].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:10  112238.5      0.05       0.6       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:10  112238.5      0.05       0.6       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:10  112329.7      0.04       0.5       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:10  112354.6      0.04       0.5       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:10  112365.7      0.04       0.5       0.1 PE_row[0].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:10  112598.0      0.04       0.5       0.1 PE_row[0].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:10  112664.3      0.04       0.4       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:10  112705.8      0.03       0.4       0.1 PE_row[0].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:10  112667.1      0.03       0.4       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:10  112716.9      0.03       0.4       0.1 PE_row[0].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:10  112716.9      0.03       0.4       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:11  112783.2      0.03       0.3       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:11  112891.1      0.03       0.3       0.1 PE_row[1].PE_column[1].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:11  113189.7      0.03       0.3       0.1 PE_row[0].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:11  113181.4      0.03       0.3       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:11  113181.4      0.02       0.3       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[4]/DIN      0.00  
+    0:00:11  113181.4      0.02       0.2       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:11  113222.8      0.02       0.2       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:11  113297.5      0.02       0.2       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:13  113314.1      0.02       0.2       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:13  113513.1      0.02       0.2       0.1 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:15  113587.8      0.02       0.2       0.1                                0.00  
+    0:00:15  113023.8      0.02       0.2       0.1                                0.00  
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:15  113023.8      0.02       0.2       0.1                                0.00  
+    0:00:15  113521.4      0.02       0.2       0.0                                0.00  
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:15  113521.4      0.02       0.2       0.0                                0.00  
+    0:00:15  113355.6      0.02       0.2       0.0                                0.00  
+    0:00:15  113363.8      0.02       0.2       0.0                                0.00  
+    0:00:15  113438.5      0.01       0.1       0.0                                0.00  
+    0:00:15  113471.7      0.01       0.1       0.0                                0.00  
+    0:00:16  113538.0      0.01       0.1       0.0                                0.00  
+    0:00:16  113538.0      0.01       0.1       0.0                                0.00  
+    0:00:16  113587.8      0.01       0.0       0.0                                0.00  
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:16  113587.8      0.01       0.0       0.0                                0.00  
+    0:00:16  113587.8      0.01       0.0       0.0                                0.00  
+    0:00:16  110576.9      0.01       0.1       0.0                                0.00  
+    0:00:16  110037.8      0.01       0.1       0.0                                0.00  
+    0:00:16  109871.9      0.01       0.1       0.0                                0.00  
+    0:00:16  109838.7      0.01       0.1       0.0                                0.00  
+    0:00:16  109838.7      0.01       0.1       0.0                                0.00  
+    0:00:16  109838.7      0.01       0.1       0.0                                0.00  
+    0:00:16  109813.8      0.01       0.0       0.0                                0.00  
+    0:00:16  109822.1      0.01       0.0       0.0                                0.00  
+    0:00:16  109847.0      0.01       0.0       0.0                                0.00  
+    0:00:16  109789.0      0.01       0.0       0.0                                0.00  
+    0:00:16  107775.6      0.06       0.3       0.0                                0.00  
+    0:00:16  107313.9      0.07       0.3       0.0                                0.00  
+    0:00:16  107172.9      0.07       0.3       0.0                                0.00  
+    0:00:16  107164.6      0.07       0.3       0.0                                0.00  
+    0:00:16  107164.6      0.07       0.3       0.0                                0.00  
+    0:00:16  107164.6      0.07       0.3       0.0                                0.00  
+    0:00:16  107164.6      0.07       0.3       0.0                                0.00  
+    0:00:16  107164.6      0.07       0.3       0.0                                0.00  
+    0:00:16  107405.2      0.01       0.0       0.0 PE_row[0].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:17  107421.8      0.01       0.0       0.0                                0.00  
+    0:00:17  107521.3      0.01       0.0       0.0                                0.00  
+    0:00:17  107446.6      0.01       0.0       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:17  107479.8      0.00       0.0       0.0                                0.00  
+    0:00:17  107372.0      0.00       0.0       0.0                                0.00  
+
+
+  Beginning Critical Range Optimization
+  -------------------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:17  107372.0      0.00       0.0       0.0                                0.00  
+    0:00:17  107363.7      0.00       0.0       0.0                                0.00  
+    0:00:17  107355.4      0.00       0.0       0.0 PE_row[1].PE_column[0].PEs/P2B_inst/estimation_tmp_reg[5]/DIN      0.00  
+    0:00:17  107554.5      0.00       0.0       0.0                                0.00  
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06
+Date:        Mon Dec  2 03:37:36 2019
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      6
+    Unconnected ports (LINT-28)                                     6
+
+Cells                                                             183
+    Connected to power or ground (LINT-32)                        145
+    Nets connected to multiple pins on same cell (LINT-33)         38
+--------------------------------------------------------------------------------
+
+Warning: In design 'partial_result_buffer', port 'store_vals[1][5]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][4]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][3]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][2]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][1]' is not connected to any nets. (LINT-28)
+Warning: In design 'partial_result_buffer', port 'store_vals[1][0]' is not connected to any nets. (LINT-28)
+Warning: In design 'processing_unit', a pin on submodule 'controller_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'sc_count_done' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[0].PE_column[1].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[1].PE_column[0].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'processing_unit', a pin on submodule 'PE_row[1].PE_column[1].PEs' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'input_val_y' is connected to logic 1. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_16', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_3', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'processing_element_2', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_2', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'processing_element_0', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_0', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'processing_element_1', a pin on submodule 'multiplier_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'a_y' is connected to logic 1. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[5]' is connected to logic 1. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[4]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[3]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[2]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[1]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'SNG_half_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'in_val[0]' is connected to logic 0. 
+Warning: In design 'processing_element_1', a pin on submodule 'adder_inst' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'b_y' is connected to logic 1. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_0', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_1', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_2', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_3', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_4', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_5', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_6', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_7', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_8', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_9', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_10', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_11', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_12', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_13', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_14', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[5]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[4]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[3]' is connected to logic 1. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[2]' is connected to logic 0. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[1]' is connected to logic 1. 
+Warning: In design 'SNG_15', a pin on submodule 'UUT' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'init_val[0]' is connected to logic 0. 
+Warning: In design 'SNG_16', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_16', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'processing_element_3', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'processing_element_2', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'processing_element_0', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'processing_element_1', the same net is connected to more than one pin on submodule 'SNG_half_inst'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'in_val[4]', 'in_val[3]'', 'in_val[2]', 'in_val[1]', 'in_val[0]'.
+Warning: In design 'SNG_0', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_0', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_1', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_1', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_2', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_2', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_3', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_3', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_4', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_4', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_5', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_5', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_6', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_6', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_7', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_7', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_8', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_8', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_9', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_9', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_10', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_10', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_11', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_11', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_12', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_12', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_13', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_13', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_14', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_14', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Warning: In design 'SNG_15', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'init_val[5]', 'init_val[4]'', 'init_val[2]', 'init_val[0]'.
+Warning: In design 'SNG_15', the same net is connected to more than one pin on submodule 'UUT'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'init_val[3]', 'init_val[1]''.
+Writing verilog file '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/outputs/processing_unit.vg'.
+Warning: Verilog writer has added 5 nets to module ESL_bioilar_divider_3 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 5 nets to module ESL_bioilar_divider_2 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 5 nets to module ESL_bioilar_divider_1 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog writer has added 5 nets to module ESL_bioilar_divider_0 using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Verilog writer has added 6 nets to module processing_unit using SYNOPSYS_UNCONNECTED_ as prefix.  Please use the change_names command to make the correct changes before invoking the verilog writer.  (VO-11)
+Writing ddc file './outputs/processing_unit.ddc'.
+Removing design 'controller'
+Removing design 'sc_counter'
+Removing design 'ESL_divider'
+Removing design 'index_counter'
+Removing design 'partial_result_buffer'
+Removing design 'processing_unit'
+Removing design 'processing_element_0'
+Removing design 'processing_element_3'
+Removing design 'one_counter_0'
+Removing design 'ESL_adder_0'
+Removing design 'ESL_bioilar_divider_0'
+Removing design 'P2B_0'
+Removing design 'SNG_0'
+Removing design 'LFSR_0'
+Removing design 'ESL_multiplier_0'
+Removing design 'processing_element_1'
+Removing design 'processing_element_2'
+Removing design 'one_counter_1'
+Removing design 'one_counter_2'
+Removing design 'one_counter_3'
+Removing design 'ESL_adder_1'
+Removing design 'ESL_adder_2'
+Removing design 'ESL_adder_3'
+Removing design 'ESL_bioilar_divider_1'
+Removing design 'ESL_bioilar_divider_2'
+Removing design 'ESL_bioilar_divider_3'
+Removing design 'P2B_1'
+Removing design 'P2B_2'
+Removing design 'P2B_3'
+Removing design 'SNG_1'
+Removing design 'SNG_2'
+Removing design 'SNG_3'
+Removing design 'SNG_4'
+Removing design 'SNG_5'
+Removing design 'SNG_6'
+Removing design 'SNG_7'
+Removing design 'SNG_8'
+Removing design 'SNG_9'
+Removing design 'SNG_10'
+Removing design 'SNG_11'
+Removing design 'SNG_12'
+Removing design 'SNG_13'
+Removing design 'SNG_14'
+Removing design 'SNG_15'
+Removing design 'SNG_16'
+Removing design 'LFSR_1'
+Removing design 'LFSR_2'
+Removing design 'LFSR_3'
+Removing design 'LFSR_4'
+Removing design 'LFSR_5'
+Removing design 'LFSR_6'
+Removing design 'LFSR_7'
+Removing design 'LFSR_8'
+Removing design 'LFSR_9'
+Removing design 'LFSR_10'
+Removing design 'LFSR_11'
+Removing design 'LFSR_12'
+Removing design 'LFSR_13'
+Removing design 'LFSR_14'
+Removing design 'LFSR_15'
+Removing design 'LFSR_16'
+Removing design 'ESL_multiplier_1'
+Removing design 'ESL_multiplier_2'
+Removing design 'ESL_multiplier_3'
+Removing library 'lec25dscc25_TT'
+Removing library 'gtech'
+Removing library 'standard.sldb'
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
+  Loading link library 'lec25dscc25_TT'
+  Loading link library 'gtech'
+Loading verilog file '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/outputs/processing_unit.vg'
+Detecting input file type automatically (-rtl or -netlist).
+Running DC verilog reader
+Performing 'read' command.
+Compiling source file /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/outputs/processing_unit.vg
+Reading with netlist reader (equivalent to -netlist option).
+Verilog netlist reader completed successfully.
+Current design is now '/afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/outputs/controller.db:controller'
+Loaded 62 designs.
+Current design is 'controller'.
+
+Thank you...

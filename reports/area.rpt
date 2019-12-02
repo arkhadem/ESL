@@ -1,0 +1,104 @@
+ 
+****************************************
+Report : area
+Design : processing_unit
+Version: O-2018.06
+Date   : Mon Dec  2 03:37:36 2019
+****************************************
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Number of ports:                          774
+Number of nets:                          2434
+Number of cells:                         1623
+Number of combinational cells:           1267
+Number of sequential cells:               295
+Number of macros/black boxes:               0
+Number of buf/inv:                        405
+Number of references:                      25
+
+Combinational area:              67467.566841
+Buf/Inv area:                    14871.859909
+Noncombinational area:           40086.894836
+Macro/Black Box area:                0.000000
+Net Interconnect area:             725.781297
+
+Total cell area:                107554.461678
+Total area:                     108280.242975
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area             Local cell area
+                                  --------------------  ------------------------------ 
+Hierarchical cell                 Absolute     Percent  Combi-      Noncombi-   Black-
+                                  Total        Total    national    national    boxes   Design
+--------------------------------  -----------  -------  ----------  ----------  ------  ---------------------
+processing_unit                   107554.4617    100.0   2164.8388      0.0000  0.0000  processing_unit
+PE_row[0].PE_column[0].PEs         22704.2455     21.1      0.0000      0.0000  0.0000  processing_element_3
+PE_row[0].PE_column[0].PEs/P2B_inst  13182.2696    12.3  4442.9908   1028.5040  0.0000  ESL_bioilar_divider_3
+PE_row[0].PE_column[0].PEs/P2B_inst/P2B_inst   4793.9511     4.5  2338.8048  2455.1464 0.0000 P2B_3
+PE_row[0].PE_column[0].PEs/P2B_inst/SNG_inst   2916.8236     2.7   975.9324     0.0000 0.0000 SNG_3
+PE_row[0].PE_column[0].PEs/P2B_inst/SNG_inst/UUT   1940.8912     1.8   729.9072  1210.9840 0.0000 LFSR_3
+PE_row[0].PE_column[0].PEs/SNG_half_inst   2629.3270     2.4   779.6734     0.0000 0.0000 SNG_14
+PE_row[0].PE_column[0].PEs/SNG_half_inst/UUT   1849.6536     1.7   655.2576  1194.3960 0.0000 LFSR_14
+PE_row[0].PE_column[0].PEs/SNG_init_inst   2869.8648     2.7   945.5616     0.0000 0.0000 SNG_13
+PE_row[0].PE_column[0].PEs/SNG_init_inst/UUT   1924.3032     1.8   729.9072  1194.3960 0.0000 LFSR_13
+PE_row[0].PE_column[0].PEs/SNG_weight_inst   3085.5162     2.9  1161.2162     0.0000 0.0000 SNG_15
+PE_row[0].PE_column[0].PEs/SNG_weight_inst/UUT   1924.3000     1.8   663.5520  1260.7480 0.0000 LFSR_15
+PE_row[0].PE_column[0].PEs/adder_inst    472.7812     0.4   472.7812     0.0000 0.0000  ESL_adder_3
+PE_row[0].PE_column[0].PEs/multiplier_inst    182.4768     0.2   182.4768     0.0000 0.0000 ESL_multiplier_3
+PE_row[0].PE_column[0].PEs/one_counter_inst    282.0100     0.3   124.4160   157.5940 0.0000 one_counter_3
+PE_row[0].PE_column[1].PEs         22018.6224     20.5     41.4720      0.0000  0.0000  processing_element_2
+PE_row[0].PE_column[1].PEs/P2B_inst  12521.5301    11.6  4089.1394    962.1520  0.0000  ESL_bioilar_divider_2
+PE_row[0].PE_column[1].PEs/P2B_inst/P2B_inst   4735.8911     4.4  2297.3328  2438.5583 0.0000 P2B_2
+PE_row[0].PE_column[1].PEs/P2B_inst/SNG_inst   2734.3476     2.5   810.0444     0.0000 0.0000 SNG_2
+PE_row[0].PE_column[1].PEs/P2B_inst/SNG_inst/UUT   1924.3032     1.8   729.9072  1194.3960 0.0000 LFSR_2
+PE_row[0].PE_column[1].PEs/SNG_half_inst   2762.0376     2.6   912.3840     0.0000 0.0000 SNG_11
+PE_row[0].PE_column[1].PEs/SNG_half_inst/UUT   1849.6536     1.7   655.2576  1194.3960 0.0000 LFSR_11
+PE_row[0].PE_column[1].PEs/SNG_init_inst   2786.9206     2.6   912.3838     0.0000 0.0000 SNG_10
+PE_row[0].PE_column[1].PEs/SNG_init_inst/UUT   1874.5368     1.7   680.1408  1194.3960 0.0000 LFSR_10
+PE_row[0].PE_column[1].PEs/SNG_weight_inst   2703.9744     2.5   796.2624     0.0000 0.0000 SNG_12
+PE_row[0].PE_column[1].PEs/SNG_weight_inst/UUT   1907.7120     1.8   663.5520  1244.1600 0.0000 LFSR_12
+PE_row[0].PE_column[1].PEs/adder_inst    738.2010     0.7   738.2010     0.0000 0.0000  ESL_adder_2
+PE_row[0].PE_column[1].PEs/multiplier_inst    182.4768     0.2   182.4768     0.0000 0.0000 ESL_multiplier_2
+PE_row[0].PE_column[1].PEs/one_counter_inst    282.0100     0.3   124.4160   157.5940 0.0000 one_counter_2
+PE_row[1].PE_column[0].PEs         23279.2431     21.6     41.4720      0.0000  0.0000  processing_element_1
+PE_row[1].PE_column[0].PEs/P2B_inst  13514.0483    12.6  4932.3616   1011.9160  0.0000  ESL_bioilar_divider_1
+PE_row[1].PE_column[0].PEs/P2B_inst/P2B_inst   4793.9511     4.5  2338.8048  2455.1464 0.0000 P2B_1
+PE_row[1].PE_column[0].PEs/P2B_inst/SNG_inst   2775.8196     2.6   851.5164     0.0000 0.0000 SNG_1
+PE_row[1].PE_column[0].PEs/P2B_inst/SNG_inst/UUT   1924.3032     1.8   729.9072  1194.3960 0.0000 LFSR_1
+PE_row[1].PE_column[0].PEs/SNG_half_inst   3077.2248     2.9  1227.5712     0.0000 0.0000 SNG_8
+PE_row[1].PE_column[0].PEs/SNG_half_inst/UUT   1849.6536     1.7   655.2576  1194.3960 0.0000 LFSR_8
+PE_row[1].PE_column[0].PEs/SNG_init_inst   2831.0734     2.6   956.5366     0.0000 0.0000 SNG_7
+PE_row[1].PE_column[0].PEs/SNG_init_inst/UUT   1874.5368     1.7   680.1408  1194.3960 0.0000 LFSR_7
+PE_row[1].PE_column[0].PEs/SNG_weight_inst   2637.6192     2.5   763.0848     0.0000 0.0000 SNG_9
+PE_row[1].PE_column[0].PEs/SNG_weight_inst/UUT   1874.5344     1.7   630.3744  1244.1600 0.0000 LFSR_9
+PE_row[1].PE_column[0].PEs/adder_inst    713.3186     0.7   713.3186     0.0000 0.0000  ESL_adder_1
+PE_row[1].PE_column[0].PEs/multiplier_inst    182.4768     0.2   182.4768     0.0000 0.0000 ESL_multiplier_1
+PE_row[1].PE_column[0].PEs/one_counter_inst    282.0100     0.3   124.4160   157.5940 0.0000 one_counter_1
+PE_row[1].PE_column[1].PEs         22250.2196     20.7     41.4720      0.0000  0.0000  processing_element_0
+PE_row[1].PE_column[1].PEs/P2B_inst  12709.4951    11.8  4210.7484    945.5640  0.0000  ESL_bioilar_divider_0
+PE_row[1].PE_column[1].PEs/P2B_inst/P2B_inst   4777.3631     4.4  2338.8048  2438.5583 0.0000 P2B_0
+PE_row[1].PE_column[1].PEs/P2B_inst/SNG_inst   2775.8196     2.6   851.5164     0.0000 0.0000 SNG_0
+PE_row[1].PE_column[1].PEs/P2B_inst/SNG_inst/UUT   1924.3032     1.8   729.9072  1194.3960 0.0000 LFSR_0
+PE_row[1].PE_column[1].PEs/SNG_half_inst   2720.5656     2.5   870.9120     0.0000 0.0000 SNG_5
+PE_row[1].PE_column[1].PEs/SNG_half_inst/UUT   1849.6536     1.7   655.2576  1194.3960 0.0000 LFSR_5
+PE_row[1].PE_column[1].PEs/SNG_init_inst   2878.1590     2.7  1003.6222     0.0000 0.0000 SNG_4
+PE_row[1].PE_column[1].PEs/SNG_init_inst/UUT   1874.5368     1.7   680.1408  1194.3960 0.0000 LFSR_4
+PE_row[1].PE_column[1].PEs/SNG_weight_inst   2813.9616     2.6   873.0720     0.0000 0.0000 SNG_6
+PE_row[1].PE_column[1].PEs/SNG_weight_inst/UUT   1940.8896     1.8   696.7296  1244.1600 0.0000 LFSR_6
+PE_row[1].PE_column[1].PEs/adder_inst    530.8412     0.5   530.8412     0.0000 0.0000  ESL_adder_0
+PE_row[1].PE_column[1].PEs/multiplier_inst    273.7152     0.3   273.7152     0.0000 0.0000 ESL_multiplier_0
+PE_row[1].PE_column[1].PEs/one_counter_inst    282.0100     0.3   124.4160   157.5940 0.0000 one_counter_0
+SNG_inst                            2579.5606      2.4    846.0286      0.0000  0.0000  SNG_16
+SNG_inst/UUT                        1733.5320      1.6    539.1360   1194.3960  0.0000  LFSR_16
+controller_inst                     1708.6476      1.6   1235.8656    472.7820  0.0000  controller
+index_counter_inst                  1476.4024      1.4    796.2624    680.1400  0.0000  index_counter
+partial_result_buffer_inst          9372.6817      8.7   5341.5938   4031.0879  0.0000  partial_result_buffer
+--------------------------------  -----------  -------  ----------  ----------  ------  ---------------------
+Total                                                   67467.5668  40086.8948  0.0000
+
+1

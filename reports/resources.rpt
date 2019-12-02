@@ -1,0 +1,579 @@
+ 
+****************************************
+Report : resources
+Design : processing_unit
+Version: O-2018.06
+Date   : Mon Dec  2 03:37:37 2019
+****************************************
+
+Resource Sharing Report for design processing_unit in file
+        /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/processing_unit.sv
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r145     | DW01_cmp2    | width=2    |               | lte_102              |
+|          |              |            |               | lte_102_I2_I1        |
+| r146     | DW01_cmp2    | width=2    |               | lte_102_2            |
+|          |              |            |               | lte_102_2_I2         |
+| r151     | DW01_cmp2    | width=2    |               | lte_102_2_I2_I1      |
+|          |              |            |               | lte_102_2_I2_I2      |
+| r152     | DW01_dec     | width=5    |               | sub_102_2_I2_I1      |
+|          |              |            |               | sub_102_2_I2_I2      |
+| r153     | DW01_cmp2    | width=2    |               | lte_102_I2           |
+|          |              |            |               | lte_102_I2_I2        |
+| r154     | DW01_dec     | width=5    |               | sub_102_4_I2         |
+|          |              |            |               | sub_102_4_I2_I2      |
+| r262     | DW01_dec     | width=4    |               | add_1_root_sub_102_3 |
+|          |              |            |               | add_1_root_sub_102_3_I2 |
+        |              |            |               | add_1_root_sub_102_3_I2_I1 |
+     |              |            |               | add_1_root_sub_102_3_I2_I2 |
+| r264     | DW01_add     | width=4    |               | sub_0_root_sub_102_3 |
+|          |              |            |               | sub_0_root_sub_102_3_I2 |
+        |              |            |               | sub_0_root_sub_102_3_I2_I1 |
+     |              |            |               | sub_0_root_sub_102_3_I2_I2 |
+| r372     | DW01_dec     | width=4    |               | add_1_root_sub_102   |
+|          |              |            |               | add_1_root_sub_102_I2 |
+          |              |            |               | add_1_root_sub_102_I2_I1 |
+       |              |            |               | add_1_root_sub_102_I2_I2 |
+| r374     | DW01_add     | width=4    |               | sub_0_root_sub_102   |
+|          |              |            |               | sub_0_root_sub_102_I2 |
+          |              |            |               | sub_0_root_sub_102_I2_I1 |
+       |              |            |               | sub_0_root_sub_102_I2_I2 |
+===============================================================================
+
+
+No implementations to report
+ 
+****************************************
+Design : partial_result_buffer
+****************************************
+Resource Sharing Report for design partial_result_buffer in file
+        /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/partial_result_buffer.sv
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r55      | DW01_dec     | width=3    |               | sub_26               |
+===============================================================================
+
+
+No implementations to report
+ 
+****************************************
+Design : index_counter
+****************************************
+Resource Sharing Report for design index_counter in file
+        /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/index_counter.sv
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r61      | DW01_inc     | width=2    |               | add_18               |
+| r63      | DW01_inc     | width=2    |               | add_20               |
+===============================================================================
+
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : processing_element_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_bioilar_divider_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : P2B_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_adder_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_4
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_4
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : one_counter_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_5
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_5
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_multiplier_0
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_6
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_6
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : processing_element_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_bioilar_divider_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : P2B_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_adder_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_7
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_7
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : one_counter_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_8
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_8
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_multiplier_1
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_9
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_9
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : processing_element_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_bioilar_divider_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : P2B_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_adder_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_10
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_10
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : one_counter_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_11
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_11
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_multiplier_2
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_12
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_12
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : processing_element_3
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : ESL_bioilar_divider_3
+****************************************
+Resource Sharing Report for design ESL_bioilar_divider_0 in file
+        /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/ESL_bipolar_divider.sv
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r60      | DW01_inc     | width=6    |               | add_43               |
+| r62      | DW01_dec     | width=6    |               | sub_45               |
+===============================================================================
+
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_3
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_3
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : P2B_3
+****************************************
+Resource Sharing Report for design P2B_0 in file
+        /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/P2B.sv
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r63      | DW01_inc     | width=6    |               | add_21               |
+| r65      | DW01_inc     | width=6    |               | add_32               |
+===============================================================================
+
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_adder_3
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_13
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_13
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : one_counter_3
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_14
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_14
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : ESL_multiplier_3
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : SNG_15
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_15
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : SNG_16
+****************************************
+Resource Sharing Report for design SNG_0 in file
+        /afs/umich.edu/user/a/r/arkhadem/Downloads/ESL/SNG.sv
+
+===============================================================================
+|          |              |            | Contained     |                      |
+| Resource | Module       | Parameters | Resources     | Contained Operations |
+===============================================================================
+| r53      | DW01_cmp2    | width=6    |               | gte_22               |
+===============================================================================
+
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : LFSR_16
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : controller
+****************************************
+
+No implementations to report
+1
