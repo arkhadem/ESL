@@ -15,8 +15,10 @@ module processing_element(
 
     wire weight_x;
     wire mult_x, mult_y;
+    wire half_cnt;
+    wire half_sc;
 
-    SNG SNG_inst(
+    SNG SNG_weight_inst(
         .clock(clock),
         .reset(reset),
         .enable(enable),
@@ -37,10 +39,29 @@ module processing_element(
         .o_y(mult_y)
     );
 
+    SNG SNG_half_inst(
+        .clock(clock),
+        .reset(reset),
+        .enable(enable),
+
+        .in_val({1'b1, {(`BIN_LEN - 1){1'b0}}}),
+        .out_val(half_sc)
+    );
+
+    one_counter one_counter_inst(
+        .clock(clock),
+        .reset(reset),
+        .enable(enable),
+
+        .count(half_cnt)
+    );
+
     ESL_adder adder_inst(
+        .half_sc(half_sc),
+        .half_cnt(half_cnt),
+
         .a_x(mult_x),
         .a_y(mult_y),
-
         .b_x(init_val_x),
         .b_y(init_val_y),
 
