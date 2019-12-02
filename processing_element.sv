@@ -6,11 +6,9 @@ module processing_element(
     input enable,
     input input_val_x,
     input input_val_y,
-    input init_val_x,
-    input init_val_y,
+    input [(`BIN_LEN - 1) : 0] init_val,
     input [(`BIN_LEN - 1) : 0] weight_val,
-    output reg output_val_x,
-    output reg output_val_y
+    output reg [(`BIN_LEN - 1) : 0] output_val
 );
 
     wire weight_x;
@@ -18,8 +16,10 @@ module processing_element(
     wire half_cnt;
     wire half_sc;
 
-    wire output_val_x_tmp;
-    wire output_val_y_tmp;
+    wire output_val_x;
+    wire output_val_y;
+
+    wire init_val_x, init_val_y;
 
     SNG SNG_weight_inst(
         .clock(clock),
@@ -59,6 +59,16 @@ module processing_element(
         .count(half_cnt)
     );
 
+    SNG SNG_init_inst(
+        .clock(clock),
+        .reset(reset),
+        .enable(enable),
+
+        .in_val(init_val),
+        .out_val(init_val_x)
+    );
+    assign init_val_y = 1;
+
     ESL_adder adder_inst(
         .half_sc(half_sc),
         .half_cnt(half_cnt),
@@ -68,18 +78,19 @@ module processing_element(
         .b_x(init_val_x),
         .b_y(init_val_y),
 
-        .o_x(output_val_x_tmp),
-        .o_y(output_val_y_tmp)
+        .o_x(output_val_x),
+        .o_y(output_val_y)
     );
 
-    always@(posedge clock) begin
-        if(reset) begin
-            output_val_x = 0;
-            output_val_y = 0;
-        end else if(enable) begin
-            output_val_x = output_val_x_tmp;
-            output_val_y = output_val_y_tmp;
-        end
-    end
+    ESL_bioilar_divider P2B_inst(
+        .clock(clock),
+        .reset(reset),
+        .enable(enable),
+
+        .a_x(output_val_x),
+        .a_y(output_val_y),
+
+        .out_bin(output_val)
+    );
 
 endmodule

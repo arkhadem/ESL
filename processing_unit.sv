@@ -19,8 +19,7 @@ module processing_unit(
 );
 
     genvar i, j;
-    reg init_vals_x [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
-    reg init_vals_y [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
+    reg [(`BIN_LEN - 1) : 0] init_vals [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
 
     reg enables [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
 
@@ -35,19 +34,13 @@ module processing_unit(
     wire output_valid_tmp;
 
     wire sc_count_enable, sc_count_reset;
-    wire [(`SC_LEN_LOG - 1) : 0] sc_count;
     wire sc_count_done;
 
-    wire ESL_bipolar_divider_enable;
 
+    wire [(`BIN_LEN - 1) : 0] output_val_tmp [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0];
 
-
-    wire [(`KERNEL_HEIGHT - 1) : 0][(`KERNEL_WIDTH - 1) : 0] output_val_x, output_val_y;
-
-    reg [(`KERNEL_HEIGHT - 1) : 0] store_vals_x;
-    reg [(`KERNEL_HEIGHT - 1) : 0] store_vals_y;
-    wire [(`KERNEL_HEIGHT - 1) : 0] fetch_vals_x;
-    wire [(`KERNEL_HEIGHT - 1) : 0] fetch_vals_y;
+    reg [(`BIN_LEN - 1) : 0] store_vals [(`KERNEL_HEIGHT - 1) : 0];
+    wire [(`BIN_LEN - 1) : 0] fetch_vals [(`KERNEL_HEIGHT - 1) : 0];
 
 
     controller controller_inst(
@@ -72,7 +65,6 @@ module processing_unit(
         .sc_count_enable(sc_count_enable),
         .sc_count_reset(sc_count_reset),
         .SNG_enable(SNG_enable),
-        .ESL_bipolar_divider_enable(ESL_bipolar_divider_enable),
         .done(done)
     );
 
@@ -93,11 +85,9 @@ module processing_unit(
                 .enable(enables[i][j] && PE_enable),
                 .input_val_x(input_x),
                 .input_val_y(1'b1),
-                .init_val_x(init_vals_x[i][j]),
-                .init_val_y(init_vals_y[i][j]),
+                .init_val(init_vals[i][j]),
                 .weight_val(weight_vals[i][j]),
-                .output_val_x(output_val_x[i][j]),
-                .output_val_y(output_val_y[i][j])
+                .output_val(output_val_tmp[i][j])
             );
 
         end
@@ -106,32 +96,18 @@ module processing_unit(
     always@(*) begin
         for (int i = 0; i < `KERNEL_HEIGHT; i = i + 1) begin
             for (int j = 1; j < `KERNEL_HEIGHT; j = j + 1) begin
-                init_vals_x[i][j] = output_val_x[i][j-1];
-                init_vals_y[i][j] = output_val_y[i][j-1];
+                init_vals[i][j] = output_val_tmp[i][j-1];
             end
             for (int j = 0; j < `KERNEL_HEIGHT; j = j + 1) begin
                 enables[i][j] = ((i <= height_index) && (j <= width_index) && (width_index + `KERNEL_WIDTH - 1 - j < `INPUT_WIDTH) && (height_index + `KERNEL_HEIGHT - 1 - i < `INPUT_HEIGHT)) ? 1 : 0;
             end
-            store_vals_x[i] = output_val_x[i][(`KERNEL_WIDTH - 1)];
-            store_vals_y[i] = output_val_y[i][(`KERNEL_WIDTH - 1)];
-            init_vals_x[i][0] = fetch_vals_x[i];
-            init_vals_y[i][0] = fetch_vals_y[i];
+            store_vals[i] = output_val_tmp[i][(`KERNEL_WIDTH - 1)];
+            init_vals[i][0] = fetch_vals[i];
         end
     end
 
     assign output_valid = ((output_valid_tmp == 1) && (width_index >= (`KERNEL_WIDTH - 1)) && (height_index >= (`KERNEL_HEIGHT - 1))) ? 1 : 0;
-
-    ESL_bioilar_divider ESL_bioilar_divider_inst(
-        .clock(clock),
-        .reset(reset),
-        .enable(ESL_bipolar_divider_enable),
-
-        .a_x(output_val_x[(`KERNEL_HEIGHT - 1)][(`KERNEL_WIDTH - 1)]),
-        .a_y(output_val_y[(`KERNEL_HEIGHT - 1)][(`KERNEL_WIDTH - 1)]),
-
-        .out_bin(output_val)
-    );
-
+    assign output_val = output_val_tmp[(`KERNEL_HEIGHT - 1)][(`KERNEL_WIDTH - 1)];
 
     index_counter index_counter_inst(
         .clock(clock),
@@ -147,22 +123,17 @@ module processing_unit(
         .reset(partial_sum_reset|reset),
         .enable(partial_sum_enable),
 
-        .store_vals_x(store_vals_x),
-        .store_vals_y(store_vals_y),
+        .store_vals(store_vals),
 
         .width_index(width_index),
-        .sc_count(sc_count),
 
-        .fetch_vals_x(fetch_vals_x),
-        .fetch_vals_y(fetch_vals_y)
+        .fetch_vals(fetch_vals)
     );
 
     sc_counter sc_counter_inst(
         .clock(clock),
         .reset(sc_count_reset|reset),
         .enable(sc_count_enable),
-
-        .sc_count(sc_count),
 
         .sc_count_done(sc_count_done)
     );

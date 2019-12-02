@@ -5,10 +5,9 @@ module sc_counter(
     input reset,
     input enable,
 
-    output reg [(`SC_LEN_LOG - 1) : 0] sc_count,
-
     wire sc_count_done
 );
+    reg [(`SC_LEN_LOG - 1) : 0] sc_count;
 
     always@(posedge clock) begin
         if(reset) begin

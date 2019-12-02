@@ -22,7 +22,6 @@ module controller(
     output reg sc_count_enable,
     output reg sc_count_reset,
     output reg SNG_enable,
-    output reg ESL_bipolar_divider_enable,
     output reg done
 );
 
@@ -50,7 +49,6 @@ module controller(
         sc_count_enable = 0;
         sc_count_reset = 0;
         SNG_enable = 0;
-        ESL_bipolar_divider_enable = 0;
         done = 0;
 
         case (state)
@@ -71,12 +69,11 @@ module controller(
                 PE_enable = 1;
                 SNG_enable = 1;
                 sc_count_enable = 1;
-                partial_sum_enable = 1;
-                ESL_bipolar_divider_enable = 1;
             end
 
             OUTPUT_IS_READY: begin
                 output_valid = 1;
+                partial_sum_enable = 1;
             end
 
             INDEX_INCREMENT: begin
@@ -98,7 +95,6 @@ module controller(
                 sc_count_enable = 0;
                 sc_count_reset = 0;
                 SNG_enable = 0;
-                ESL_bipolar_divider_enable = 0;
                 done = 0;
             end
         endcase
